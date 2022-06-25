@@ -14,6 +14,7 @@ export default function ProductSingle(product,user) {
   // const router = useRouter();
 
   const handleDelete = async (id) => {
+    console.log(id);
 
     try {
       const res = await axios.delete(`/api/products/${id}`);
@@ -22,26 +23,6 @@ export default function ProductSingle(product,user) {
       console.log(error);
     }
   };
-
-//   const handleDelete = async (id) => {
-//     try {
-//         const res = await fetch(`/api/products/${id}`, {
-//             method: 'DELETE',
-//             headers: {
-//                 Accept: contentType,
-//                 'Content-Type': contentType,
-//             },
-//             body: JSON.stringify(id),
-//         })
-//         setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
-//         if (!res.ok) {
-//             throw new Error(res.status)
-//         }
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
 
   return (
     <Layout>
@@ -60,16 +41,6 @@ export default function ProductSingle(product,user) {
           </button>
         </div>
       ))}
-
-
-      {/* <br />
-      <Link href={`/products/${product.product[1]._id}`}>
-        <a>{product.product[1]._id}</a>
-      </Link>
-      <br />
-      <Link href={`/products/${product.product[2]._id}`}>
-        <a>{product.product[2]._id}</a>
-      </Link> */}
 
 
 

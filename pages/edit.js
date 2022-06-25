@@ -4,9 +4,8 @@ import { useState } from "react";
 import Layout from "../components/Layout";
 import dbConnect from "../lib/dbConnect";
 import getProduct from "../lib/getProduct";
-import getUser from "../lib/getUser";
 
-export default function AddProduct(product) {
+export default function EditProduct(product) {
   console.log(product);
 
   const [title, setTitle] = useState("");
@@ -15,11 +14,12 @@ export default function AddProduct(product) {
   const [prices, setPrices] = useState("");
   // const router = useRouter();
 
-  const addProduct = async (e) => {
+  const addProduct = async (e,id) => {
+    console.log(id);
     e.preventDefault();
 
     try {
-      const res = await axios.post("/api/products", {
+      const res = await axios.put(`/api/products/${id}`,{
         title,
         desc,
         img,
@@ -74,16 +74,16 @@ export default function AddProduct(product) {
 export async function getServerSideProps({req,res}) {
   await dbConnect();
   const product = await getProduct();
-  const user = await getUser(req,res);
-  if (!user) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/signin",
-      },
-      props: {},
-    };
-  }
+  // const user = await getUser();
+  // if (!user) {
+  //   return {
+  //     redirect: {
+  //       permanent: false,
+  //       destination: "/signin",
+  //     },
+  //     props: {},
+  //   };
+  // }
   return {
     props: {
       product,
