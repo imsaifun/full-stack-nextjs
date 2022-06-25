@@ -3,7 +3,7 @@ import dbConnect from "../lib/dbConnect";
 import getUser from "../lib/getUser";
 
 export default function About(user) {
-  console.log(user);
+
 
   return (
     <Layout role={user}>

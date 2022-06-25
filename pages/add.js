@@ -6,7 +6,7 @@ import dbConnect from "../lib/dbConnect";
 import getProduct from "../lib/getProduct";
 import getUser from "../lib/getUser";
 
-export default function AddProduct(product) {
+export default function AddProduct(user) {
   // console.log(product);
 
   const [title, setTitle] = useState("");
@@ -34,7 +34,7 @@ export default function AddProduct(product) {
 
 
   return (
-    <Layout>
+    <Layout role={user}>
      
      <form>
         <input

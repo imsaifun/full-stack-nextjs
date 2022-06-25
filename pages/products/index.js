@@ -31,7 +31,7 @@ export default function ProductSingle(product, user) {
   };
 
   return (
-    <Layout>
+    <Layout role={user}>
 
       <h1>Product Page</h1>
 

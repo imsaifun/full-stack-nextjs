@@ -4,12 +4,10 @@ import dbConnect from "../../lib/dbConnect";
 import getProductById from "../../lib/getProductById";
 // import getUser from "../../lib/getUser";
 
-export default function ProductDetails(product) {
-  console.log(product);
-
+export default function ProductDetails(product,user) {
 
   return (
-    <Layout>
+    <Layout role={user}>
       <h1>Product Details</h1>
       <p>
         This is the home page and it is protected. Only authenticated users can
