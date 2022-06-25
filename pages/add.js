@@ -1,9 +1,9 @@
 import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
-import Layout from "../../components/Layout";
-import dbConnect from "../../lib/dbConnect";
-import getProduct from "../../lib/getProduct";
+import Layout from "../components/Layout";
+import dbConnect from "../lib/dbConnect";
+import getProduct from "../lib/getProduct";
 
 export default function Product(product) {
   console.log(product);
@@ -32,26 +32,30 @@ export default function Product(product) {
 
   return (
     <Layout>
+     
+     <form>
+        <input
+          type="text"
+          placeholder="title"
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
+        />
+        <input
+          type="text"
+          placeholder="desc"
+          onChange={(e) => setDesc(e.target.value)}
+          value={desc}
+        />
+        <input
+          type="text"
+          placeholder="price"
+          onChange={(e) => setPrice(e.target.value)}
+          value={price}
+        />
+        <button onClick={addProduct}>Submit</button>
+      </form>
 
-      {product.product.map((item, i) => (
-        <div key={i}>
-          <Link href={`/products/${item._id}`}>
-            <a>{item._id}</a>
-          </Link>
-        </div>
-      ))}
-
-
-      {/* <br />
-      <Link href={`/products/${product.product[1]._id}`}>
-        <a>{product.product[1]._id}</a>
-      </Link>
-      <br />
-      <Link href={`/products/${product.product[2]._id}`}>
-        <a>{product.product[2]._id}</a>
-      </Link> */}
-
-
+      
 
       {/* <button onClick={signoutHandler}>Sign out</button> */}
     </Layout>

@@ -18,6 +18,9 @@ export default function Layout({ children }) {
         <Link href="/signin">
           <a>SignIn</a>
         </Link>
+        <Link href="/add">
+          <a>Add</a>
+        </Link>
       </nav>
 
       <section>{children}</section>

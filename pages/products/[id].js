@@ -20,24 +20,9 @@ export default function ProductDetails(product) {
         <strong>Name</strong>: {product.product._id}
    
       </p>
-
-      {/* <button onClick={signoutHandler}>Sign out</button> */}
     </Layout>
   );
 }
-
-// export async function getServerSideProps({ params }) {
-//     await dbConnect()
-
-//     const product = await Product.findById(params.id).lean()
-//     product._id = product._id.toString()
-
-//     const allProducts = JSON.stringify(product)
-//     const pizza = JSON.parse(allProducts)
-
-//     return { props: { pizza } }
-
-// }
 
 
 export async function getServerSideProps({ params }) {
