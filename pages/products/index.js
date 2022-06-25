@@ -40,10 +40,10 @@ export default function Product(product) {
   );
 }
 
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps() {
   await dbConnect();
   const product = await getProduct();
-  const user = await getUser(req, res);
+  const user = await getUser();
   if (!user) {
     return {
       redirect: {
