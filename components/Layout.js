@@ -6,10 +6,7 @@ import { useState } from "react";
 export default function Layout({ role, children }) {
   const router = useRouter();
 
-  const [log, setLog] = useState(false);
-
   const signoutHandler = () => {
-    setLog(true)
     removeCookies("token");
     router.push("/signin");
   };
@@ -27,7 +24,7 @@ export default function Layout({ role, children }) {
         </Link>
 
 
-        
+
 
         {/* <Link href="/signin">
           <a>SignIn</a>
@@ -36,9 +33,13 @@ export default function Layout({ role, children }) {
           <a>Add</a>
         </Link>
 
-        {role ? <button onClick={signoutHandler}>Sign out</button> : <Link href="/signin">
-          <a>Signin</a>
-        </Link>}
+        {role ?
+          (<button onClick={signoutHandler}>Sign out</button>)
+          :
+          (<Link href="/signin">
+            <a>Signin</a>
+          </Link>)
+        }
 
 
       </nav>
