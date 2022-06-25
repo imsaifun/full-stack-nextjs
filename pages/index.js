@@ -4,7 +4,8 @@ import getUser from "../lib/getUser";
 import { useRouter } from "next/router";
 import dbConnect from "../lib/dbConnect";
 
-export default function HomePage(props) {
+export default function HomePage(user) {
+  console.log(user);
   const router = useRouter();
 
   const signoutHandler = () => {
@@ -21,10 +22,10 @@ export default function HomePage(props) {
       </p>
 
       <p>
-        <strong>Name</strong>: {props.user.name}
+        <strong>Name</strong>: {user.name}
       </p>
       <p>
-        <strong>Email</strong>: {props.user.email}
+        <strong>Email</strong>: {user.email}
       </p>
 
       <button onClick={signoutHandler}>Sign out</button>
