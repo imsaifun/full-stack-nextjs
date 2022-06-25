@@ -4,6 +4,7 @@ import { useState } from "react";
 import Layout from "../components/Layout";
 import dbConnect from "../lib/dbConnect";
 import getUser from "../lib/getUser";
+import Link from "next/link";
 
 export default function SignupPage() {
   const [name, setName] = useState("");
@@ -54,6 +55,9 @@ export default function SignupPage() {
         />
         <button>SignUp</button>
       </form>
+      <Link href="/signin">
+        <a>SignUp</a>
+      </Link>
     </Layout>
   );
 }

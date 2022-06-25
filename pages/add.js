@@ -7,7 +7,7 @@ import getProduct from "../lib/getProduct";
 import getUser from "../lib/getUser";
 
 export default function AddProduct(product) {
-  console.log(product);
+  // console.log(product);
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");

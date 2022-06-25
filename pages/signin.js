@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import getUser from "../lib/getUser";
 import dbConnect from "../lib/dbConnect";
+import Link from "next/link";
 
 export default function SigninPage() {
   const [email, setEmail] = useState("");
@@ -46,6 +47,9 @@ export default function SigninPage() {
         />
         <button>SignIn</button>
       </form>
+      <Link href="/signup">
+        <a>SignUp</a>
+      </Link>
     </Layout>
   );
 }

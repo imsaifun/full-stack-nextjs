@@ -1,12 +1,10 @@
-import { removeCookies } from "cookies-next";
+
 import Layout from "../components/Layout";
 import getUser from "../lib/getUser";
-import { useRouter } from "next/router";
 import dbConnect from "../lib/dbConnect";
 
 export default function HomePage(user) {
   console.log(user);
-  const router = useRouter();
 
   const signoutHandler = () => {
     removeCookies("token");
@@ -19,7 +17,6 @@ export default function HomePage(user) {
       
       
 
-      <button onClick={signoutHandler}>Sign out</button>
     </Layout>
   );
 }
