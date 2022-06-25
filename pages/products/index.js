@@ -44,7 +44,9 @@ export default function ProductSingle(product,user) {
 
 
   return (
-    <Layout role={user}>
+    <Layout>
+
+      <h1>Product Page</h1>
 
       {productList.map((item, i) => (
         <div key={i}>
@@ -76,10 +78,10 @@ export default function ProductSingle(product,user) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({req,res}) {
   await dbConnect();
   const product = await getProduct();
-  const user = await getUser();
+  const user = await getUser(req,res);
   if (!user) {
     return {
       redirect: {

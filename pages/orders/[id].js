@@ -39,10 +39,10 @@ export default function OrderDetails(product) {
 // }
 
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ req,res, params }) {
   await dbConnect();
   const order = await getOrderById(params.id);
-  const user = await getUser();
+  const user = await getUser(req,res);
   if (!user) {
     return {
       redirect: {

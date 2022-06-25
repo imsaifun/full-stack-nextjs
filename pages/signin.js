@@ -50,10 +50,10 @@ export default function SigninPage() {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req, res }) {
   await dbConnect();
 
-  const user = await getUser();
+  const user = await getUser(req, res);
   if (user) {
     return {
       redirect: {
