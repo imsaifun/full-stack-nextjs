@@ -10,7 +10,8 @@ export default function Product(product) {
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [price, setPrice] = useState("");
+  const [img, setImg] = useState("");
+  const [prices, setPrices] = useState("");
   // const router = useRouter();
 
   const addProduct = async (e) => {
@@ -20,7 +21,8 @@ export default function Product(product) {
       const res = await axios.post("/api/products", {
         title,
         desc,
-        price,
+        img,
+        prices,
       });
 
       // router.push("/");
@@ -48,9 +50,15 @@ export default function Product(product) {
         />
         <input
           type="text"
-          placeholder="price"
-          onChange={(e) => setPrice(e.target.value)}
-          value={price}
+          placeholder="img"
+          onChange={(e) => setImg(e.target.value)}
+          value={img}
+        />
+        <input
+          type="text"
+          placeholder="prices"
+          onChange={(e) => setPrices(e.target.value)}
+          value={prices}
         />
         <button onClick={addProduct}>Submit</button>
       </form>

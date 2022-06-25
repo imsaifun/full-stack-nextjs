@@ -12,10 +12,10 @@ const ProductSchema = new mongoose.Schema(
       // required: true,
       // maxlength: 200,
     },
-    // img: {
-    //   type: String,
-    //   required: true,
-    // },
+    img: {
+      type: String,
+      // required: true,
+    },
     prices: {
       type: Number,
       // required: true,
