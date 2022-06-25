@@ -10,13 +10,16 @@ export default function ProductDetails(product) {
 
   return (
     <Layout>
-      <h1>Home Page</h1>
+      <h1>Product Details</h1>
       <p>
         This is the home page and it is protected. Only authenticated users can
         access this page.
       </p>
 
       <p>
+        <strong>Name</strong>: {product.product.title}
+        <br />
+        <br />
         <strong>Name</strong>: {product.product._id}
    
       </p>
