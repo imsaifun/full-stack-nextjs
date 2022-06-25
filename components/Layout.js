@@ -7,6 +7,9 @@ export default function Layout({ children }) {
         <Link href="/">
           <a>Home Page</a>
         </Link>
+        <Link href="/products">
+          <a>Products</a>
+        </Link>
 
         <Link href="/signup">
           <a>SignUp</a>

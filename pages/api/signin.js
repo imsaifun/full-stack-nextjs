@@ -1,8 +1,7 @@
+import { setCookies } from "cookies-next";
+import jwt from "jsonwebtoken";
 import dbConnect from "../../lib/dbConnect";
 import User from "../../models/user";
-import jwt from "jsonwebtoken";
-import cookie from "cookie";
-import { setCookies } from "cookies-next";
 
 export default async function handler(req, res) {
   await dbConnect();
