@@ -1,9 +1,9 @@
-import Layout from "../components/Layout";
-import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import getUser from "../lib/getUser";
+import { useState } from "react";
+import Layout from "../components/Layout";
 import dbConnect from "../lib/dbConnect";
+import getUser from "../lib/getUser";
 
 export default function SignupPage() {
   const [name, setName] = useState("");
