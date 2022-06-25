@@ -1,15 +1,19 @@
 import Link from "next/link";
 
-export default function Layout({ children }) {
+export default function Layout({ role, children }) {
   return (
     <>
       <nav>
         <Link href="/">
           <a>Home Page</a>
         </Link>
-        <Link href="/products">
+        <Link href="/about">
+          <a>About</a>
+        </Link>
+         <Link href="/products">
           <a>Products</a>
         </Link>
+
 
         <Link href="/signup">
           <a>SignUp</a>
@@ -27,3 +31,4 @@ export default function Layout({ children }) {
     </>
   );
 }
+

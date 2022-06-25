@@ -4,7 +4,7 @@ import getUser from "../lib/getUser";
 import { useRouter } from "next/router";
 import dbConnect from "../lib/dbConnect";
 
-export default function HomePage(user) {
+export default function About(user) {
   console.log(user);
   const router = useRouter();
 
@@ -15,11 +15,9 @@ export default function HomePage(user) {
 
   return (
     <Layout role={user}>
-      <h1>Home Page</h1>
+      <h1>About Page</h1>
       
       
-
-      <button onClick={signoutHandler}>Sign out</button>
     </Layout>
   );
 }

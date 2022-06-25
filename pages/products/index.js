@@ -6,7 +6,7 @@ import dbConnect from "../../lib/dbConnect";
 import getProduct from "../../lib/getProduct";
 import getUser from "../../lib/getUser";
 
-export default function ProductSingle(product) {
+export default function ProductSingle(product,user) {
   const myProduct = product.product
   console.log(myProduct);
 
@@ -44,7 +44,7 @@ export default function ProductSingle(product) {
 
 
   return (
-    <Layout>
+    <Layout role={user}>
 
       {productList.map((item, i) => (
         <div key={i}>
@@ -76,10 +76,10 @@ export default function ProductSingle(product) {
   );
 }
 
-export async function getServerSideProps({req,res}) {
+export async function getServerSideProps() {
   await dbConnect();
-  const user = await getUser({req,res});
   const product = await getProduct();
+  const user = await getUser();
   if (!user) {
     return {
       redirect: {
@@ -92,6 +92,7 @@ export async function getServerSideProps({req,res}) {
   return {
     props: {
       product,
+      user
     },
   };
 }
