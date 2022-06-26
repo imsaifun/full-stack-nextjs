@@ -57,7 +57,7 @@ export default function ProductSingle(product, user) {
           <br />
           <br />
 
-          {productId === item._id && <EditProduct id={item._id} />}
+          {productId === item._id && <EditProduct item={item} />}
 
         </div>
       ))}

@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       try {
         const product = await Product.findByIdAndUpdate(id, req.body, {
           new: true,
-          runValidators: true,
+          // runValidators: true,
         })
         if (!product) {
           return res.status(400).json({ success: false })
