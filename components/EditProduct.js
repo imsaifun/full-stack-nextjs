@@ -6,11 +6,14 @@ export default function EditProduct(item) {
   console.log(abc._id);
 
   const [updateData, setUpdateData] = useState({
-    title: abc.title
+    title: abc.title,
   });
 
   const inputHandler = (e) => {
-    setUpdateData({ ...updateData, title: e.target.value });
+    setUpdateData({
+      ...updateData,
+      title: e.target.value
+    });
   };
 
   const handleEdit = async (id) => {
@@ -32,8 +35,7 @@ export default function EditProduct(item) {
           // value={abc.title}
           name="title"
           type="text"
-          className="form-control"
-          placeholder="user name"
+          placeholder="title"
         />
         {/* <button onClick={handleEdit}>Submit</button> */}
         <button

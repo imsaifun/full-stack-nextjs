@@ -39,7 +39,7 @@ export default function ProductSingle(product, user) {
         <div key={i}>
           <Link href={`/products/${item._id}`}>
             <a>
-              {item.title}
+              {item.title} <br /> {item.desc} <br />{item.price} 
               <br />
               {item._id}
             </a>
