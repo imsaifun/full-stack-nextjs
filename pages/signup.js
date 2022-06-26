@@ -56,7 +56,7 @@ export default function SignupPage() {
         <button>SignUp</button>
       </form>
       <Link href="/signin">
-        <a>SignUp</a>
+        <a>SignIn</a>
       </Link>
     </Layout>
   );
