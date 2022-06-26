@@ -3,15 +3,15 @@ import { useState } from "react";
 
 export default function EditProduct(item) {
   const abc = item.item
-  console.log(abc._id);
+  console.log(abc);
 
-  const [updateData, setUpdateData] = useState({
+  const [updateTitle, setUpdateTitle] = useState({
     title: abc.title,
   });
 
   const inputHandler = (e) => {
-    setUpdateData({
-      ...updateData,
+    setUpdateTitle({
+      ...updateTitle,
       title: e.target.value
     });
   };
@@ -19,7 +19,7 @@ export default function EditProduct(item) {
   const handleEdit = async (id) => {
     // e.preventDefault();
     try {
-      const res = await axios.put(`/api/products/${id}`, updateData);
+      const res = await axios.put(`/api/products/${id}`, updateTitle);
 
     } catch (error) {
       console.log(error);
