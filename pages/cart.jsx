@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../components/Layout";
 import OrderDetail from "../components/OrderDetail";
-import { reset } from "../redux/cartSlice";
+import { addToCart, reset, decreaseCart } from "../redux/cartSlice";
 import getUser from "../lib/getUser";
 import dbConnect from "../lib/dbConnect";
 
@@ -26,11 +26,18 @@ const Cart = ({ user }) => {
     const router = useRouter();
     const contentType = 'application/json'
 
+
+    const handleDecreaseCart = (product) => {
+        dispatch(decreaseCart(product));
+    };
+
+    const handleIncreaseCart = (product) => {
+        dispatch(addToCart(product));
+    }
+
     const createOrder = async (data) => {
         try {
             const res = await axios.post("/api/orders", data);
-            //   const myOrder  = await res.json()
-            //   console.log(res);
             if (res.status === 201) {
                 dispatch(reset());
                 router.push(`/orders/${res.data.data._id}`);
@@ -39,6 +46,7 @@ const Cart = ({ user }) => {
             console.log(err);
         }
     };
+
 
 
     const ButtonWrapper = ({ currency, showSpinner }) => {
@@ -116,29 +124,35 @@ const Cart = ({ user }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {cart.products.map((product, i) => (
-                                <tr key={i}>
+                            {cart.products.map((product) => (
+                                <tr key={product._id}>
                                     <td>
-                                        <img src="/img/pizza.png" alt="" width={100} />
+                                        <div>
+                                            <img src="/img/pizza.png" alt="" width={100} />
+                                        </div>
                                     </td>
                                     <td>
-                                        {product.title}
-                                    </td>
-
-                                    {product.extras.map((extra) => (
-                                        <td key={extra._id}>{extra.text} </td>
-                                    ))}
-
-                                    <td>
-                                        ${product.price}
+                                        <span>{product.title}</span>
                                     </td>
                                     <td>
-                                        {product.quantity}
+                                        <span>
+                                            {product.extras.map((extra) => (
+                                                <span key={extra._id}>{extra.text}, </span>
+                                            ))}
+                                        </span>
                                     </td>
                                     <td>
-
-                                        ${product.price * product.quantity}
-
+                                        <span>${product.price}</span>
+                                    </td>
+                                    <td>
+                                        <button onClick={() => handleDecreaseCart(product)} > - </button>
+                                        <span>{product.quantity}</span>
+                                        <button onClick={() => handleIncreaseCart(product)} > + </button>
+                                    </td>
+                                    <td>
+                                        <span>
+                                            ${product.price * product.quantity}
+                                        </span>
                                     </td>
                                 </tr>
                             ))}
@@ -146,43 +160,43 @@ const Cart = ({ user }) => {
                     </table>
                 </div>
                 <div>
-                <div>
-                    <h2>CART TOTAL</h2>
                     <div>
-                        <b>Subtotal:</b>${cart.total}
-                    </div>
-                    <div>
-                        <b>Discount:</b>$0.00
-                    </div>
-                    <div>
-                        <b>Total:</b>${cart.total}
-                    </div>
-                    {open ? (
+                        <h2>CART TOTAL</h2>
                         <div>
-                            <button
-                                onClick={() => setCash(true)}
-                            >
-                                CASH ON DELIVERY
-                            </button>
-                            <PayPalScriptProvider
-                                options={{
-                                    "client-id":
-                                        "Aby6hHQcup215Odrwaf6VvKS2g-qAeMiQSBY9rBMxdFKoiUA0s29ovwNZ6QVLOkfmk5hL6x-vuogTnjJ",
-                                    components: "buttons",
-                                    currency: "USD",
-                                    "disable-funding": "credit,card,p24",
-                                }}
-                            >
-                                <ButtonWrapper currency={currency} showSpinner={false} />
-                            </PayPalScriptProvider>
+                            <b>Subtotal:</b>${cart.total}
                         </div>
-                    ) : (
-                        <button onClick={() => setOpen(true)}>
-                            CHECKOUT NOW!
-                        </button>
-                    )}
+                        <div>
+                            <b>Discount:</b>$0.00
+                        </div>
+                        <div>
+                            <b>Total:</b>${cart.total}
+                        </div>
+                        {open ? (
+                            <div>
+                                <button
+                                    onClick={() => setCash(true)}
+                                >
+                                    CASH ON DELIVERY
+                                </button>
+                                <PayPalScriptProvider
+                                    options={{
+                                        "client-id":
+                                            "Aby6hHQcup215Odrwaf6VvKS2g-qAeMiQSBY9rBMxdFKoiUA0s29ovwNZ6QVLOkfmk5hL6x-vuogTnjJ",
+                                        components: "buttons",
+                                        currency: "USD",
+                                        "disable-funding": "credit,card,p24",
+                                    }}
+                                >
+                                    <ButtonWrapper currency={currency} showSpinner={false} />
+                                </PayPalScriptProvider>
+                            </div>
+                        ) : (
+                            <button onClick={() => setOpen(true)}>
+                                CHECKOUT NOW!
+                            </button>
+                        )}
+                    </div>
                 </div>
-            </div>
                 {cash && <OrderDetail total={cart.total} createOrder={createOrder} />}
             </Layout>
         </>
