@@ -6,7 +6,7 @@ import dbConnect from "../lib/dbConnect";
 import getProduct from "../lib/getProduct";
 import getUser from "../lib/getUser";
 
-export default function AddProduct(user) {
+export default function ProductForm(user) {
   // console.log(product);
 
   const [title, setTitle] = useState("");
@@ -15,7 +15,7 @@ export default function AddProduct(user) {
   const [prices, setPrices] = useState("");
   // const router = useRouter();
 
-  const addProduct = async (e) => {
+  const productHandler = async (e) => {
     e.preventDefault();
 
     try {
@@ -61,7 +61,7 @@ export default function AddProduct(user) {
           onChange={(e) => setPrices(e.target.value)}
           value={prices}
         />
-        <button onClick={addProduct}>Submit</button>
+        <button onClick={productHandler}>Submit</button>
       </form>
 
       

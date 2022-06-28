@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 
 import { useState } from "react";
 // import getUser from "../../lib/getUser";
-import { addProduct } from "../../redux/cartSlice";
+import { addToCart } from "../../redux/cartSlice";
 
 export default function ProductDetails(product, user) {
     const pizza = product.product
@@ -19,7 +19,7 @@ export default function ProductDetails(product, user) {
     const dispatch = useDispatch();
 
     // console.log(pizza.prices[0]);
-    console.log(price);
+    // console.log(price);
     
     const changePrice = (number) => {
         setPrice(price + number);
@@ -44,7 +44,7 @@ export default function ProductDetails(product, user) {
     };
 
     const handleClick = () => {
-        dispatch(addProduct({ ...pizza, extras, price, quantity }));
+        dispatch(addToCart({ ...pizza, extras, price, quantity }));
     };
 
     return (

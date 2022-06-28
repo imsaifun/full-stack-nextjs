@@ -6,12 +6,15 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Layout from "../components/Layout";
 import OrderDetail from "../components/OrderDetail";
 import { reset } from "../redux/cartSlice";
+import getUser from "../lib/getUser";
+import dbConnect from "../lib/dbConnect";
 
 
 
-const Cart = () => {
+const Cart = ({ user }) => {
     // This values are the props in the UI
     const cart = useSelector((state) => state.cart);
     const [cash, setCash] = useState(false);
@@ -25,17 +28,17 @@ const Cart = () => {
 
     const createOrder = async (data) => {
         try {
-          const res = await axios.post("/api/orders", data);
-        //   const myOrder  = await res.json()
-        //   console.log(res);
-          if (res.status === 201) {
-            dispatch(reset());
-            router.push(`/orders/${res.data.data._id}`);
-          }
+            const res = await axios.post("/api/orders", data);
+            //   const myOrder  = await res.json()
+            //   console.log(res);
+            if (res.status === 201) {
+                dispatch(reset());
+                router.push(`/orders/${res.data.data._id}`);
+            }
         } catch (err) {
-          console.log(err);
+            console.log(err);
         }
-      };
+    };
 
 
     const ButtonWrapper = ({ currency, showSpinner }) => {
@@ -96,55 +99,53 @@ const Cart = () => {
     };
 
     return (
-        <div>
-            <div>
-                <table>
-                    <thead>
+        <>
+            <Layout role={user}>
 
-                        <tr>
-                            <th>Product</th>
-                            <th>Name</th>
-                            <th>Extras</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cart.products.map((product) => (
-                            <tr key={product._id}>
-                                <td>
-                                    <div>
-                                        <img src="/img/pizza.png" alt="" width={100} />
-                                    </div>
-                                </td>
-                                <td>
-                                    <span>{product.title}</span>
-                                </td>
-                                <td>
-                                    <span>
-                                        {product.extras.map((extra) => (
-                                            <span key={extra._id}>{extra.text}, </span>
-                                        ))}
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>${product.price}</span>
-                                </td>
-                                <td>
-                                    <span>{product.quantity}</span>
-                                </td>
-                                <td>
-                                    <span>
-                                        ${product.price * product.quantity}
-                                    </span>
-                                </td>
+
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Name</th>
+                                <th>Extras</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-            <div>
+                        </thead>
+                        <tbody>
+                            {cart.products.map((product, i) => (
+                                <tr key={i}>
+                                    <td>
+                                        <img src="/img/pizza.png" alt="" width={100} />
+                                    </td>
+                                    <td>
+                                        {product.title}
+                                    </td>
+
+                                    {product.extras.map((extra) => (
+                                        <td key={extra._id}>{extra.text} </td>
+                                    ))}
+
+                                    <td>
+                                        ${product.price}
+                                    </td>
+                                    <td>
+                                        {product.quantity}
+                                    </td>
+                                    <td>
+
+                                        ${product.price * product.quantity}
+
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+                <div>
                 <div>
                     <h2>CART TOTAL</h2>
                     <div>
@@ -182,9 +183,29 @@ const Cart = () => {
                     )}
                 </div>
             </div>
-            {cash && <OrderDetail total={cart.total} createOrder={createOrder} />}
-        </div>
+                {cash && <OrderDetail total={cart.total} createOrder={createOrder} />}
+            </Layout>
+        </>
     );
 };
+
+export async function getServerSideProps({ req, res }) {
+    await dbConnect();
+    const user = await getUser(req, res);
+    if (!user) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: "/signin",
+            },
+            props: {},
+        };
+    }
+    return {
+        props: {
+            user,
+        },
+    };
+}
 
 export default Cart;
