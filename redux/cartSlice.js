@@ -30,6 +30,7 @@ const cartSlice = createSlice({
           position: 'bottom-right',
         });
       }
+      // localStorage.setItem("products", JSON.stringify(state.products));
       Cookies.set('products', JSON.stringify(state.products));
     },
     decreaseCart(state, action) {
@@ -53,6 +54,8 @@ const cartSlice = createSlice({
           position: 'bottom-left',
         });
       }
+      // localStorage.setItem("products", JSON.stringify(state.products));
+			Cookies.set('products', JSON.stringify(state.products));
 
     },
     removeFromCart(state, action) {
@@ -66,7 +69,7 @@ const cartSlice = createSlice({
             position: 'bottom-left',
           });
         }
-        //   localStorage.setItem("products", JSON.stringify(state.products));
+          // localStorage.setItem("products", JSON.stringify(state.products));
         Cookies.set('products', JSON.stringify(state.products));
         return state;
       });
