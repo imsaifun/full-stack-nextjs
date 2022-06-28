@@ -4,25 +4,29 @@ import dbConnect from "../../lib/dbConnect";
 import getProductById from "../../lib/getProductById";
 // import getUser from "../../lib/getUser";
 
-export default function ProductDetails(product,user) {
+export default function ProductDetails(product, user) {
 
-  return (
-    <Layout role={user}>
-      <h1>Product Details</h1>
-      <p>
-        This is the home page and it is protected. Only authenticated users can
-        access this page.
-      </p>
+    return (
+        <Layout role={user}>
+            <h1>Product Details</h1>
+            <p>
+                This is the home page and it is protected. Only authenticated users can
+                access this page.
+            </p>
 
-      <p>
-        <strong>Name</strong>: {product.product.title}
-        <br />
-        <br />
-        <strong>Name</strong>: {product.product._id}
-   
-      </p>
-    </Layout>
-  );
+            <p>
+                <strong>Name</strong>: {product.product.title}
+                <br />
+                <br />
+                <strong>Name</strong>: {product.product._id}
+                <br />
+                <br />
+
+                <button>Add to Cart</button>
+
+            </p>
+        </Layout>
+    );
 }
 
 
@@ -40,8 +44,8 @@ export async function getServerSideProps({ params }) {
     //   };
     // }
     return {
-      props: {
-        product,
-      },
+        props: {
+            product,
+        },
     };
-  }
+}
