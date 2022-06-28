@@ -38,12 +38,14 @@ export default function SigninPage() {
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
+          required
         />
         <input
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
+          required
         />
         <button>SignIn</button>
       </form>

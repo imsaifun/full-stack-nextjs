@@ -44,9 +44,9 @@ export default function Layout({ role, children }) {
           </Link>)
         }
 
-        <Link href="/cart" passHref>
-          <div><CartCounter /></div>
-        </Link>
+<Link href="/cart" passHref>
+<div><CartCounter/></div>
+</Link>
       </nav>
 
       <section>{children}</section>
