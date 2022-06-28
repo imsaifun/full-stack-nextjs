@@ -2,9 +2,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { removeCookies } from "cookies-next";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Layout({ role, children }) {
   const router = useRouter();
+  const quantity = useSelector((state) => state.cart.quantity);
 
   const signoutHandler = () => {
     removeCookies("token");
@@ -41,7 +43,7 @@ export default function Layout({ role, children }) {
           </Link>)
         }
 
-
+<div>{quantity}</div>
       </nav>
 
       <section>{children}</section>

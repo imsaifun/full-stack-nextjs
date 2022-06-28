@@ -2,9 +2,50 @@ import Layout from "../../components/Layout";
 import dbConnect from "../../lib/dbConnect";
 // import Product from "../../models/Product";
 import getProductById from "../../lib/getProductById";
+
+import { useDispatch } from "react-redux";
+
+import { useState } from "react";
 // import getUser from "../../lib/getUser";
+import { addProduct } from "../../redux/cartSlice";
 
 export default function ProductDetails(product, user) {
+    const pizza = product.product
+
+    const [price, setPrice] = useState(pizza.prices[0].price);
+    const [size, setSize] = useState(0);
+    const [quantity, setQuantity] = useState(1);
+    const [extras, setExtras] = useState([]);
+    const dispatch = useDispatch();
+
+    // console.log(pizza.prices[0]);
+    
+    const changePrice = (number) => {
+        setPrice(price + number);
+    };
+
+    const handleSize = (sizeIndex) => {
+        const difference = pizza.prices[sizeIndex].price - pizza.prices[size].price;
+        console.log(price);
+        setSize(sizeIndex);
+        changePrice(difference);
+    };
+
+    const handleChange = (e, option) => {
+        const checked = e.target.checked;
+
+        if (checked) {
+            changePrice(option.price);
+            setExtras((prev) => [...prev, option]);
+        } else {
+            changePrice(-option.price);
+            setExtras(extras.filter((extra) => extra._id !== option._id));
+        }
+    };
+
+    const handleClick = () => {
+        dispatch(addProduct({ ...pizza, extras, price, quantity }));
+    };
 
     return (
         <Layout role={user}>
@@ -14,17 +55,58 @@ export default function ProductDetails(product, user) {
                 access this page.
             </p>
 
-            <p>
-                <strong>Name</strong>: {product.product.title}
+            <div>
+                <img src={`/${pizza.img}`} alt="" width={100} />
+                <br />
+                <strong>Name</strong>: {pizza.title}
                 <br />
                 <br />
-                <strong>Name</strong>: {product.product._id}
-                <br />
-                <br />
+                {/* <strong>Name</strong>: {pizza._id} */}
 
-                <button>Add to Cart</button>
+                <div onClick={() => handleSize(0)}>
+                    <img src="/img/size.png" width={20} alt="" />
+                    <span>Small</span>
+                </div>
+                <br />
+                <div onClick={() => handleSize(1)}>
+                    <img src="/img/size.png" width={20} alt="" />
+                    <span>Medium</span>
+                </div>
+                <br />
+                <div onClick={() => handleSize(2)}>
+                    <img src="/img/size.png" width={20} alt="" />
+                    <span>Large</span>
+                </div>
+                <br />
+                <br />
+                <div>
+                    {pizza.extraOptions.map((option) => (
+                        <div key={option._id}>
+                            <input
+                                type="checkbox"
+                                id={option.text}
+                                name={option.text}
+                                onChange={(e) => handleChange(e, option)}
+                            />
+                            <label htmlFor="double">{option.text}</label>
+                        </div>
+                    ))}
+                </div>
 
-            </p>
+                <br />
+                <h2>${price}</h2>
+
+                <br />
+                <div>
+                    <input
+                        onChange={(e) => setQuantity(e.target.value)}
+                        type="number"
+                        defaultValue={1}
+                    />
+                    <button  onClick={handleClick}>Add to Cart</button>
+                </div>
+
+            </div>
         </Layout>
     );
 }
