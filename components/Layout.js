@@ -43,7 +43,10 @@ export default function Layout({ role, children }) {
           </Link>)
         }
 
+<Link href="/cart" passHref>
 <div>{quantity}</div>
+
+</Link>
       </nav>
 
       <section>{children}</section>

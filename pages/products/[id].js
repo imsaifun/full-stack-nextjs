@@ -19,6 +19,7 @@ export default function ProductDetails(product, user) {
     const dispatch = useDispatch();
 
     // console.log(pizza.prices[0]);
+    console.log(price);
     
     const changePrice = (number) => {
         setPrice(price + number);
@@ -26,7 +27,6 @@ export default function ProductDetails(product, user) {
 
     const handleSize = (sizeIndex) => {
         const difference = pizza.prices[sizeIndex].price - pizza.prices[size].price;
-        console.log(price);
         setSize(sizeIndex);
         changePrice(difference);
     };

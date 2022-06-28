@@ -3,20 +3,20 @@ import dbConnect from "../../lib/dbConnect";
 import getOrderById from "../../lib/getOrderById";
 import getUser from "../../lib/getUser";
 
-export default function OrderDetails(product) {
-  console.log(product);
+export default function OrderDetails(order, user) {
+  console.log(order.order);
 
 
   return (
-    <Layout>
-      <h1>Home Page</h1>
-      <p>
-        This is the home page and it is protected. Only authenticated users can
-        access this page.
-      </p>
+    <Layout role={user}>
+      <h1>Order Details</h1>
 
       <p>
-        <strong>Name</strong>: {product.product._id}
+        <strong>Name</strong>: {order.order.customer}
+        <br />
+        <strong>Address</strong>: {order.order.address}
+        <br />
+        <strong>Price</strong>: {order.order.total}
 
       </p>
 
@@ -39,10 +39,10 @@ export default function OrderDetails(product) {
 // }
 
 
-export async function getServerSideProps({ req,res, params }) {
+export async function getServerSideProps({ req, res, params }) {
   await dbConnect();
   const order = await getOrderById(params.id);
-  const user = await getUser(req,res);
+  const user = await getUser(req, res);
   if (!user) {
     return {
       redirect: {
