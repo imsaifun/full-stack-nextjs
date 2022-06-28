@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       try {
         const order = await Order.findByIdAndUpdate(id, req.body, {
           new: true,
-          // runValidators: true,
+          runValidators: true,
         })
         if (!order) {
           return res.status(400).json({ success: false })
