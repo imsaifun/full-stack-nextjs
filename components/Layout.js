@@ -1,8 +1,9 @@
-import { setCookies, removeCookies } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { removeCookies } from "cookies-next";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-
+import CartCounter from "./CartCounter";
 
 export default function Layout({ role, children }) {
   const router = useRouter();
@@ -44,8 +45,7 @@ export default function Layout({ role, children }) {
         }
 
         <Link href="/cart" passHref>
-          <div>{quantity}</div>
-
+          <div><CartCounter /></div>
         </Link>
       </nav>
 

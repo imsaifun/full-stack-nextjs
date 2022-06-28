@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../components/Layout";
 import OrderDetail from "../components/OrderDetail";
-import { addToCart, reset, decreaseCart } from "../redux/cartSlice";
+import { addToCart, reset, decreaseCart,removeFromCart,getTotals,clearCart } from "../redux/cartSlice";
 import getUser from "../lib/getUser";
 import dbConnect from "../lib/dbConnect";
 
@@ -26,7 +26,15 @@ const Cart = ({ user }) => {
     const router = useRouter();
     const contentType = 'application/json'
 
+    useEffect(() => { 
+		dispatch(getTotals());
+	}, [cart, dispatch]);
 
+    console.log(cart);
+
+    const handleRemoveFromCart = (product) => {
+		dispatch(removeFromCart(product));
+	};
     const handleDecreaseCart = (product) => {
         dispatch(decreaseCart(product));
     };
@@ -34,6 +42,10 @@ const Cart = ({ user }) => {
     const handleIncreaseCart = (product) => {
         dispatch(addToCart(product));
     }
+
+    const handleClearCart = () => {
+		dispatch(clearCart());
+	};
 
     const createOrder = async (data) => {
         try {
@@ -154,10 +166,25 @@ const Cart = ({ user }) => {
                                             ${product.price * product.quantity}
                                         </span>
                                     </td>
+                                    <td>
+                                    <button onClick={() =>
+													handleRemoveFromCart(
+														product
+													)
+												}
+											>
+												Remove
+											</button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                    
+							<button
+								onClick={() => handleClearCart()}>
+								Clear Cart
+							</button>
                 </div>
                 <div>
                     <div>
