@@ -1,12 +1,12 @@
 import Link from "next/link";
-import dbConnect from "../lib/dbConnect";
-import Todo from "../models/Todo";
+import dbConnect from "../../lib/dbConnect";
+import Todo from "../../models/Todo";
 
 const Index = ({ todos }) => (
   <>
     {/* Create a card for each todo */}
 
-    <Link href="/new" passHref>
+    <Link href="/todo/new" passHref>
       <button>New</button>
     </Link>
     {todos.map((todo) => (
@@ -15,10 +15,10 @@ const Index = ({ todos }) => (
           <h3>Title: {todo.title}</h3>
           <p>Description: {todo.description}</p>
           <div>
-            <Link href="/[id]/edit" as={`/${todo._id}/edit`} passHref>
+            <Link href="/todo/[id]/edit" as={`/todo/${todo._id}/edit`} passHref>
               <button>Edit</button>
             </Link>
-            <Link href="/[id]" as={`/${todo._id}`} passHref>
+            <Link href="/todo/[id]" as={`/todo/${todo._id}`} passHref>
               <button>View</button>
             </Link>
           </div>

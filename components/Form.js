@@ -36,7 +36,7 @@ const Form = ({ formId, todoForm, forNewTodo = true }) => {
             const { data } = await res.json();
 
             mutate(`/api/todos/${id}`, data, false); // Update the local data without a revalidation
-            router.push("/test");
+            router.push("/todo");
         } catch (error) {
             setMessage("Failed to update todo");
         }
@@ -59,7 +59,7 @@ const Form = ({ formId, todoForm, forNewTodo = true }) => {
                 throw new Error(res.status);
             }
 
-            router.push("/test");
+            router.push("/todo");
         } catch (error) {
             setMessage("Failed to add todo");
         }

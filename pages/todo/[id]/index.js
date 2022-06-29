@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import dbConnect from "../../lib/dbConnect";
-import Todo from "../../models/Todo";
+import dbConnect from "../../../lib/dbConnect";
+import Todo from "../../../models/todo";
 
 /* Allows you to view todo card info and delete todo card*/
 const TodoPage = ({ todo }) => {
@@ -27,7 +27,7 @@ const TodoPage = ({ todo }) => {
       <div>
         <h3>Title: {todo.title}</h3>
         <p>Description: {todo.description}</p>
-        <Link href="/[id]/edit" as={`/${todo._id}/edit`} passHref>
+        <Link href="/todo/[id]/edit" as={`/todo/${todo._id}/edit`} passHref>
           <button>Edit</button>
         </Link>
         <button onClick={onDelete}>Delete</button>
