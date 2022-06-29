@@ -19,7 +19,7 @@ const TodoPage = ({ todo ,user}) => {
             await fetch(`/api/todos/${todoID}`, {
                 method: "Delete",
             });
-            router.push("/");
+            router.push("/todo");
         } catch (error) {
             setMessage("Failed to delete the todo.");
         }
