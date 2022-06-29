@@ -1,4 +1,5 @@
 import Form from "../../components/Form";
+import Layout from "../../components/Layout";
 
 const NewTodo = () => {
   const todoForm = {
@@ -6,7 +7,13 @@ const NewTodo = () => {
     description: "",
   };
 
-  return <Form formId="add-todo-form" todoForm={todoForm} />;
+  return (
+    <>
+      <Layout>
+        <Form formId="add-todo-form" todoForm={todoForm} />
+      </Layout>
+    </>
+  );
 };
 
 export default NewTodo;

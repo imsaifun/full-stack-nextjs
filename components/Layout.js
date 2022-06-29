@@ -25,6 +25,9 @@ export default function Layout({ role, children }) {
         <Link href="/products">
           <a>Products</a>
         </Link>
+        <Link href="/todo">
+          <a>Todo</a>
+        </Link>
 
 
 

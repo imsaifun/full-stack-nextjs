@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Form from "../../../components/Form";
+import Layout from "../../../components/Layout";
 
 const fetcher = (url) =>
   fetch(url)
@@ -21,7 +22,11 @@ const EditTodo = () => {
   };
 
   return (
-    <Form formId="edit-todo-form" todoForm={todoForm} forNewTodo={false} />
+    <>
+      <Layout>
+        <Form formId="edit-todo-form" todoForm={todoForm} forNewTodo={false} />
+      </Layout>
+    </>
   );
 };
 
