@@ -4,10 +4,10 @@ import getTodo from "../../lib/getTodo";
 import getUser from "../../lib/getUser";
 import dbConnect from "../../lib/dbConnect";
 
-const Index = ({ todos }) => {
+const Index = ({ todos,user }) => {
     return (
         <>
-            <Layout>
+            <Layout role={user}>
                 <Link href="/todo/new" passHref>
                     <button>New</button>
                 </Link>

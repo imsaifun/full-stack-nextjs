@@ -1,12 +1,12 @@
 import Layout from "../../components/Layout";
-import dbConnect from "../../lib/dbConnect";
 // import Product from "../../models/Product";
+import dbConnect from "../../lib/dbConnect";
 import getProductById from "../../lib/getProductById";
+import getUser from "../../lib/getUser";
 
 import { useDispatch } from "react-redux";
 
 import { useState } from "react";
-// import getUser from "../../lib/getUser";
 import { addToCart } from "../../redux/cartSlice";
 
 export default function ProductDetails(product, user) {
@@ -112,19 +112,19 @@ export default function ProductDetails(product, user) {
 }
 
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, req, res }) {
     await dbConnect();
     const product = await getProductById(params.id);
-    // const user = await getUser();
-    // if (!user) {
-    //   return {
-    //     redirect: {
-    //       permanent: false,
-    //       destination: "/signin",
-    //     },
-    //     props: {},
-    //   };
-    // }
+    const user = await getUser( req, res );
+    if (!user) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/signin",
+        },
+        props: {},
+      };
+    }
     return {
         props: {
             product,

@@ -1,7 +1,9 @@
 import Form from "../../components/Form";
 import Layout from "../../components/Layout";
+import getUser from "../../lib/getUser";
+import dbConnect from "../../lib/dbConnect";
 
-const NewTodo = () => {
+const NewTodo = ({user}) => {
   const todoForm = {
     title: "",
     description: "",
@@ -9,7 +11,7 @@ const NewTodo = () => {
 
   return (
     <>
-      <Layout>
+      <Layout role={user}>
         <Form formId="add-todo-form" todoForm={todoForm} />
       </Layout>
     </>
@@ -17,3 +19,22 @@ const NewTodo = () => {
 };
 
 export default NewTodo;
+
+export async function getServerSideProps({ req, res }) {
+  await dbConnect();
+  const user = await getUser(req, res);
+  if (!user) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/signin",
+      },
+      props: {},
+    };
+  }
+  return {
+    props: {
+      user
+    },
+  };
+}
