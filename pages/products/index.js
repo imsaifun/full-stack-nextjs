@@ -62,11 +62,7 @@ export default function ProductSingle(product, user) {
 
         </div>
       ))}
-
-
-
-
-      {/* <button onClick={signoutHandler}>Sign out</button> */}
+      
     </Layout>
   );
 }

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
