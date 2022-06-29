@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Layout from "../../components/Layout";
+import getTodo from "../../lib/getTodo";
+import getUser from "../../lib/getUser";
 import dbConnect from "../../lib/dbConnect";
-import Todo from "../../models/todo";
 
 const Index = ({ todos }) => {
     return (
@@ -34,18 +35,39 @@ const Index = ({ todos }) => {
 }
 
 /* Retrieves todo(s) data from mongodb database */
-export async function getServerSideProps() {
+// export async function getServerSideProps() {
+//     await dbConnect();
+
+//     /* find all the data in our database */
+//     const result = await Todo.find({});
+//     const todos = result.map((doc) => {
+//         const todo = doc.toObject(); 
+//         todo._id = todo._id.toString();
+//         return todo;
+//     });
+
+//     return { props: { todos: todos } };
+// }
+
+export async function getServerSideProps({ req, res }) {
     await dbConnect();
-
-    /* find all the data in our database */
-    const result = await Todo.find({});
-    const todos = result.map((doc) => {
-        const todo = doc.toObject();
-        todo._id = todo._id.toString();
-        return todo;
-    });
-
-    return { props: { todos: todos } };
-}
+    const todos = await getTodo();
+    const user = await getUser(req, res);
+    if (!user) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/signin",
+        },
+        props: {},
+      };
+    }
+    return {
+      props: {
+        todos,
+        user
+      },
+    };
+  }
 
 export default Index;
