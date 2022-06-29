@@ -1,6 +1,6 @@
 import Link from "next/link";
 import dbConnect from "../../lib/dbConnect";
-import Todo from "../../models/Todo";
+import Todo from "../../models/todo";
 
 const Index = ({ todos }) => (
   <>
