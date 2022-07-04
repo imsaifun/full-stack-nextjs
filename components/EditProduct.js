@@ -19,7 +19,7 @@ export default function EditProduct(item) {
   const handleEdit = async (id) => {
     // e.preventDefault();
     try {
-      const res = await axios.put(`/api/products/${id}`, updateTitle);
+      await axios.put(`/api/products/${id}`, updateTitle);
 
     } catch (error) {
       console.log(error);

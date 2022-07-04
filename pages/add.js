@@ -73,11 +73,12 @@ export default function ProductForm(user) {
     <Layout role={user}>
 
       <form>
-         <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+         <input type="file" onChange={(e) => setFile(e.target.files[0])} required />
         <input
           type="text"
           placeholder="title"
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
 
 
@@ -85,21 +86,25 @@ export default function ProductForm(user) {
           type="number"
           placeholder="Small"
           onChange={(e) => changePrice(e, 0)}
+          required
         />
         <input
           type="number"
           placeholder="Medium"
           onChange={(e) => changePrice(e, 1)}
+          required
         />
         <input
           type="number"
           placeholder="Large"
           onChange={(e) => changePrice(e, 2)}
+          required
         /> 
         <textarea
           type="text"
           placeholder="Desc"
           onChange={(e) => setDesc(e.target.value)}
+          required
         />
 
         <input
@@ -107,12 +112,14 @@ export default function ProductForm(user) {
           placeholder="Item"
           name="text"
           onChange={handleExtraInput}
+          required
         />
         <input
           type="number"
           placeholder="Price"
           name="price"
           onChange={handleExtraInput}
+          required
         />
         <button onClick={handleExtra}>
           Add
