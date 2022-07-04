@@ -1,5 +1,6 @@
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import Layout from "../components/Layout";
 import dbConnect from "../lib/dbConnect";
@@ -18,7 +19,7 @@ export default function ProductForm(user) {
   ]);
   const [extraOptions, setExtraOptions] = useState([]);
   const [extra, setExtra] = useState(null);
-  // const router = useRouter();
+  const router = useRouter();
 
   const changePrice = (e, index) => {
     const currentPrices = prices
