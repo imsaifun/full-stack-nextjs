@@ -30,7 +30,7 @@ const Cart = ({ user }) => {
 		dispatch(getTotals());
 	}, [cart, dispatch]);
 
-    console.log(cart);
+    // console.log(cart);
 
     const handleRemoveFromCart = (product) => {
 		dispatch(removeFromCart(product));
@@ -224,7 +224,7 @@ const Cart = ({ user }) => {
                         )}
                     </div>
                 </div>
-                {cash && <OrderDetail total={cart.total} createOrder={createOrder} />}
+                {cash && <OrderDetail total={cart.total} createOrder={createOrder} user={user} />}
             </Layout>
         </>
     );

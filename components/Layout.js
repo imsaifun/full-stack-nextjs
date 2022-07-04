@@ -32,11 +32,14 @@ export default function Layout({ role, children }) {
 
 
 
-        {/* <Link href="/signin">
-          <a>SignIn</a>
-        </Link> */}
+        <Link href="/admin">
+          <a>dashboard</a>
+        </Link>
         <Link href="/add">
           <a>Add</a>
+        </Link>
+        <Link href="/admin/profile">
+          <a>Profile</a>
         </Link>
 
         {role ?
@@ -47,9 +50,9 @@ export default function Layout({ role, children }) {
           </Link>)
         }
 
-<Link href="/cart" passHref>
-<div><CartCounter/></div>
-</Link>
+        <Link href="/cart" passHref>
+          <div><CartCounter /></div>
+        </Link>
       </nav>
 
       <section>{children}</section>

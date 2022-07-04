@@ -3,7 +3,8 @@ import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
 import getUser from "../../lib/getUser";
 
-const Index = ({ user, orders }) => {
+const Index = ({ user, orders, products }) => {
+    const myOrder = orders.filter(val => val.customer == user.name);
     return (
         <Layout role={user}>
 
@@ -22,7 +23,7 @@ const Index = ({ user, orders }) => {
                                 <th>Action</th>
                             </tr>
                         </tbody>
-                        {orders.map((order) => (
+                        {myOrder.map((order) => (
                             <tbody key={order._id}>
                                 <tr>
                                     <td>{order._id}...</td>

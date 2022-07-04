@@ -5,6 +5,8 @@ import dbConnect from "../lib/dbConnect";
 
 export default function HomePage(user) {
 
+  console.log(user);
+
   const signoutHandler = () => {
     Cookies.remove("token");
     router.push("/signin");

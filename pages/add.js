@@ -45,15 +45,15 @@ export default function ProductForm(user) {
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", "uploads");
-    
+
     try {
       const uploadRes = await axios.post(
         "https://api.cloudinary.com/v1_1/imsaifun/image/upload",
         data
-        );
-        
-        const { url } = uploadRes.data;
-        console.log(uploadRes.data);
+      );
+
+      const { url } = uploadRes.data;
+      console.log(uploadRes.data);
 
       await axios.post("/api/products", {
         title,
@@ -74,7 +74,7 @@ export default function ProductForm(user) {
     <Layout role={user}>
 
       <form>
-         <input type="file" onChange={(e) => setFile(e.target.files[0])} required />
+        <input type="file" onChange={(e) => setFile(e.target.files[0])} required />
         <input
           type="text"
           placeholder="title"
@@ -100,7 +100,7 @@ export default function ProductForm(user) {
           placeholder="Large"
           onChange={(e) => changePrice(e, 2)}
           required
-        /> 
+        />
         <textarea
           type="text"
           placeholder="Desc"
@@ -127,12 +127,12 @@ export default function ProductForm(user) {
         </button>
 
         <div>
-            {extraOptions.map((option) => (
-              <span key={option.text}>
-                {option.text}
-              </span>
-            ))}
-          </div>
+          {extraOptions.map((option) => (
+            <span key={option.text}>
+              {option.text}
+            </span>
+          ))}
+        </div>
 
         <button onClick={productHandler}>Submit</button>
       </form>
