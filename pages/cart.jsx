@@ -26,6 +26,8 @@ const Cart = ({ user }) => {
     const router = useRouter();
     const contentType = 'application/json'
 
+    console.log(cart);
+
     useEffect(() => { 
 		dispatch(getTotals());
 	}, [cart, dispatch]);
@@ -140,7 +142,7 @@ const Cart = ({ user }) => {
                                 <tr key={product._id}>
                                     <td>
                                         <div>
-                                            <img src="/img/pizza.png" alt="" width={100} />
+                                            <img src={product.img} alt="" width={100} />
                                         </div>
                                     </td>
                                     <td>
