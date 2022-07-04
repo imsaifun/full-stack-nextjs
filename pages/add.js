@@ -8,22 +8,58 @@ import getUser from "../lib/getUser";
 
 export default function ProductForm(user) {
   // console.log(product);
-
+  const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-  const [img, setImg] = useState("");
-  const [prices, setPrices] = useState("");
+  const [desc, setDesc] = useState(null);
+  const [prices, setPrices] = useState([
+    { text: 'small', price: null },
+    { text: 'medium', price: null },
+    { text: 'large', price: null }
+  ]);
+  const [extraOptions, setExtraOptions] = useState([]);
+  const [extra, setExtra] = useState(null);
   // const router = useRouter();
+
+  const changePrice = (e, index) => {
+    const currentPrices = prices
+    currentPrices[index].price = e.target.value;
+    setPrices(currentPrices);
+  };
+
+  // console.log(file);
+
+  const handleExtraInput = (e) => {
+    setExtra({ ...extra, [e.target.name]: e.target.value });
+  };
+
+  const handleExtra = (e) => {
+    e.preventDefault();
+    setExtraOptions((prev) => [...prev, extra]);
+  };
+
+
 
   const productHandler = async (e) => {
     e.preventDefault();
-
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "uploads");
+    
     try {
-      const res = await axios.post("/api/products", {
+      const uploadRes = await axios.post(
+        "https://api.cloudinary.com/v1_1/imsaifun/image/upload",
+        data
+        );
+        
+        const { url } = uploadRes.data;
+        console.log(uploadRes.data);
+
+      await axios.post("/api/products", {
         title,
         desc,
-        img,
         prices,
+        extraOptions,
+        img: url,
       });
 
       // router.push("/");
@@ -35,46 +71,75 @@ export default function ProductForm(user) {
 
   return (
     <Layout role={user}>
-     
-     <form>
+
+      <form>
+         <input type="file" onChange={(e) => setFile(e.target.files[0])} />
         <input
           type="text"
           placeholder="title"
           onChange={(e) => setTitle(e.target.value)}
-          value={title}
+        />
+
+
+        <input
+          type="number"
+          placeholder="Small"
+          onChange={(e) => changePrice(e, 0)}
         />
         <input
+          type="number"
+          placeholder="Medium"
+          onChange={(e) => changePrice(e, 1)}
+        />
+        <input
+          type="number"
+          placeholder="Large"
+          onChange={(e) => changePrice(e, 2)}
+        /> 
+        <textarea
           type="text"
-          placeholder="desc"
+          placeholder="Desc"
           onChange={(e) => setDesc(e.target.value)}
-          value={desc}
         />
+
         <input
           type="text"
-          placeholder="img"
-          onChange={(e) => setImg(e.target.value)}
-          value={img}
+          placeholder="Item"
+          name="text"
+          onChange={handleExtraInput}
         />
         <input
-          type="text"
-          placeholder="prices"
-          onChange={(e) => setPrices(e.target.value)}
-          value={prices}
+          type="number"
+          placeholder="Price"
+          name="price"
+          onChange={handleExtraInput}
         />
+        <button onClick={handleExtra}>
+          Add
+        </button>
+
+        <div>
+            {extraOptions.map((option) => (
+              <span key={option.text}>
+                {option.text}
+              </span>
+            ))}
+          </div>
+
         <button onClick={productHandler}>Submit</button>
       </form>
 
-      
+
 
       {/* <button onClick={signoutHandler}>Sign out</button> */}
     </Layout>
   );
 }
 
-export async function getServerSideProps({req,res}) {
+export async function getServerSideProps({ req, res }) {
   await dbConnect();
   const product = await getProduct();
-  const user = await getUser(req,res);
+  const user = await getUser(req, res);
   if (!user) {
     return {
       redirect: {
