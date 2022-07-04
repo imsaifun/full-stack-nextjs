@@ -62,7 +62,7 @@ export default function ProductForm(user) {
         img: url,
       });
 
-      // router.push("/");
+      router.push("/products");
     } catch (error) {
       console.log(error);
     }
