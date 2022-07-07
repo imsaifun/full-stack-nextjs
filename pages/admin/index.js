@@ -1,7 +1,7 @@
 import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 import getProduct from "../../lib/getProduct";
 import getUser from "../../lib/getUser";
 import dbConnect from "../../lib/dbConnect";

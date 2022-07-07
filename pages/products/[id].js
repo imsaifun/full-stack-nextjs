@@ -1,4 +1,4 @@
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 // import Product from "../../models/Product";
 import dbConnect from "../../lib/dbConnect";
 import getProductById from "../../lib/getProductById";
