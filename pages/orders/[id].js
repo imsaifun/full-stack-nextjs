@@ -8,7 +8,7 @@ export default function OrderDetails(order, user) {
 
 
   return (
-    <Layout role={user}>
+    <Layout role={user}  pageClass="admin">
       <h1>Order Details</h1>
 
       <p>

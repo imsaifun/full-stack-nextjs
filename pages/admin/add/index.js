@@ -70,58 +70,79 @@ export default function ProductForm(user) {
 
 
     return (
-        <Layout role={user}>
+        <Layout role={user} pageClass="admin">
 
             <form>
-                <input type="file" onChange={(e) => setFile(e.target.files[0])} required />
-                <input
-                    type="text"
-                    placeholder="title"
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                />
+                <div className="mb-10">
+                    <input className="form-control" type="file" onChange={(e) => setFile(e.target.files[0])} required />
+                </div>
+                <div className="mb-10">
+                    <input className="form-control"
+                        type="text"
+                        placeholder="title"
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                    />
+
+                </div>
+
+                <div className="mb-10">
+                    <input className="form-control"
+                        type="number"
+                        placeholder="Small"
+                        onChange={(e) => changePrice(e, 0)}
+                        required
+                    />
+                </div>
+                <div className="mb-10">
+                    <input className="form-control"
+                        type="number"
+                        placeholder="Medium"
+                        onChange={(e) => changePrice(e, 1)}
+                        required
+                    />
+                </div>
+                <div className="mb-10">
+                    <input className="form-control"
+                        type="number"
+                        placeholder="Large"
+                        onChange={(e) => changePrice(e, 2)}
+                        required
+                    />
+                </div>
+                <div className="mb-10">
+                    <textarea
+                        className="form-control"
+                        type="text"
+                        placeholder="Desc"
+                        onChange={(e) => setDesc(e.target.value)}
+                        required
+                    />
+                </div>
+
+                <div className="mb-10">
+                    <input className="form-control"
+                        type="text"
+                        placeholder="Item"
+                        name="text"
+                        onChange={handleExtraInput}
+                        required
+                    />
+                </div>
+                <div className="mb-10">
 
 
-                <input
-                    type="number"
-                    placeholder="Small"
-                    onChange={(e) => changePrice(e, 0)}
-                    required
-                />
-                <input
-                    type="number"
-                    placeholder="Medium"
-                    onChange={(e) => changePrice(e, 1)}
-                    required
-                />
-                <input
-                    type="number"
-                    placeholder="Large"
-                    onChange={(e) => changePrice(e, 2)}
-                    required
-                />
-                <textarea
-                    type="text"
-                    placeholder="Desc"
-                    onChange={(e) => setDesc(e.target.value)}
-                    required
-                />
+                    <input className="form-control"
+                        type="number"
+                        placeholder="Price"
+                        name="price"
+                        onChange={handleExtraInput}
+                        required
+                    />
+                </div>
 
-                <input
-                    type="text"
-                    placeholder="Item"
-                    name="text"
-                    onChange={handleExtraInput}
-                    required
-                />
-                <input
-                    type="number"
-                    placeholder="Price"
-                    name="price"
-                    onChange={handleExtraInput}
-                    required
-                />
-                <button onClick={handleExtra}>
+                
+                <button className="btn btn-success" onClick={handleExtra}>
                     Add
                 </button>
 
@@ -133,7 +154,7 @@ export default function ProductForm(user) {
                     ))}
                 </div>
 
-                <button onClick={productHandler}>Submit</button>
+                <button className="btn btn-primary" onClick={productHandler}>Submit</button>
             </form>
 
 

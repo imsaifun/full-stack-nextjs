@@ -2,7 +2,6 @@ import Layout from "../../components/Layout/Layout";
 // import Product from "../../models/Product";
 import dbConnect from "../../lib/dbConnect";
 import getProductById from "../../lib/getProductById";
-import getUser from "../../lib/getUser";
 
 import { useDispatch } from "react-redux";
 
@@ -21,7 +20,7 @@ export default function ProductDetails(product, user) {
 
     // console.log(pizza.prices[0]);
     // console.log(price);
-    
+
     const changePrice = (number) => {
         setPrice(price + number);
     };
@@ -49,64 +48,73 @@ export default function ProductDetails(product, user) {
     };
 
     return (
-        <Layout role={user}>
-            <h1>Product Details</h1>
-            <p>
-                This is the home page and it is protected. Only authenticated users can
-                access this page.
-            </p>
+        <Layout>
 
-            <div>
-                <img src={pizza.img} alt="" width={300} />
-                <br />
-                <strong>Name</strong>: {pizza.title}
-                <br />
-                <br />
-                {/* <strong>Name</strong>: {pizza._id} */}
 
-                <div onClick={() => handleSize(0)}>
-                    <img src="/img/size.png" width={20} alt="" />
-                    <span>Small</span>
-                </div>
-                <br />
-                <div onClick={() => handleSize(1)}>
-                    <img src="/img/size.png" width={20} alt="" />
-                    <span>Medium</span>
-                </div>
-                <br />
-                <div onClick={() => handleSize(2)}>
-                    <img src="/img/size.png" width={20} alt="" />
-                    <span>Large</span>
-                </div>
-                <br />
-                <br />
-                <div>
-                    {pizza.extraOptions.map((option) => (
-                        <div key={option._id}>
-                            <input
-                                type="checkbox"
-                                id={option.text}
-                                name={option.text}
-                                onChange={(e) => handleChange(e, option)}
-                            />
-                            <label htmlFor="double">{option.text}</label>
+
+            <div className="section-padding">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xl-6">
+                            <img src={pizza.img} alt="" className="img-fluid" />
                         </div>
-                    ))}
+                        <div className="col-xl-6">
+                            <br />
+                            <strong>Name</strong>: {pizza.title}
+                            <br />
+                            <br />
+                            {/* <strong>Name</strong>: {pizza._id} */}
+
+                            <div onClick={() => handleSize(0)}>
+                                <img src="/images/size.png" width={20} alt="" />
+                                <span>Small</span>
+                            </div>
+                            <br />
+                            <div onClick={() => handleSize(1)}>
+                                <img src="/images/size.png" width={20} alt="" />
+                                <span>Medium</span>
+                            </div>
+                            <br />
+                            <div onClick={() => handleSize(2)}>
+                                <img src="/images/size.png" width={20} alt="" />
+                                <span>Large</span>
+                            </div>
+                            <br />
+                            <br />
+                            <div>
+                                {pizza.extraOptions.map((option) => (
+                                    <div key={option._id}>
+                                        <input
+                                            type="checkbox"
+                                            id={option.text}
+                                            name={option.text}
+                                            onChange={(e) => handleChange(e, option)}
+                                        />
+                                        <label htmlFor="double">{option.text}</label>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <br />
+                            <h2>${price}</h2>
+
+                            <br />
+                            <div>
+                                <input
+                                    className="form-control"
+                                    onChange={(e) => setQuantity(e.target.value)}
+                                    type="number"
+                                    defaultValue={1}
+                                />
+                                <br />
+                                <button className="btn btn-primary mt-20" onClick={handleClick}>Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
-
-                <br />
-                <h2>${price}</h2>
-
-                <br />
-                <div>
-                    <input
-                        onChange={(e) => setQuantity(e.target.value)}
-                        type="number"
-                        defaultValue={1}
-                    />
-                    <button  onClick={handleClick}>Add to Cart</button>
-                </div>
-
             </div>
         </Layout>
     );
@@ -116,16 +124,16 @@ export default function ProductDetails(product, user) {
 export async function getServerSideProps({ params, req, res }) {
     await dbConnect();
     const product = await getProductById(params.id);
-    const user = await getUser( req, res );
-    if (!user) {
-      return {
-        redirect: {
-          permanent: false,
-          destination: "/signin",
-        },
-        props: {},
-      };
-    }
+    // const user = await getUser( req, res );
+    // if (!user) {
+    //   return {
+    //     redirect: {
+    //       permanent: false,
+    //       destination: "/signin",
+    //     },
+    //     props: {},
+    //   };
+    // }
     return {
         props: {
             product,

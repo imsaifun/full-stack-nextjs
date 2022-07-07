@@ -5,7 +5,7 @@ import SigninForm from "../components/SigninForm";
 export default function SigninPage() {
 
     return (
-        <Layout>
+        <Layout pageClass="front">
             <div className="authincation section-padding">
                 <div className="container h-100">
                     <div className="row justify-content-center h-100 align-items-center">

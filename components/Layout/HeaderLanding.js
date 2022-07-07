@@ -22,7 +22,7 @@ function Header() {
     // }
     return (
         <>
-            <div className="header">
+            <div className="header landing">
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-12">

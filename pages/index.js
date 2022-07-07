@@ -3,19 +3,28 @@ import Layout from "../components/Layout/Layout";
 
 export default function HomePage() {
 
-  const signoutHandler = () => {
-    Cookies.remove("token");
-    router.push("/signin");
-  };
+    const signoutHandler = () => {
+        Cookies.remove("token");
+        router.push("/signin");
+    };
 
-  return (
-    <Layout  pageClass={"front"}>
-      <h1>Home Page</h1>
-      
-      
+    return (
+        <Layout pageClass="front">
 
-    </Layout>
-  );
+            <div className="section-padding">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xl-6">
+                            <h1>Home Page</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </Layout>
+    );
 }
 
 // export async function getServerSideProps({ req, res }) {

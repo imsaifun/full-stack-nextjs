@@ -5,7 +5,7 @@ import getUser from "../../lib/getUser";
 
 const Index = ({ user, orders }) => {
     return (
-        <Layout role={user}>
+        <Layout role={user} pageClass="admin">
 
 
             <div>

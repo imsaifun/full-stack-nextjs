@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-function Sidebar({signoutHandler}) {
+function Sidebar({ signoutHandler }) {
     const router = useRouter();
     return (
         <>
             <div className="sidebar">
                 <div className="brand-logo">
-                    <Link href="/dashboard">
+                    <Link href="/admin">
                         <a className="full-logo">
                             <img src="/images/logo.png" alt="" />
                         </a>
@@ -35,17 +35,17 @@ function Sidebar({signoutHandler}) {
                                 </a>
                             </Link>
                         </li>
-                        <li className={router.pathname == "/saved" ? "active" : ""}>
-                            <Link href="/saved">
+                        <li className={router.pathname == "/admin/profile" ? "active" : ""}>
+                            <Link href="/admin/profile">
                                 <a>
                                     <span>
                                         <i className="ri-heart-line"></i>
                                     </span>
-                                    <span className="nav-text">Saved</span>
+                                    <span className="nav-text">Profile</span>
                                 </a>
                             </Link>
                         </li>
-                        <li
+                        {/* <li
                             className={
                                 router.pathname == "/wallet" ? "active" : ""
                             }
@@ -74,7 +74,7 @@ function Sidebar({signoutHandler}) {
                                     <span className="nav-text">Settings</span>
                                 </a>
                             </Link>
-                        </li>
+                        </li> */}
                         <li
                             className={
                                 router.pathname == "/signin"
@@ -82,13 +82,13 @@ function Sidebar({signoutHandler}) {
                                     : " logout"
                             }
                         >
-                           
-                                <a onClick={signoutHandler}>
-                                    <span>
-                                        <i className="ri-logout-circle-line"></i>
-                                    </span>
-                                    <span className="nav-text">Signout</span>
-                                </a>
+
+                            <a onClick={signoutHandler}>
+                                <span>
+                                    <i className="ri-logout-circle-line"></i>
+                                </span>
+                                <span className="nav-text">Signout</span>
+                            </a>
                         </li>
                     </ul>
                 </div>

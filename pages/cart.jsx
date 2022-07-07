@@ -8,9 +8,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../components/Layout/Layout";
 import OrderDetail from "../components/OrderDetail";
-import { addToCart, reset, decreaseCart,removeFromCart,getTotals,clearCart } from "../redux/cartSlice";
-import getUser from "../lib/getUser";
-import dbConnect from "../lib/dbConnect";
+import { addToCart, reset, decreaseCart, removeFromCart, getTotals, clearCart } from "../redux/cartSlice";
+// import getUser from "../lib/getUser";
+// import dbConnect from "../lib/dbConnect";
 
 
 
@@ -26,17 +26,17 @@ const Cart = ({ user }) => {
     const router = useRouter();
     const contentType = 'application/json'
 
-    console.log(cart);
+    // console.log(cart);
 
-    useEffect(() => { 
-		dispatch(getTotals());
-	}, [cart, dispatch]);
+    useEffect(() => {
+        dispatch(getTotals());
+    }, [cart, dispatch]);
 
     // console.log(cart);
 
     const handleRemoveFromCart = (product) => {
-		dispatch(removeFromCart(product));
-	};
+        dispatch(removeFromCart(product));
+    };
     const handleDecreaseCart = (product) => {
         dispatch(decreaseCart(product));
     };
@@ -46,8 +46,8 @@ const Cart = ({ user }) => {
     }
 
     const handleClearCart = () => {
-		dispatch(clearCart());
-	};
+        dispatch(clearCart());
+    };
 
     const createOrder = async (data) => {
         try {
@@ -122,133 +122,143 @@ const Cart = ({ user }) => {
 
     return (
         <>
-            <Layout role={user}>
+            <Layout pageClass="front">
 
 
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Name</th>
-                                <th>Extras</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {cart.products.map((product) => (
-                                <tr key={product._id}>
-                                    <td>
-                                        <div>
-                                            <img src={product.img} alt="" width={100} />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span>{product.title}</span>
-                                    </td>
-                                    <td>
-                                        <span>
-                                            {product.extras.map((extra) => (
-                                                <span key={extra._id}>{extra.text}, </span>
-                                            ))}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span>${product.price}</span>
-                                    </td>
-                                    <td>
-                                        <button onClick={() => handleDecreaseCart(product)} > - </button>
-                                        <span>{product.quantity}</span>
-                                        <button onClick={() => handleIncreaseCart(product)} > + </button>
-                                    </td>
-                                    <td>
-                                        <span>
-                                            ${product.price * product.quantity}
-                                        </span>
-                                    </td>
-                                    <td>
-                                    <button onClick={() =>
-													handleRemoveFromCart(
-														product
-													)
-												}
-											>
-												Remove
-											</button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    
-							<button
-								onClick={() => handleClearCart()}>
-								Clear Cart
-							</button>
-                </div>
-                <div>
-                    <div>
-                        <h2>CART TOTAL</h2>
-                        <div>
-                            <b>Subtotal:</b>${cart.total}
-                        </div>
-                        <div>
-                            <b>Discount:</b>$0.00
-                        </div>
-                        <div>
-                            <b>Total:</b>${cart.total}
-                        </div>
-                        {open ? (
-                            <div>
-                                <button
-                                    onClick={() => setCash(true)}
-                                >
-                                    CASH ON DELIVERY
-                                </button>
-                                <PayPalScriptProvider
-                                    options={{
-                                        "client-id":
-                                            "Aby6hHQcup215Odrwaf6VvKS2g-qAeMiQSBY9rBMxdFKoiUA0s29ovwNZ6QVLOkfmk5hL6x-vuogTnjJ",
-                                        components: "buttons",
-                                        currency: "USD",
-                                        "disable-funding": "credit,card,p24",
-                                    }}
-                                >
-                                    <ButtonWrapper currency={currency} showSpinner={false} />
-                                </PayPalScriptProvider>
-                            </div>
-                        ) : (
-                            <button onClick={() => setOpen(true)}>
-                                CHECKOUT NOW!
+                <div className="section-padding">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xl-9">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Name</th>
+                                        <th>Extras</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {cart.products.map((product) => (
+                                        <tr key={product._id}>
+                                            <td>
+                                                <div>
+                                                    <img src={product.img} alt="" width={100} />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span>{product.title}</span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    {product.extras.map((extra) => (
+                                                        <span key={extra._id}>{extra.text}, </span>
+                                                    ))}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>${product.price}</span>
+                                            </td>
+                                            <td>
+                                                <button onClick={() => handleDecreaseCart(product)} > - </button>
+                                                <span>{product.quantity}</span>
+                                                <button onClick={() => handleIncreaseCart(product)} > + </button>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    ${product.price * product.quantity}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <button className="btn btn-danger" onClick={() =>
+                                                    handleRemoveFromCart(
+                                                        product
+                                                    )
+                                                }
+                                                >
+                                                    Remove
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                            <button
+                                onClick={() => handleClearCart()} className="btn btn-danger mb-10">
+                                Clear Cart
                             </button>
-                        )}
+                        </div>
+                        <div className="col-xl-3">
+                            <h4 className="card-title">CART TOTAL</h4>
+                            <div className="card">
+                                <div className="card-body">
+                                    <div>
+                                        <b>Subtotal:</b>${cart.total}
+                                    </div>
+                                    <div>
+                                        <b>Discount:</b>$0.00
+                                    </div>
+                                    <div>
+                                        <b>Total:</b>${cart.total}
+                                    </div>
+                                    {open ? (
+                                        <div>
+                                            <button
+                                                onClick={() => setCash(true)}
+                                                className="btn btn-primary mb-10"
+                                            >
+                                                CASH ON DELIVERY
+                                            </button>
+                                            <PayPalScriptProvider
+                                                options={{
+                                                    "client-id":
+                                                        "Aby6hHQcup215Odrwaf6VvKS2g-qAeMiQSBY9rBMxdFKoiUA0s29ovwNZ6QVLOkfmk5hL6x-vuogTnjJ",
+                                                    components: "buttons",
+                                                    currency: "USD",
+                                                    "disable-funding": "credit,card,p24",
+                                                }}
+                                            >
+                                                <ButtonWrapper currency={currency} showSpinner={false} />
+                                            </PayPalScriptProvider>
+                                        </div>
+                                    ) : (
+                                        <button onClick={() => setOpen(true)} className="btn btn-primary mb-10">
+                                            CHECKOUT NOW!
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
+                </div>
+
                 {cash && <OrderDetail total={cart.total} createOrder={createOrder} user={user} />}
             </Layout>
         </>
     );
 };
 
-export async function getServerSideProps({ req, res }) {
-    await dbConnect();
-    const user = await getUser(req, res);
-    if (!user) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: "/signin",
-            },
-            props: {},
-        };
-    }
-    return {
-        props: {
-            user,
-        },
-    };
-}
+// export async function getServerSideProps({ req, res }) {
+//     await dbConnect();
+//     const user = await getUser(req, res);
+//     if (!user) {
+//         return {
+//             redirect: {
+//                 permanent: false,
+//                 destination: "/signin",
+//             },
+//             props: {},
+//         };
+//     }
+//     return {
+//         props: {
+//             user,
+//         },
+//     };
+// }
 
 export default Cart;

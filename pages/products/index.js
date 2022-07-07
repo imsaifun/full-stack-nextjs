@@ -8,82 +8,93 @@ import getProduct from "../../lib/getProduct";
 // import getUser from "../../lib/getUser";
 
 export default function ProductSingle(product, user) {
-  const myProduct = product.product
+    const myProduct = product.product
 
-  const [productList, setProductList] = useState(myProduct);
-  const [productId, setProductId] = useState("");
-  // const router = useRouter();
-  // console.log(productId);
+    const [productList, setProductList] = useState(myProduct);
+    const [productId, setProductId] = useState("");
+    // const router = useRouter();
+    // console.log(productId);
 
-  const handleDelete = async (id) => {
+    const handleDelete = async (id) => {
 
-    // console.log(id);
+        // console.log(id);
 
-    try {
-      const res = await axios.delete(`/api/products/${id}`);
-      setProductList(productList.filter((pizza) => pizza._id !== id));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const handleId = async (id) => {
-    setProductId(id)
-  };
+        try {
+            const res = await axios.delete(`/api/products/${id}`);
+            setProductList(productList.filter((pizza) => pizza._id !== id));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const handleId = async (id) => {
+        setProductId(id)
+    };
 
-  return (
-    <Layout  pageClass={"front"}>
+    return (
+        <Layout pageClass={"front"}>
+            <div className="section-padding">
+                <div className="container">
+                    <div className="row">
+                        {productList.map((item, i) => (
+                            <div className="col-xl-4" key={i}>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <Link href={`/products/${item._id}`}>
+                                            <a>
+                                                <img src={item.img} alt="" className="img-fluid card-img-top" />
 
-      <h1>Product Page</h1>
+                                                {/* {item._id} */}
+                                            </a>
+                                        </Link>
+                                        <h4 className="card-title">{item.title}</h4>
+                                        {item.desc}
+                                        <br />
+                                        <button className="btn btn-danger mb-10"
+                                            onClick={() => handleDelete(item._id)}
+                                        >
+                                            Delete
+                                        </button>
+                                        <button className="btn btn-danger mb-10"
+                                            onClick={() => handleId(item._id)}
+                                        >
+                                            Edit
+                                        </button>
+                                        <br />
+                                    </div>
+                                </div>
 
-      {productList.map((item, i) => (
-        <div key={i}>
-          <Link href={`/products/${item._id}`}>
-            <a>
-              {item.title} <br /> {item.desc} <br />
-              <img src={item.img} alt="" width={100} />
-              <br />
-              {item._id}
-            </a>
-          </Link>
-          <button
-            onClick={() => handleDelete(item._id)}
-          >
-            Delete
-          </button>
-          <button
-            onClick={() => handleId(item._id)}
-          >
-            Edit
-          </button>
-          <br />
-          <br />
 
-          {productId === item._id && <EditProduct item={item} />}
+                                {productId === item._id && <EditProduct item={item} />}
 
-        </div>
-      ))}
-      
-    </Layout>
-  );
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+
+
+        </Layout>
+    );
 }
 
 export async function getServerSideProps() {
-  await dbConnect();
-  const product = await getProduct();
-  // const user = await getUser(req, res);
-  // if (!user) {
-  //   return {
-  //     redirect: {
-  //       permanent: false,
-  //       destination: "/signin",
-  //     },
-  //     props: {},
-  //   };
-  // }
-  return {
-    props: {
-      product,
-      // user
-    },
-  };
+    await dbConnect();
+    const product = await getProduct();
+    // const user = await getUser(req, res);
+    // if (!user) {
+    //   return {
+    //     redirect: {
+    //       permanent: false,
+    //       destination: "/signin",
+    //     },
+    //     props: {},
+    //   };
+    // }
+    return {
+        props: {
+            product,
+            // user
+        },
+    };
 }

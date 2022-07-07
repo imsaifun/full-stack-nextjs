@@ -4,12 +4,14 @@ import getOrder from "../../lib/getOrder";
 import getUser from "../../lib/getUser";
 
 const Index = ({ user, orders, products }) => {
+    console.log(user);
     const myOrder = orders.filter(val => val.customer == user.name);
     return (
-        <Layout role={user}>
+        <Layout role={user} pageClass="admin">
 
 
             <div>
+                <h1>{user.name}</h1>
                 <div>
                     <h1>Orders</h1>
                     <table>

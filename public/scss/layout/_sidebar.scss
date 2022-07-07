@@ -2,7 +2,7 @@
     background      : $white; // darken($primary, 10%);
     position        : fixed;
     left            : 0px;
-    height          : calc(100%-20px);
+    height          : calc( 100% - 20px);
     width           : $sidebar-width;
     top             : 0px;
     z-index         : 3;

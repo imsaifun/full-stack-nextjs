@@ -39,47 +39,6 @@ export default function Layout({
 
     return (
         <>
-            {/* <nav>
-        <Link href="/">
-          <a>Home Page</a>
-        </Link>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
-        <Link href="/products">
-          <a>Products</a>
-        </Link>
-        <Link href="/todo">
-          <a>Todo</a>
-        </Link>
-
-
-
-
-        <Link href="/admin">
-          <a>dashboard</a>
-        </Link>
-        <Link href="/add">
-          <a>Add</a>
-        </Link>
-        <Link href="/admin/profile">
-          <a>Profile</a>
-        </Link>
-
-        {role ?
-          (<button onClick={signoutHandler}>Sign out</button>)
-          :
-          (<Link href="/signin">
-            <a>Signin</a>
-          </Link>)
-        }
-
-        <Link href="/cart" passHref>
-          <div><CartCounter /></div>
-        </Link>
-      </nav> */}
-
-            {/* {!role ? () : ()} */}
 
             <PageHead headTitle={headTitle} />
 
