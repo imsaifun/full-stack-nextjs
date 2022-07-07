@@ -1,8 +1,6 @@
 
-
-// import { useState } from "react";
-// import CartCounter from "../CartCounter";
 import { removeCookies } from "cookies-next";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Bottom from "./Bottom";
 import Footer from "./Footer";
@@ -10,35 +8,38 @@ import Header from "./Header";
 import HeaderLanding from "./HeaderLanding";
 import PageHead from "./PageHead";
 import PageTitleLanding from "./PageTitleLanding";
+import PageTitle from "./PageTitle";
 import Sidebar from "./sidebar";
 
 
 export default function Layout({
-  role,
-  children,
-  headTitle,
-  pageTitle,
-  pageTitleSub,
-  pageClass,
-  parent,
-  child,
+    role,
+    children,
+    headTitle,
+    pageTitle,
+    pageTitleSub,
+    pageClass,
+    parent,
+    child,
 }) {
 
-  const [height, setHeight] = useState();
-  useEffect(() => {
-    setHeight(window.screen.height);
-  }, []);
+    const [height, setHeight] = useState();
 
-  const signoutHandler = () => {
-    removeCookies("token");
-    router.push("/signin");
-};
+    const router = useRouter();
+    useEffect(() => {
+        setHeight(window.screen.height);
+    }, []);
+
+    const signoutHandler = () => {
+        removeCookies("token");
+        router.push("/signin");
+    };
 
 
 
-  return (
-    <>
-      {/* <nav>
+    return (
+        <>
+            {/* <nav>
         <Link href="/">
           <a>Home Page</a>
         </Link>
@@ -78,57 +79,67 @@ export default function Layout({
         </Link>
       </nav> */}
 
-      {!role ? (
-        <>
-          <PageHead headTitle={headTitle} />
-          <div id="main-wrapper" className={pageClass}>
+            {/* {!role ? () : ()} */}
 
-            <HeaderLanding role={role} />
-
-            {pageTitle && (
-              <PageTitleLanding
-                pageTitle={pageTitle}
-                pageTitleSub={pageTitleSub}
-                parent={parent}
-                child={child}
-              />
-            )}
+            <PageHead headTitle={headTitle} />
 
 
-            {children}
+            <div id="main-wrapper" className={pageClass}>
 
-
-            <Bottom />
-            <Footer />
-            {/* <ThemeSwitch /> */}
-          </div>
-        </>
-      ) : (
-        <>
-          <PageHead headTitle={headTitle} />
-          <div id="main-wrapper" className={pageClass}>
-            <Header role={role} signoutHandler={signoutHandler} />
-            <Sidebar />
-
-            <div className="content-body" style={{ minHeight: height - 122 }}>
-              <div className="container">
-                {pageTitle && (
-                  <PageTitle
-                    pageTitle={pageTitle}
-                    pageTitleSub={pageTitleSub}
-                    parent={parent}
-                    child={child}
-                  />
+                {!role ? (
+                    <HeaderLanding role={role} />
+                ) : (
+                    <>
+                        <Header role={role} signoutHandler={signoutHandler} />
+                        <Sidebar signoutHandler={signoutHandler} />
+                    </>
                 )}
-                {children}
-              </div>
+
+
+
+                {pageTitle && (
+                    <PageTitleLanding
+                        pageTitle={pageTitle}
+                        pageTitleSub={pageTitleSub}
+                        parent={parent}
+                        child={child}
+                    />
+                )}
+
+
+
+
+                {!role ? (
+                    <>
+                        {children}
+                    </>
+                ) : (
+                    <>
+                        <div className="content-body" style={{ minHeight: height - 122 }}>
+                            <div className="container">
+                                {pageTitle && (
+                                    <PageTitle
+                                        pageTitle={pageTitle}
+                                        pageTitleSub={pageTitleSub}
+                                        parent={parent}
+                                        child={child}
+                                    />
+                                )}
+                                {children}
+                            </div>
+                        </div>
+                    </>
+                )}
+
+                {!role ? (<><Bottom /></>) : (null)}
+
+                <Footer />
+                {/* <ThemeSwitch /> */}
             </div>
-          </div>
+
+
+
         </>
-      )}
-
-
-    </>
-  );
+    );
 }
 
