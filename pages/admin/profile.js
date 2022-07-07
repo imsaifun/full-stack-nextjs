@@ -4,8 +4,8 @@ import getOrder from "../../lib/getOrder";
 import getUser from "../../lib/getUser";
 
 const Index = ({ user, orders, products }) => {
-    console.log(user);
     const myOrder = orders.filter(val => val.customer == user.name);
+    console.log(myOrder);
     return (
         <Layout role={user} pageClass="admin">
 
@@ -14,7 +14,7 @@ const Index = ({ user, orders, products }) => {
                 <h1>{user.name}</h1>
                 <div>
                     <h1>Orders</h1>
-                    <table>
+                    <table className="table">
                         <tbody>
                             <tr>
                                 <th>Id</th>
@@ -22,7 +22,6 @@ const Index = ({ user, orders, products }) => {
                                 <th>Total</th>
                                 <th>Payment</th>
                                 <th>Status</th>
-                                <th>Action</th>
                             </tr>
                         </tbody>
                         {myOrder.map((order) => (
@@ -34,7 +33,13 @@ const Index = ({ user, orders, products }) => {
                                     <td>
                                         {order.method === 0 ? <span>cash</span> : <span>paid</span>}
                                     </td>
-                                    {/* <td>{status[order.status]}</td> */}
+                                    <td>
+                                        {order.status === 0 && "Ordered"}
+                                        {order.status === 1 && "Preparing"}
+                                        {order.status === 2 && "On the way"}
+                                        {order.status === 3 && "Delivered"}
+                                        {order.status === 4 && "Completed"}
+                                    </td>
                                 </tr>
                             </tbody>
                         ))}

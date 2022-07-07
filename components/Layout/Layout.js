@@ -46,7 +46,7 @@ export default function Layout({
             <div id="main-wrapper" className={pageClass}>
 
                 {!role ? (
-                    <HeaderLanding role={role} />
+                    <HeaderLanding role={role} signoutHandler={signoutHandler} />
                 ) : (
                     <>
                         <Header role={role} signoutHandler={signoutHandler} />

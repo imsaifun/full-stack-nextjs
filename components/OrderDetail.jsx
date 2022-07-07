@@ -1,12 +1,13 @@
 import { useState } from "react";
 
 const OrderDetail = ({ total, createOrder, user }) => {
-  console.log(user);
-  // const [customer, setCustomer] = useState("");
+  const [customer, setCustomer] = useState("");
   const [address, setAddress] = useState("");
-
+  
   const handleClick = () => {
-    createOrder({ address, total, method: 0 });
+    console.log(address);
+
+    createOrder({ address,customer, total, method: 0 });
   };
 
   return (
@@ -18,8 +19,8 @@ const OrderDetail = ({ total, createOrder, user }) => {
           <input
             placeholder="John Doe"
             type="text"
-            value={user.name}
-          // onChange={(e) => setCustomer(e.target.value)}
+            // value={user.name}
+          onChange={(e) => setCustomer(e.target.value)}
           />
         </div>
         <div>

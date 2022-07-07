@@ -11,7 +11,7 @@ const Index = ({ user, orders, products }) => {
     // console.log(user);
     const [pizzaList, setPizzaList] = useState(products);
     const [orderList, setOrderList] = useState(orders);
-    const status = ["preparing", "on the way", "delivered"];
+   
 
     const handleDelete = async (id) => {
         try {
@@ -47,7 +47,7 @@ const Index = ({ user, orders, products }) => {
     };
 
     return (
-        <Layout role={user}  pageClass="admin">
+        <Layout role={user} pageClass="admin">
             <div className="container">
                 <div className="row">
                     <div className="col-xl-12">
@@ -119,10 +119,20 @@ const Index = ({ user, orders, products }) => {
                                                     <td>
                                                         {order.method === 0 ? <span>cash</span> : <span>paid</span>}
                                                     </td>
-                                                    <td>{status[order.status]}</td>
                                                     <td>
-                                                        <button className="btn btn-primary" onClick={() => handleStatus(order._id)}>
-                                                            Next Stage
+                                                        {order.status === 0 && "Ordered"}
+                                                        {order.status === 1 && "Preparing"}
+                                                        {order.status === 2 && "On the way"}
+                                                        {order.status === 3 && "Delivered"}
+                                                        {order.status === 4 && "Completed"}
+                                                    </td>
+                                                    <td>
+                                                        <button
+                                                            className="btn btn-primary"
+                                                            disabled={order.status === 4}
+                                                            onClick={() => handleStatus(order._id)}
+                                                        >
+                                                             {order.status === 4 ? "Done": "Next Stage"}
                                                         </button>
                                                     </td>
                                                 </tr>

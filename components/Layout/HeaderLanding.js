@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import CartCounter from "../CartCounter";
 // import PageTree from "./RightSidebar";
-function Header() {
+function Header({ role, signoutHandler }) {
+    console.log(role);
     const [isToggled, setToggled] = useState(false);
     const toggleTrueFalse = () => setToggled(!isToggled);
     // const [openClass, setOpenClass] = useState('');
@@ -60,7 +61,6 @@ function Header() {
                                                 <Link href="/products"><a className="nav-link">Products
                                                 </a></Link>
                                             </li>
-                                            {}
                                             <li className="nav-item">
                                                 <Link href="/admin"><a className="nav-link">Dashboard
                                                 </a></Link>
@@ -74,7 +74,14 @@ function Header() {
                                     </div>
 
                                     <div className="signin-btn">
-                                        <Link href="/signin"><a className="btn btn-primary">Signin</a></Link>
+
+                                        {role ?
+                                            (<a className="btn btn-primary" onClick={signoutHandler}>Sign out</a>)
+                                            :
+                                            (<Link href="/signin"><a className="btn btn-primary">Signin</a></Link>)
+                                        }
+
+
                                     </div>
                                 </nav>
                             </div>
