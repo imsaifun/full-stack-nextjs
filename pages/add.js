@@ -1,8 +1,7 @@
 import axios from "axios";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Layout from "../components/Layout/Layout";
+import Layout from "../components/Layout/LayoutFront";
 import dbConnect from "../lib/dbConnect";
 import getProduct from "../lib/getProduct";
 import getUser from "../lib/getUser";

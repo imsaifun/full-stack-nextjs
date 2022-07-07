@@ -1,16 +1,14 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { removeCookies } from "cookies-next";
+import { useRouter } from "next/router";
 // import { useState } from "react";
 import { useSelector } from "react-redux";
 // import CartCounter from "../CartCounter";
-import dynamic from 'next/dynamic';
 import Bottom from "./Bottom";
 import Footer from "./Footer";
+import Header from "./Header";
 import HeaderLanding from "./HeaderLanding";
 import PageHead from "./PageHead";
 import PageTitleLanding from "./PageTitleLanding";
-import Header from "./Header";
 
 export default function Layout({ role, children, headTitle,
     pageTitle,
@@ -71,9 +69,9 @@ export default function Layout({ role, children, headTitle,
             <PageHead headTitle={headTitle} />
             <div id="main-wrapper" className={pageClass}>
                 {role ?
-                    (<Header signoutHandler={signoutHandler} />)
+                    (<Header role={role} signoutHandler={signoutHandler} />)
                     :
-                    (<HeaderLanding />)
+                    (<HeaderLanding role={role} />)
                 }
                 {/* <HeaderLanding /> */}
 

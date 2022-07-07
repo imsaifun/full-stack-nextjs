@@ -1,3 +1,4 @@
+import { resolveHref } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 import { useState } from "react";
 import CartCounter from "../CartCounter";
@@ -21,7 +22,7 @@ function Header() {
     // }
     return (
         <>
-            <div className="header landing">
+            <div className="header">
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-12">
@@ -30,7 +31,6 @@ function Header() {
                                     <div className="brand-logo">
                                         <Link href="/"><a>
                                             <img src="/images/logo.png" alt="" className="logo-primary" />
-                                            {/* <img src="/images/logow.png" alt="" className="logo-white" /> */}
                                         </a></Link>
                                     </div>
                                     {/* <div className="search">
@@ -50,11 +50,6 @@ function Header() {
                                                 <Link href="/"><a className="nav-link">Home
                                                 </a>
                                                 </Link>
-                                                {/* <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                </ul> */}
                                             </li>
                                             <li className="nav-item">
                                                 <Link href="/about"><a className="nav-link">About
@@ -65,16 +60,11 @@ function Header() {
                                                 <Link href="/products"><a className="nav-link">Products
                                                 </a></Link>
                                             </li>
-                                            {/* <li className="nav-item">
-                                                <Link href="/employee"><a className="nav-link">Employee
+                                            {}
+                                            <li className="nav-item">
+                                                <Link href="/admin"><a className="nav-link">Dashboard
                                                 </a></Link>
-                                            </li> */}
-                                            {/* <li className="nav-item">
-                                                <a className="nav-link" onClick={handleOpen}>
-                                                    Pages
-                                                    <i class="bi bi-chevron-down ms-10 fs-12"></i>
-                                                </a>
-                                            </li> */}
+                                            </li>
 
                                             <Link href="/cart" passHref>
                                                 <a className="mx-20"><CartCounter /></a>

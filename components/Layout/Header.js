@@ -1,58 +1,65 @@
 import Link from "next/link";
 import CartCounter from "../CartCounter";
+import { useState } from "react";
 // import { DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 // const ThemeSwitch = dynamic(() => import('../elements/ThemeSwitch'), {
 //     ssr: false
 // })
-function Header({ signoutHandler }) {
+function Header({ signoutHandler, role }) {
+    const [isToggled, setToggled] = useState(false);
+    const toggleTrueFalse = () => setToggled(!isToggled);
+    console.log(role);
     return (
         <>
+
             <div className="header">
                 <div className="container">
                     <div className="row">
-                        <div className="col-xxl-12">
-                            <div className="header-content">
-                                <div className="header-left">
+                        <div className="col-xl-12">
+                            <div className="navigation">
+                                <nav className="navbar navbar-expand-lg navbar-light">
                                     <div className="brand-logo">
-                                        <Link href="/">
-                                            <a className="mini-logo">
-                                                <img
-                                                    src="/images/logo.png"
-                                                    alt=""
-                                                />
-                                            </a>
-                                        </Link>
+                                        <Link href="/"><a>
+                                            <img src="/images/logo.png" alt="" className="logo-primary" />
+                                        </a></Link>
                                     </div>
                                     {/* <div className="search">
-                                        <form action="#">
-                                            <span>
-                                                <i className="ri-search-line"></i>
-                                            </span>
-                                            <input
-                                                type="text"
-                                                placeholder="Search Here"
-                                            />
+                                        <form>
+                                            <span><i className="ri-search-line"></i></span>
+                                            <input type="text" placeholder="Search Here" />
                                         </form>
                                     </div> */}
-                                </div>
-
-                                <div className="header-right">
-
-
-                                    {/* <ThemeSwitch /> */}
-
-                                    <Link href="/cart" passHref>
-                                        <a className="mx-20"><CartCounter /></a>
-                                    </Link>
-                                    <button onClick={signoutHandler}>Sign out</button>
+                                    <button className="navbar-toggler" type="button" onClick={toggleTrueFalse}>
+                                        <span className="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div className={isToggled ? "collapse navbar-collapse show" : "collapse navbar-collapse"}>
+                                        <ul className="navbar-nav ms-auto">
 
 
-                                </div>
+                                            <li className="nav-item dropdown">
+                                                <Link href="/"><a className="nav-link">Home
+                                                </a>
+                                                </Link>
+                                            </li>
+                                            <Link href="/cart" passHref>
+                                                <a className="mx-20"><CartCounter /></a>
+                                            </Link>
+
+                                        </ul>
+                                    </div>
+
+                                    <div className="signin-btn">
+                                        <a className="btn btn-primary" onClick={signoutHandler}>Sign out</a>
+                                    </div>
+                                </nav>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
         </>
     );
 }

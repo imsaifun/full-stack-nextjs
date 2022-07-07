@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/Layout/LayoutFront";
 import getTodo from "../../lib/getTodo";
 import getUser from "../../lib/getUser";
 import dbConnect from "../../lib/dbConnect";

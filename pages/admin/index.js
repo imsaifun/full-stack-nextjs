@@ -1,19 +1,19 @@
 import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/Layout/LayoutFront";
 import getProduct from "../../lib/getProduct";
 import getUser from "../../lib/getUser";
 import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
 
 const Index = ({ user, orders, products }) => {
+    // console.log(user);
     const [pizzaList, setPizzaList] = useState(products);
     const [orderList, setOrderList] = useState(orders);
     const status = ["preparing", "on the way", "delivered"];
 
     const handleDelete = async (id) => {
-        console.log(id);
         try {
             const res = await axios.delete(
                 "/api/products/" + id
@@ -24,7 +24,7 @@ const Index = ({ user, orders, products }) => {
         }
     };
 
-    console.log(orderList);
+    // console.log(orderList);
     // const item = orderList.filter((order) => order._id === id)[0];
 
     const handleStatus = async (id) => {
@@ -126,29 +126,6 @@ const Index = ({ user, orders, products }) => {
 
     );
 };
-
-// export const getServerSideProps = async (ctx) => {
-//   const myCookie = ctx.req?.cookies || "";
-
-//   if (myCookie.token !== process.env.TOKEN) {
-//     return {
-//       redirect: {
-//         destination: "/admin/login",
-//         permanent: false,
-//       },
-//     };
-//   }
-
-//   const productRes = await axios.get("/api/products");
-//   const orderRes = await axios.get("/api/orders");
-
-//   return {
-//     props: {
-//       orders: orderRes.data,
-//       products: productRes.data,
-//     },
-//   };
-// };
 
 export async function getServerSideProps({ req, res }) {
     await dbConnect();
