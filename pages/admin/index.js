@@ -8,7 +8,6 @@ import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
 
 const Index = ({ user, orders, products }) => {
-    // console.log(user);
     const [pizzaList, setPizzaList] = useState(products);
     const [orderList, setOrderList] = useState(orders);
    

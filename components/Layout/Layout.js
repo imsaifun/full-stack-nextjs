@@ -30,6 +30,7 @@ export default function Layout({
         setHeight(window.screen.height);
     }, []);
 
+    
     const signoutHandler = () => {
         removeCookies("token");
         router.push("/signin");

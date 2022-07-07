@@ -4,7 +4,6 @@ import { useState } from "react";
 import CartCounter from "../CartCounter";
 // import PageTree from "./RightSidebar";
 function Header({ role, signoutHandler }) {
-    console.log(role);
     const [isToggled, setToggled] = useState(false);
     const toggleTrueFalse = () => setToggled(!isToggled);
     // const [openClass, setOpenClass] = useState('');
