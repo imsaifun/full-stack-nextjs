@@ -9,7 +9,7 @@ import HeaderLanding from "./HeaderLanding";
 import PageHead from "./PageHead";
 import PageTitleLanding from "./PageTitleLanding";
 import PageTitle from "./PageTitle";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
 
 
 export default function Layout({
