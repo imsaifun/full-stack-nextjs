@@ -1,6 +1,7 @@
-import "../styles/index.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "../public/css/style.css";
+import "../styles/index.css";
 
 import { Provider } from "react-redux";
 import store from "../redux/store";

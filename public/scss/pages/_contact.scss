@@ -1,0 +1,37 @@
+.contact-details {
+    position: relative;
+
+    h4 {
+        font-size  : 20px;
+        font-weight: 700;
+    }
+
+    p {
+        font-size    : 16px;
+        // color        : $grey;
+        line-height  : 26px;
+        margin-bottom: 20px;
+        margin-top   : 15px;
+    }
+
+    ul {
+        li {
+            margin-left  : 40px;
+            margin-bottom: 15px;
+            font-size    : 16px;
+            // color        : $grey;
+
+            i {
+                font-size: 24px;
+                position : absolute;
+                left     : 0;
+            }
+
+            strong {
+                display      : block;
+                // color        : $black;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
