@@ -1,4 +1,4 @@
-import Layout from "../../components/Layout/LayoutFront";
+import Layout from "../../components/Layout/Layout";
 import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
 import getUser from "../../lib/getUser";

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Form from "../../../components/Form";
-import Layout from "../../../components/Layout/LayoutFront";
+import Layout from "../../../components/Layout/Layout";
 import dbConnect from "../../../lib/dbConnect";
 import getUser from "../../../lib/getUser";
 

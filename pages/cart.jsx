@@ -6,7 +6,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Layout from "../components/Layout/LayoutFront";
+import Layout from "../components/Layout/Layout";
 import OrderDetail from "../components/OrderDetail";
 import { addToCart, reset, decreaseCart,removeFromCart,getTotals,clearCart } from "../redux/cartSlice";
 import getUser from "../lib/getUser";

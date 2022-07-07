@@ -8,7 +8,6 @@ import { useState } from "react";
 function Header({ signoutHandler, role }) {
     const [isToggled, setToggled] = useState(false);
     const toggleTrueFalse = () => setToggled(!isToggled);
-    console.log(role);
     return (
         <>
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Layout from "../components/Layout/LayoutFront";
+import Layout from "../components/Layout/Layout";
 import SigninForm from "../components/SigninForm";
 
 export default function SigninPage() {

@@ -2,7 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 import EditProduct from "../../components/EditProduct";
-import Layout from "../../components/Layout/LayoutFront";
+import Layout from "../../components/Layout/Layout";
 import dbConnect from "../../lib/dbConnect";
 import getProduct from "../../lib/getProduct";
 // import getUser from "../../lib/getUser";
