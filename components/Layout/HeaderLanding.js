@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
+import CartCounter from "../CartCounter";
 // import PageTree from "./RightSidebar";
 function Header() {
     const [isToggled, setToggled] = useState(false);
@@ -56,24 +57,28 @@ function Header() {
                                                 </ul> */}
                                             </li>
                                             <li className="nav-item">
-                                                <Link href="/jobs"><a className="nav-link">Jobs
+                                                <Link href="/about"><a className="nav-link">About
                                                 </a>
                                                 </Link>
                                             </li>
                                             <li className="nav-item">
-                                                <Link href="/company"><a className="nav-link">Company
+                                                <Link href="/products"><a className="nav-link">Products
                                                 </a></Link>
                                             </li>
-                                            <li className="nav-item">
+                                            {/* <li className="nav-item">
                                                 <Link href="/employee"><a className="nav-link">Employee
                                                 </a></Link>
-                                            </li>
+                                            </li> */}
                                             {/* <li className="nav-item">
                                                 <a className="nav-link" onClick={handleOpen}>
                                                     Pages
                                                     <i class="bi bi-chevron-down ms-10 fs-12"></i>
                                                 </a>
                                             </li> */}
+
+                                            <Link href="/cart" passHref>
+                                                <a className="mx-20"><CartCounter /></a>
+                                            </Link>
 
                                         </ul>
                                     </div>

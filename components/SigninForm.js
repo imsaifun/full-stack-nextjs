@@ -28,7 +28,7 @@ function SigninForm() {
                         .post('/api/signin', fields)
                         .then(res => {
                             // console.log('success', res);
-                            router.push("/");
+                            router.push("/admin");
                         })
                         .catch(err => console.log('NOOOOO!!!', err.response));
                 }}

@@ -5,7 +5,7 @@ import EditProduct from "../../components/EditProduct";
 import Layout from "../../components/Layout/Layout";
 import dbConnect from "../../lib/dbConnect";
 import getProduct from "../../lib/getProduct";
-import getUser from "../../lib/getUser";
+// import getUser from "../../lib/getUser";
 
 export default function ProductSingle(product, user) {
   const myProduct = product.product
@@ -31,7 +31,7 @@ export default function ProductSingle(product, user) {
   };
 
   return (
-    <Layout role={user}>
+    <Layout  pageClass={"front"}>
 
       <h1>Product Page</h1>
 
@@ -67,23 +67,23 @@ export default function ProductSingle(product, user) {
   );
 }
 
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps() {
   await dbConnect();
   const product = await getProduct();
-  const user = await getUser(req, res);
-  if (!user) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/signin",
-      },
-      props: {},
-    };
-  }
+  // const user = await getUser(req, res);
+  // if (!user) {
+  //   return {
+  //     redirect: {
+  //       permanent: false,
+  //       destination: "/signin",
+  //     },
+  //     props: {},
+  //   };
+  // }
   return {
     props: {
       product,
-      user
+      // user
     },
   };
 }

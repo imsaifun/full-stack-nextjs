@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
+import CartCounter from "../CartCounter";
+// import { DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 // const ThemeSwitch = dynamic(() => import('../elements/ThemeSwitch'), {
 //     ssr: false
 // })
-function Header() {
+function Header({ signoutHandler }) {
     return (
         <>
             <div className="header">
@@ -16,9 +17,8 @@ function Header() {
                                         <Link href="/">
                                             <a className="mini-logo">
                                                 <img
-                                                    src="/images/logoi.png"
+                                                    src="/images/logo.png"
                                                     alt=""
-                                                    width="40"
                                                 />
                                             </a>
                                         </Link>
@@ -38,10 +38,15 @@ function Header() {
 
                                 <div className="header-right">
 
+
                                     {/* <ThemeSwitch /> */}
 
-                                
-                                
+                                    <Link href="/cart" passHref>
+                                        <a className="mx-20"><CartCounter /></a>
+                                    </Link>
+                                    <button onClick={signoutHandler}>Sign out</button>
+
+
                                 </div>
                             </div>
                         </div>

@@ -10,13 +10,15 @@ import Footer from "./Footer";
 import HeaderLanding from "./HeaderLanding";
 import PageHead from "./PageHead";
 import PageTitleLanding from "./PageTitleLanding";
+import Header from "./Header";
 
 export default function Layout({ role, children, headTitle,
     pageTitle,
     pageTitleSub,
     pageClass,
     parent,
-    child, }) {
+    child,
+}) {
     const router = useRouter();
     const quantity = useSelector((state) => state.cart.quantity);
 
@@ -68,7 +70,12 @@ export default function Layout({ role, children, headTitle,
 
             <PageHead headTitle={headTitle} />
             <div id="main-wrapper" className={pageClass}>
-                <HeaderLanding />
+                {role ?
+                    (<Header signoutHandler={signoutHandler} />)
+                    :
+                    (<HeaderLanding />)
+                }
+                {/* <HeaderLanding /> */}
 
                 {pageTitle && (
                     <PageTitleLanding
