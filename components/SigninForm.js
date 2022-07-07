@@ -22,17 +22,12 @@ function SigninForm() {
             <Formik
                 initialValues={initialValues}
                 validationSchema={SigninFormSchema}
-                // onSubmit={(fields) => {
-                //     alert(
-                //         "SUCCESS!! :-)\n\n" + JSON.stringify(fields, null, 4)
-                //     );
-                // }}
                 onSubmit={(fields) => {
                     console.log(fields);
                     axios
                         .post('/api/signin', fields)
                         .then(res => {
-                            console.log('success', res);
+                            // console.log('success', res);
                             router.push("/");
                         })
                         .catch(err => console.log('NOOOOO!!!', err.response));

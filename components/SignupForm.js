@@ -31,7 +31,7 @@ function SignupForm() {
                     axios
                         .post('/api/signup', fields)
                         .then(res => {
-                            console.log('success', res);
+                            // console.log('success', res);
                             router.push("/signin");
                         })
                         .catch(err => console.log('NOOOOO!!!', err.response));
