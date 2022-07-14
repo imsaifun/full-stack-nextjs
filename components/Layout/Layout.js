@@ -92,7 +92,7 @@ export default function Layout({
                     </>
                 )} */}
 
-                {!role ? (<><Bottom /></>) : (null)}
+                {/* {!role ? (<><Bottom /></>) : (null)} */}
 
                 <Footer />
                 {/* <ThemeSwitch /> */}
