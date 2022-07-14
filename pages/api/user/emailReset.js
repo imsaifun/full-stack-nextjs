@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken"
 import absoluteUrl from "next-absolute-url"
 import { sendEmail } from "../../../helpers/sendMail"
 import dbConnect from "../../../lib/dbConnect"
-import User from "../../../model/userModel"
+import User from "../../../models/userModel"
 
 dbConnect()
 
