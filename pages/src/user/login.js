@@ -37,16 +37,11 @@ function Login() {
     e.preventDefault()
 
     try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
 
-      const { data } = await axios.post(
+      const  data  = await axios.post(
         `/api/user/login`,
-        { email, password },
-        config
+        { email, password }
+        
       )
 
       toast.success(data.message)

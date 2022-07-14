@@ -53,16 +53,9 @@ function Register() {
 
       console.log(email, password, firstName, lastName)
 
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-
       const { data } = await axios.post(
         `/api/user/register`,
-        { email, password, firstName, lastName },
-        config
+        { email, password, firstName, lastName }
       )
 
       toast.success(data?.message)
@@ -75,7 +68,6 @@ function Register() {
   return (
     <>
           <form
-            noValidate
             onSubmit={SubmitHandler}
           >
                 <input
