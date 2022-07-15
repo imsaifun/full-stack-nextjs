@@ -3,10 +3,10 @@ import Layout from "../../components/Layout/Layout";
 import dbConnect from "../../lib/dbConnect";
 import getProductById from "../../lib/getProductById";
 
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
-import { useState } from "react";
-import { addToCart } from "../../redux/cartSlice";
+// import { useState } from "react";
+// import { addToCart } from "../../redux/cartSlice";
 
 export default function ProductDetails(product, user) {
     // const pizza = product.product
