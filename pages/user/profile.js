@@ -13,7 +13,7 @@ const Profile = () => {
   const profile = useSelector((state) => state.profile)
   const { loading, error, dbUser } = profile
 
-  console.log("profile", dbUser)
+  // console.log("profile", dbUser)
 
   const emailReset = async () => {
     console.log("submit")
