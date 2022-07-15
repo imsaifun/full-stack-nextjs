@@ -1,14 +1,13 @@
 import Layout from "../../components/Layout/Layout";
 import dbConnect from "../../lib/dbConnect";
 import getOrderById from "../../lib/getOrderById";
-import getUser from "../../lib/getUser";
 
-export default function OrderDetails(order, user) {
+export default function OrderDetails(order) {
   console.log(order.order);
 
 
   return (
-    <Layout role={user}  pageClass="admin">
+    <Layout pageClass="admin">
       <h1>Order Details</h1>
 
       <p>
@@ -42,16 +41,6 @@ export default function OrderDetails(order, user) {
 export async function getServerSideProps({ req, res, params }) {
   await dbConnect();
   const order = await getOrderById(params.id);
-  const user = await getUser(req, res);
-  if (!user) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/signin",
-      },
-      props: {},
-    };
-  }
   return {
     props: {
       order,

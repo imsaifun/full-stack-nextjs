@@ -3,56 +3,56 @@ import Layout from "../../components/Layout/Layout";
 import dbConnect from "../../lib/dbConnect";
 import getProductById from "../../lib/getProductById";
 
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
-// import { useState } from "react";
-// import { addToCart } from "../../redux/cartSlice";
+import { useState } from "react";
+import { addToCart } from "../../redux/cartSlice";
 
 export default function ProductDetails(product, user) {
-    // const pizza = product.product
-    // console.log(pizza);
+    const pizza = product.product
+    console.log(pizza);
 
-    // const [price, setPrice] = useState(pizza.prices[0].price);
-    // const [size, setSize] = useState(0);
-    // const [quantity, setQuantity] = useState(1);
-    // const [extras, setExtras] = useState([]);
-    // const dispatch = useDispatch();
+    const [price, setPrice] = useState(pizza.prices[0].price);
+    const [size, setSize] = useState(0);
+    const [quantity, setQuantity] = useState(1);
+    const [extras, setExtras] = useState([]);
+    const dispatch = useDispatch();
 
-    // // console.log(pizza.prices[0]);
-    // // console.log(price);
+    // console.log(pizza.prices[0]);
+    // console.log(price);
 
-    // const changePrice = (number) => {
-    //     setPrice(price + number);
-    // };
+    const changePrice = (number) => {
+        setPrice(price + number);
+    };
 
-    // const handleSize = (sizeIndex) => {
-    //     const difference = pizza.prices[sizeIndex].price - pizza.prices[size].price;
-    //     setSize(sizeIndex);
-    //     changePrice(difference);
-    // };
+    const handleSize = (sizeIndex) => {
+        const difference = pizza.prices[sizeIndex].price - pizza.prices[size].price;
+        setSize(sizeIndex);
+        changePrice(difference);
+    };
 
-    // const handleChange = (e, option) => {
-    //     const checked = e.target.checked;
+    const handleChange = (e, option) => {
+        const checked = e.target.checked;
 
-    //     if (checked) {
-    //         changePrice(option.price);
-    //         setExtras((prev) => [...prev, option]);
-    //     } else {
-    //         changePrice(-option.price);
-    //         setExtras(extras.filter((extra) => extra._id !== option._id));
-    //     }
-    // };
+        if (checked) {
+            changePrice(option.price);
+            setExtras((prev) => [...prev, option]);
+        } else {
+            changePrice(-option.price);
+            setExtras(extras.filter((extra) => extra._id !== option._id));
+        }
+    };
 
-    // const handleClick = () => {
-    //     dispatch(addToCart({ ...pizza, extras, price, quantity }));
-    // };
+    const handleClick = () => {
+        dispatch(addToCart({ ...pizza, extras, price, quantity }));
+    };
 
     return (
         <Layout>
 
-Details
 
-            {/* <div className="section-padding">
+
+            <div className="section-padding">
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-6">
@@ -63,6 +63,7 @@ Details
                             <strong>Name</strong>: {pizza.title}
                             <br />
                             <br />
+                            {/* <strong>Name</strong>: {pizza._id} */}
 
                             <div onClick={() => handleSize(0)}>
                                 <img src="/images/size.png" width={20} alt="" />
@@ -114,7 +115,7 @@ Details
 
 
                 </div>
-            </div> */}
+            </div>
         </Layout>
     );
 }

@@ -1,11 +1,9 @@
 import axios from "axios";
-import Image from "next/image";
 import { useState } from "react";
 import Layout from "../../components/Layout/Layout";
-import getProduct from "../../lib/getProduct";
-import getUser from "../../lib/getUser";
 import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
+import getProduct from "../../lib/getProduct";
 
 const Index = ({ user, orders, products }) => {
     const [pizzaList, setPizzaList] = useState(products);
@@ -46,7 +44,7 @@ const Index = ({ user, orders, products }) => {
     };
 
     return (
-        <Layout role={user} pageClass="admin">
+        <Layout pageClass="admin">
             <div className="container">
                 <div className="row">
                     <div className="col-xl-12">
@@ -155,19 +153,8 @@ export async function getServerSideProps({ req, res }) {
     await dbConnect();
     const products = await getProduct();
     const orders = await getOrder();
-    const user = await getUser(req, res);
-    if (!user) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: "/signin",
-            },
-            props: {},
-        };
-    }
     return {
         props: {
-            user,
             orders,
             products
         },

@@ -1,11 +1,11 @@
 import Layout from "../../components/Layout/Layout";
 import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
-import getUser from "../../lib/getUser";
 
-const Index = ({ user, orders }) => {
+const Index = ({ orders }) => {
+    console.log(orders);
     return (
-        <Layout role={user} pageClass="admin">
+        <Layout pageClass="admin">
 
 
             <div>
@@ -69,19 +69,8 @@ const Index = ({ user, orders }) => {
 export async function getServerSideProps({ req, res }) {
     await dbConnect();
     const orders = await getOrder();
-    const user = await getUser(req, res);
-    if (!user) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: "/signin",
-            },
-            props: {},
-        };
-    }
     return {
         props: {
-            user,
             orders
         },
     };

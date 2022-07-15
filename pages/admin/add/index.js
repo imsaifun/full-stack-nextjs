@@ -4,7 +4,6 @@ import { useState } from "react";
 import Layout from "../../../components/Layout/Layout";
 import dbConnect from "../../../lib/dbConnect";
 import getProduct from "../../../lib/getProduct";
-import getUser from "../../../lib/getUser";
 
 export default function ProductForm(user) {
     // console.log(product);
@@ -70,7 +69,7 @@ export default function ProductForm(user) {
 
 
     return (
-        <Layout role={user} pageClass="admin">
+        <Layout pageClass="admin">
 
             <form>
                 <div className="mb-10">
@@ -167,16 +166,6 @@ export default function ProductForm(user) {
 export async function getServerSideProps({ req, res }) {
     await dbConnect();
     const product = await getProduct();
-    const user = await getUser(req, res);
-    if (!user) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: "/signin",
-            },
-            props: {},
-        };
-    }
     return {
         props: {
             product,
