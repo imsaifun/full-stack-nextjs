@@ -2,18 +2,18 @@
 // import { removeCookies } from "cookies-next";
 // import { useRouter } from "next/router";
 // import { useEffect, useState } from "react";
-// import Bottom from "./Bottom";
-// import Footer from "./Footer";
+import Bottom from "./Bottom";
+import Footer from "./Footer";
 // import Header from "./Header";
-// import HeaderLanding from "./HeaderLanding";
-// import PageHead from "./PageHead";
-// import PageTitleLanding from "./PageTitleLanding";
-// import PageTitle from "./PageTitle";
-// import Sidebar from "./Sidebar";
+import HeaderLanding from "./HeaderLanding";
+import PageHead from "./PageHead";
+import PageTitleLanding from "./PageTitleLanding";
+import PageTitle from "./PageTitle";
+import Sidebar from "./Sidebar";
 
 
 // export default function Layout({
-//     role,
+//     isUser,
 //     children,
 //     headTitle,
 //     pageTitle,
@@ -30,8 +30,8 @@
 //         setHeight(window.screen.height);
 //     }, []);
 
-    
-//     const signoutHandler = () => {
+
+//     const logoutHandler = () => {
 //         removeCookies("token");
 //         router.push("/signin");
 //     };
@@ -46,12 +46,12 @@
 
 //             <div id="main-wrapper" className={pageClass}>
 
-//                 {!role ? (
-//                     <HeaderLanding role={role} signoutHandler={signoutHandler} />
+//                 {!isUser ? (
+//                     <HeaderLanding isUser={isUser} logoutHandler={logoutHandler} />
 //                 ) : (
 //                     <>
-//                         <Header role={role} signoutHandler={signoutHandler} />
-//                         <Sidebar signoutHandler={signoutHandler} />
+//                         <Header isUser={isUser} logoutHandler={logoutHandler} />
+//                         <Sidebar logoutHandler={logoutHandler} />
 //                     </>
 //                 )}
 
@@ -69,7 +69,7 @@
 
 
 
-//                 {!role ? (
+//                 {!isUser ? (
 //                     <>
 //                         {children}
 //                     </>
@@ -91,7 +91,7 @@
 //                     </>
 //                 )}
 
-//                 {!role ? (<><Bottom /></>) : (null)}
+//                 {!isUser ? (<><Bottom /></>) : (null)}
 
 //                 <Footer />
 //                 {/* <ThemeSwitch /> */}
@@ -112,11 +112,18 @@ import { parseCookies } from "nookies"
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { loadUser } from "../../redux/action/userAction"
-const Layout = ({ children }) => {
+const Layout = ({
+  children,
+  headTitle,
+  pageTitle,
+  pageTitleSub,
+  pageClass,
+  parent,
+  child, }) => {
   const cookies = parseCookies()
   const router = useRouter()
   const [isUser, setIsUser] = useState("")
-  
+
 
   const { data: session } = useSession()
   const dispatch = useDispatch()
@@ -135,6 +142,13 @@ const Layout = ({ children }) => {
     }
   }, [router, setIsUser])
 
+  const [height, setHeight] = useState();
+
+  // const router = useRouter();
+  useEffect(() => {
+    setHeight(window.screen.height);
+  }, []);
+
   const logoutHandler = async () => {
     if (session) {
       signOut()
@@ -147,9 +161,64 @@ const Layout = ({ children }) => {
   }
   return (
     <>
-      <div className="container">
+      {/* <div className="container">
         <Header isUser={isUser} logoutHandler={logoutHandler} />
         {children}
+      </div> */}
+
+      <PageHead headTitle={headTitle} />
+
+      <div id="main-wrapper" className={pageClass}>
+
+        {!isUser ? (
+          <HeaderLanding isUser={isUser} logoutHandler={logoutHandler} />
+        ) : (
+          <>
+            <Header isUser={isUser} logoutHandler={logoutHandler} />
+            <Sidebar logoutHandler={logoutHandler} />
+          </>
+        )}
+
+
+
+        {pageTitle && (
+          <PageTitleLanding
+            pageTitle={pageTitle}
+            pageTitleSub={pageTitleSub}
+            parent={parent}
+            child={child}
+          />
+        )}
+
+
+
+
+        {!isUser ? (
+          <>
+            {children}
+          </>
+        ) : (
+          <>
+            <div className="content-body" style={{ minHeight: height - 122 }}>
+              <div className="container">
+                {pageTitle && (
+                  <PageTitle
+                    pageTitle={pageTitle}
+                    pageTitleSub={pageTitleSub}
+                    parent={parent}
+                    child={child}
+                  />
+                )}
+                {children}
+              </div>
+            </div>
+          </>
+        )}
+
+        {!isUser ? (<><Bottom /></>) : (null)}
+
+        <Footer />
+        {/* <ThemeSwitch /> */}
       </div>
     </>
   )

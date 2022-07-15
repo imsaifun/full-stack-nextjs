@@ -61,7 +61,7 @@ function Login() {
   return (
     <>
 
-      <Layout>
+      <Layout pageClass="front">
 
 
 

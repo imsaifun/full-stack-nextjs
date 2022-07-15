@@ -77,7 +77,7 @@ function Header({ role, signoutHandler }) {
                                         {role ?
                                             (<a className="btn btn-primary" onClick={signoutHandler}>Sign out</a>)
                                             :
-                                            (<Link href="/signin"><a className="btn btn-primary">Signin</a></Link>)
+                                            (<Link href="/user/login"><a className="btn btn-primary">Signin</a></Link>)
                                         }
 
 
