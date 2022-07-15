@@ -41,7 +41,7 @@ export default function Layout({
     return (
         <>
 
-            <PageHead headTitle={headTitle} />
+            {/* <PageHead headTitle={headTitle} /> */}
 
 
             <div id="main-wrapper" className={pageClass}>
@@ -94,7 +94,7 @@ export default function Layout({
 
                 {/* {!role ? (<><Bottom /></>) : (null)} */}
 
-                <Footer />
+                {/* <Footer /> */}
                 {/* <ThemeSwitch /> */}
             </div>
 

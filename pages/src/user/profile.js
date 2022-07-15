@@ -8,6 +8,7 @@ import store, { wrapper } from "../../../redux/store"
 import { loadUser } from "../../../redux/userAction"
 
 import axios from "axios"
+import Layout from "../../../components/Layout/Layout"
 
 const Profile = () => {
   const profile = useSelector((state) => state.profile)
@@ -35,24 +36,27 @@ const Profile = () => {
 
   return (
     <div>
-      <h1>Profile </h1>
+      <Layout>
+        <h1>Profile </h1>
 
-      {dbUser && (
-        <>
-          <h1>
-            {dbUser.name}
-          </h1>
-          <h1>
-            {dbUser.email}
-          </h1>
-          <h1>
-            {dbUser.validEmail}{" "}
-            {dbUser.validEmail === "not" && (
-              <button onClick={emailReset}>Send Token</button>
-            )}
-          </h1>
-        </>
-      )}
+        {dbUser && (
+          <>
+            <h1>
+              {dbUser.name}
+            </h1>
+            <h1>
+              {dbUser.email}
+            </h1>
+            <h1>
+              {dbUser.validEmail}{" "}
+              {dbUser.validEmail === "not" && (
+                <button onClick={emailReset}>Send Token</button>
+              )}
+            </h1>
+          </>
+        )}
+      </Layout>
+
     </div>
   )
 }

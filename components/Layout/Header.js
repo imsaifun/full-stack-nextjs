@@ -63,17 +63,17 @@ export default function ButtonAppBar() {
       <div>
         {userState ? (
           <>
-            <button onClick={logoutHandler}>
+            <button  className="btn btn-danger" onClick={logoutHandler}>
               Logout
             </button>
           </>
         ) : (
           <>
             <Link href="/src/user/login" passHref>
-              <button>Login</button>
+              <button className="btn btn-primary">Login</button>
             </Link>
             <Link href="/src/user/register" passHref>
-              <button>Register</button>
+              <button className="btn btn-success">Register</button>
             </Link>
           </>
         )}
