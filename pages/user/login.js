@@ -9,6 +9,7 @@ import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import store from "../../redux/store"
 import { loadUser } from "../../redux/action/userAction"
+import Layout from "../../components/Layout/Layout"
 
 
 
@@ -59,50 +60,55 @@ function Login() {
 
   return (
     <>
-      
-          <h1 component="h1" variant="h5">
-            Sign in
-          </h1>
-          <form
-            onSubmit={SubmitHandler}
+
+      <Layout>
+
+
+
+        <h1 component="h1" variant="h5">
+          Sign in
+        </h1>
+        <form
+          onSubmit={SubmitHandler}
+        >
+          <input
+            required
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            required
+            name="password"
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+
+
+
+          <button
+            type="submit"
           >
-            <input
-              required
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              required
-              name="password"
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            Sign In
+          </button>
+          <br />
 
-      
-      
+          <Link href="/user/forget" passHref>
+            Forgot password?
+          </Link>
 
-            <button
-              type="submit"
-            >
-              Sign In
-            </button>
-            <br />
-            
-                <Link href="/user/forget" passHref>
-                  Forgot password?
-                </Link>
+          <br />
 
-                <br />
-                
-                <Link href="/user/register" passHref>
-                  {"Don't have an account? Sign Up"}
-                </Link>
-                
-          </form>
+          <Link href="/user/register" passHref>
+            {"Don't have an account? Sign Up"}
+          </Link>
+
+        </form>
+      </Layout>
     </>
   )
 }
