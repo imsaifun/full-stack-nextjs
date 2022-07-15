@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import store from "../../redux/store"
 import { loadUser } from "../../redux/action/userAction"
-import Layout from "../../components/Layout/Layout"
+import Layout from "../../components/Layout/LayoutAdmin"
 
 
 
@@ -52,7 +52,7 @@ function Login() {
       toast.success(data.message)
       cookie.set("token", data?.token)
       cookie.set("user", JSON.stringify(data?.user))
-      router.push("/")
+      router.push("/admin")
     } catch (error) {
       toast.error(error.response.data.error)
     }

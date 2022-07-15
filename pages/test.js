@@ -1,5 +1,5 @@
 import React from 'react';
-import LayoutAdmin from '../components/Layout/Layout';
+import LayoutAdmin from '../components/Layout/LayoutAdmin';
 
 const Test = () => {
     return (

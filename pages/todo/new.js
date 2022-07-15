@@ -1,7 +1,7 @@
 import Form from "../../components/Form";
 import Layout from "../../components/Layout/Layout";
-import getUser from "../../lib/getUser";
 import dbConnect from "../../lib/dbConnect";
+import getUser from "../../lib/getUser";
 
 const NewTodo = ({user}) => {
   const todoForm = {

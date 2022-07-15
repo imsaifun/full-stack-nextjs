@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Layout from "../../../components/Layout/Layout";
+import Layout from "../../../components/Layout/LayoutAdmin";
 import getUser from "../../../lib/getUser";
 import dbConnect from "../../../lib/dbConnect";
 

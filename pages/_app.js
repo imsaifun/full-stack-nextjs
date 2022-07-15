@@ -4,7 +4,7 @@ import React from "react"
 import { Provider } from "react-redux"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import Layout from "../components/Layout/Layout"
+import Layout from "../components/Layout/LayoutAdmin"
 import store from "../redux/store"
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
