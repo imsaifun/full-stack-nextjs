@@ -41,13 +41,12 @@ export default function Layout({
     return (
         <>
 
-            {/* <PageHead headTitle={headTitle} /> */}
+            <PageHead headTitle={headTitle} />
 
 
             <div id="main-wrapper" className={pageClass}>
-                <Header/>
 
-                {/* {!role ? (
+                {!role ? (
                     <HeaderLanding role={role} signoutHandler={signoutHandler} />
                 ) : (
                     <>
@@ -90,11 +89,11 @@ export default function Layout({
                             </div>
                         </div>
                     </>
-                )} */}
+                )}
 
-                {/* {!role ? (<><Bottom /></>) : (null)} */}
+                {!role ? (<><Bottom /></>) : (null)}
 
-                {/* <Footer /> */}
+                <Footer />
                 {/* <ThemeSwitch /> */}
             </div>
 

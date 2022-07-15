@@ -1,11 +1,8 @@
-import { applyMiddleware, createStore } from "redux";
-import thunk from "redux-thunk";
-import reducers from "./reducers";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { configureStore } from "@reduxjs/toolkit";
+import cartReducer from "./cartSlice";
 
-const store = createStore(
-  reducers,
-  composeWithDevTools(applyMiddleware(thunk))
-);
-
-export default store;
+export default configureStore({
+  reducer: {
+    cart: cartReducer,
+  },
+});
