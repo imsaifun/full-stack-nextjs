@@ -1,10 +1,8 @@
-import connectDB from "../../../../connectDB"
-import User from "../../../../models/userModel"
-import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
-import absoluteUrl from "next-absolute-url"
+import dbConnect from "../../../../dbConnect"
+import User from "../../../../models/userModel"
 
-connectDB()
+dbConnect()
 
 export default async (req, res) => {
   try {

@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken"
 import absoluteUrl from "next-absolute-url"
-import connectDB from "../../../connectDB"
+import dbConnect from "../../../dbConnect"
 import { sendEmail } from "../../../helpers/sendMail"
 import User from "../../../models/userModel"
 
-connectDB()
+dbConnect()
 
 export default async (req, res) => {
   console.log(req.body)

@@ -1,10 +1,10 @@
-import NextAuth from "next-auth"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
+import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
-import connectDB from "../../../connectDB"
+import dbConnect from "../../../dbConnect"
 
 export default NextAuth({
-  adapter: MongoDBAdapter(connectDB),
+  adapter: MongoDBAdapter(dbConnect),
   secret: process.env.SECRET,
   providers: [
     GoogleProvider({

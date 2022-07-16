@@ -1,9 +1,9 @@
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
-import connectDB from "../../../connectDB"
+import dbConnect from "../../../dbConnect"
 import User from "../../../models/userModel"
 
-connectDB()
+dbConnect()
 
 export default async (req, res) => {
   const { email, password } = req.body

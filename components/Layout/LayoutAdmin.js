@@ -1,119 +1,14 @@
-
-// import { removeCookies } from "cookies-next";
-// import { useRouter } from "next/router";
-// import { useEffect, useState } from "react";
-import Bottom from "./Bottom";
-import Footer from "./Footer";
-// import Header from "./Header";
-import HeaderLanding from "./HeaderLanding";
 import PageHead from "./PageHead";
-import PageTitleLanding from "./PageTitleLanding";
 import PageTitle from "./PageTitle";
 import Sidebar from "./Sidebar";
-
-
-// export default function Layout({
-//     isUser,
-//     children,
-//     headTitle,
-//     pageTitle,
-//     pageTitleSub,
-//     pageClass,
-//     parent,
-//     child,
-// }) {
-
-//     const [height, setHeight] = useState();
-
-//     const router = useRouter();
-//     useEffect(() => {
-//         setHeight(window.screen.height);
-//     }, []);
-
-
-//     const logoutHandler = () => {
-//         removeCookies("token");
-//         router.push("/signin");
-//     };
-
-
-
-//     return (
-//         <>
-
-//             <PageHead headTitle={headTitle} />
-
-
-//             <div id="main-wrapper" className={pageClass}>
-
-//                 {!isUser ? (
-//                     <HeaderLanding isUser={isUser} logoutHandler={logoutHandler} />
-//                 ) : (
-//                     <>
-//                         <Header isUser={isUser} logoutHandler={logoutHandler} />
-//                         <Sidebar logoutHandler={logoutHandler} />
-//                     </>
-//                 )}
-
-
-
-//                 {pageTitle && (
-//                     <PageTitleLanding
-//                         pageTitle={pageTitle}
-//                         pageTitleSub={pageTitleSub}
-//                         parent={parent}
-//                         child={child}
-//                     />
-//                 )}
-
-
-
-
-//                 {!isUser ? (
-//                     <>
-//                         {children}
-//                     </>
-//                 ) : (
-//                     <>
-//                         <div className="content-body" style={{ minHeight: height - 122 }}>
-//                             <div className="container">
-//                                 {pageTitle && (
-//                                     <PageTitle
-//                                         pageTitle={pageTitle}
-//                                         pageTitleSub={pageTitleSub}
-//                                         parent={parent}
-//                                         child={child}
-//                                     />
-//                                 )}
-//                                 {children}
-//                             </div>
-//                         </div>
-//                     </>
-//                 )}
-
-//                 {!isUser ? (<><Bottom /></>) : (null)}
-
-//                 <Footer />
-//                 {/* <ThemeSwitch /> */}
-//             </div>
-
-
-
-//         </>
-//     );
-// }
-
-import Header from "./Header"
-import cookie from "js-cookie"
-import { signOut, useSession } from "next-auth/react"
-import Link from "next/link"
-import { useRouter } from "next/router"
-import { parseCookies } from "nookies"
-import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import { loadUser } from "../../redux/action/userAction"
-import Wrapper from "../auth/wrapper";
-import { reset } from "../../redux/cartSlice";
+import cookie from "js-cookie";
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { parseCookies } from "nookies";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { loadUser } from "../../redux/action/userAction";
+import Header from "./Header";
 const Layout = ({
   children,
   headTitle,
@@ -154,9 +49,9 @@ const Layout = ({
     // if (user) {
     //   setisLoggedIn(true)
     // }
-    // if (!user) {
-    //   router.push("/user/login")
-    // }
+    if (!user) {
+      router.push("/user/login")
+    }
   }, []);
 
 
@@ -179,6 +74,8 @@ const Layout = ({
         <Header isUser={isUser} logoutHandler={logoutHandler} />
         {children}
       </div> */}
+
+
 
 
 
@@ -207,7 +104,7 @@ const Layout = ({
         </div>
 
 
-
+  
 
     </>
   )
