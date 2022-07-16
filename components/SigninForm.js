@@ -1,8 +1,10 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import * as Yup from "yup";
-import Link from "next/link";
 import axios from "axios";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import cookie from "js-cookie";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
 const initialValues = {
     email: "",
     password: "",
@@ -22,15 +24,24 @@ function SigninForm() {
             <Formik
                 initialValues={initialValues}
                 validationSchema={SigninFormSchema}
-                onSubmit={(fields) => {
+                onSubmit={ async (fields)  => {
                     console.log(fields);
-                    axios
-                        .post('/api/signin', fields)
-                        .then(res => {
-                            // console.log('success', res);
-                            router.push("/admin");
-                        })
-                        .catch(err => console.log('NOOOOO!!!', err.response));
+                    try {
+
+                        const {data} = await axios.post(
+                          `/api/user/login`,
+                          fields
+                          
+                        )
+                  
+                        toast.success(data.message)
+                        cookie.set("token", data?.token)
+                        cookie.set("user", JSON.stringify(data?.user))
+                        router.push("/admin")
+                      } catch (error) {
+                        toast.error(error.response.data.error)
+                      } 
+
                 }}
             >
                 {({ errors, status, touched }) => (

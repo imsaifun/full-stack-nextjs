@@ -8,6 +8,8 @@ import { toast } from "react-toastify"
 
 import { useRouter } from "next/router"
 import { parseCookies } from "nookies"
+import Layout from "../../components/Layout/LayoutAdmin"
+import SignupForm from "../../components/SignupForm"
 
 // const theme = createTheme()
 
@@ -34,49 +36,52 @@ function Register() {
     //   }
     // }, [router])
 
-    const SubmitHandler = async (e) => {
-        e.preventDefault()
+    // const SubmitHandler = async (e) => {
+    //     e.preventDefault()
 
-        try {
-            if (password !== conPassword) {
-                toast.error("passwords do not match!")
-                // console.log("passwords do not match")
-                return
-            }
+    //     try {
+    //         if (password !== conPassword) {
+    //             toast.error("passwords do not match!")
+    //             // console.log("passwords do not match")
+    //             return
+    //         }
 
-            const user = cookies?.user
-                ? JSON.parse(cookies.user)
-                : session?.user
-                    ? session?.user
-                    : ""
+    //         const user = cookies?.user
+    //             ? JSON.parse(cookies.user)
+    //             : session?.user
+    //                 ? session?.user
+    //                 : ""
 
-            console.log(email, password, firstName, lastName)
+    //         console.log(email, password, firstName, lastName)
 
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
+    //         const config = {
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //         }
 
-            const { data } = await axios.post(
-                `/api/user/register`,
-                { email, password, firstName, lastName },
-                config
-            )
+    //         const { data } = await axios.post(
+    //             `/api/user/register`,
+    //             { email, password, firstName, lastName },
+    //             config
+    //         )
 
-            toast.success(data?.message)
-        } catch (error) {
-            console.log(error.response)
-            toast.error(error.response.data.error)
-        }
-    }
+    //         toast.success(data?.message)
+    //     } catch (error) {
+    //         console.log(error.response)
+    //         toast.error(error.response.data.error)
+    //     }
+    // }
 
     return (
         <>
+        <Layout pageClass={"front"}>
             <h1>
                 Sign up
             </h1>
-            <form
+
+            <SignupForm/>
+            {/* <form
                 onSubmit={SubmitHandler}
             >
 
@@ -156,18 +161,19 @@ function Register() {
                     <a> Already have an account? Sign in</a>
                 </Link>
 
-            </form>
+            </form> */}
+            </Layout>
         </>
     )
 }
 
-export async function getServerSideProps(context) {
-    const session = await getSession(context)
+// export async function getServerSideProps(context) {
+//     const session = await getSession(context)
 
-    return {
-        props: {
-            session,
-        },
-    }
-}
+//     return {
+//         props: {
+//             session,
+//         },
+//     }
+// }
 export default Register

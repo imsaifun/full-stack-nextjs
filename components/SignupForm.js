@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 const initialValues = {
     name: "",
@@ -26,15 +27,25 @@ function SignupForm() {
             <Formik
                 initialValues={initialValues}
                 validationSchema={SignupFormSchema}
-                onSubmit={(fields) => {
+                onSubmit={ async (fields) => {
                     console.log(fields);
-                    axios
-                        .post('/api/signup', fields)
-                        .then(res => {
-                            // console.log('success', res);
-                            router.push("/signin");
-                        })
-                        .catch(err => console.log('NOOOOO!!!', err.response));
+                    try {
+                        // if (password !== conPassword) {
+                        //     toast.error("passwords do not match!")
+                        //     // console.log("passwords do not match")
+                        //     return
+                        // } 
+                        const { data } = await axios.post(
+                            `/api/user/register`,
+                            fields
+                            
+                        )
+            
+                        toast.success(data?.message)
+                    } catch (error) {
+                        console.log(error.response)
+                        toast.error(error.response.data.error)
+                    }
                 }}
             >
                 {({ errors, status, touched }) => (
