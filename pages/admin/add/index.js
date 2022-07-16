@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Layout from "../../../components/Layout/Layout";
+import Layout from "../../../components/Layout/LayoutAdmin";
 import dbConnect from "../../../lib/dbConnect";
 import getProduct from "../../../lib/getProduct";
 
@@ -69,7 +69,7 @@ export default function ProductForm(user) {
 
 
     return (
-        <Layout pageClass="admin">
+        <Layout role="admin" pageClass="admin">
 
             <form>
                 <div className="mb-10">
