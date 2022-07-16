@@ -24,7 +24,7 @@ const Wrapper = ({ children }) => {
 
   return (
     <>
-      {children}
+      <h1>{children}</h1>
     </>
   )
 }

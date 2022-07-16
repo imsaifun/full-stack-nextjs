@@ -1,12 +1,14 @@
 import React from 'react';
-import Layout from '../components/Layout/LayoutAdmin';
+import Wrapper from '../components/auth/wrapper';
 
 const Test = () => {
     return (
         <div>
-            <Layout>
+            
+            
                 
-            </Layout>
+           
+           <Wrapper/>
         </div>
     );
 };

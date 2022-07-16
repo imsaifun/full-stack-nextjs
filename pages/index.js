@@ -1,7 +1,10 @@
 
 import Layout from "../components/Layout/LayoutAdmin";
+import dbConnect from "../lib/dbConnect";
+import getUser from "../lib/getUser";
 
-export default function HomePage() {
+export default function HomePage({user}) {
+    console.log(user);
 
     return (
         <Layout pageClass="front">
@@ -22,9 +25,9 @@ export default function HomePage() {
     );
 }
 
-// export async function getServerSideProps({ req, res }) {
-//   await dbConnect();
-//   const user = await getUser(req, res);
+export async function getServerSideProps({ req, res }) {
+  await dbConnect();
+  const user = await getUser(req, res);
 //   if (!user) {
 //     return {
 //       redirect: {
@@ -34,9 +37,9 @@ export default function HomePage() {
 //       props: {},
 //     };
 //   }
-//   return {
-//     props: {
-//       user,
-//     },
-//   };
-// }
+  return {
+    props: {
+      user,
+    },
+  };
+}

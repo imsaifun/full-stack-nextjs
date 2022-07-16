@@ -1,13 +1,6 @@
-import * as React from "react"
-
-import { getSession } from "next-auth/react"
-
 import axios from "axios"
-import { parseCookies } from "nookies"
 import { useSelector } from "react-redux"
-import Layout from "../../components/Layout/Layout"
-import { loadUser } from "../../redux/action/userAction"
-import store from "../../redux/store"
+import Layout from "../../components/Layout/LayoutAdmin"
 
 const Profile = () => {
   const profile = useSelector((state) => state.profile)
@@ -35,7 +28,7 @@ const Profile = () => {
 
   return (
     <>
-      <Layout>
+      <Layout role="admin" pageClass="admin">
 
       <h1>Profile </h1>
 
@@ -78,20 +71,20 @@ const Profile = () => {
 //     }
 // )
 
-export async function getServerSideProps(req) {
-  const session = await getSession({ req })
-  const cookies = parseCookies()
+// export async function getServerSideProps(req) {
+//   const session = await getSession({ req })
+//   const cookies = parseCookies()
 
-  const user = cookies?.user ? JSON.parse(cookies.user) : session?.user
+//   const user = cookies?.user ? JSON.parse(cookies.user) : session?.user
 
-  await store.dispatch(loadUser(user?.email, user))
+//   await store.dispatch(loadUser(user?.email, user))
 
-  return {
-    props: {
-      session,
-    },
-  }
-}
+//   return {
+//     props: {
+//       session,
+//     },
+//   }
+// }
 
 
 export default Profile

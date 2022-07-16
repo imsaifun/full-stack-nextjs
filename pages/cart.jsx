@@ -8,15 +8,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../components/Layout/LayoutAdmin";
 import OrderDetail from "../components/OrderDetail";
-import dbConnect from "../lib/dbConnect";
-import getUser from "../lib/getUser";
-import { addToCart, reset, decreaseCart, removeFromCart, getTotals, clearCart } from "../redux/cartSlice";
+
+import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart, reset } from "../redux/cartSlice";
 // import getUser from "../lib/getUser";
 // import dbConnect from "../lib/dbConnect";
 
 
 
-const Cart = ({ user }) => {
+const Cart = () => {
     // This values are the props in the UI
     const cart = useSelector((state) => state.cart);
     const [cash, setCash] = useState(false);
@@ -27,7 +26,12 @@ const Cart = ({ user }) => {
     const dispatch = useDispatch();
     const router = useRouter();
 
-    // console.log(cart);
+    const profile = useSelector((state) => state.profile)
+
+    const user = profile.dbUser 
+    // console.log(user);
+
+ 
 
     useEffect(() => {
         dispatch(getTotals());
@@ -241,29 +245,29 @@ const Cart = ({ user }) => {
 
 
 
-            </Layout>
             {cash && <OrderDetail total={cart.total} createOrder={createOrder} user={user} />}
+            </Layout>
         </>
     );
 };
 
-export async function getServerSideProps({ req, res }) {
-    await dbConnect();
-    const user = await getUser(req, res);
-    // if (!user) {
-    //     return {
-    //         redirect: {
-    //             permanent: false,
-    //             destination: "/signin",
-    //         },
-    //         props: {},
-    //     };
-    // }
-    return {
-        props: {
-            user,
-        },
-    };
-}
+// export async function getServerSideProps({ req, res }) {
+//     await dbConnect();
+//     const user = await getUser(req, res);
+//     // if (!user) {
+//     //     return {
+//     //         redirect: {
+//     //             permanent: false,
+//     //             destination: "/signin",
+//     //         },
+//     //         props: {},
+//     //     };
+//     // }
+//     return {
+//         props: {
+//             user,
+//         },
+//     };
+// }
 
 export default Cart;

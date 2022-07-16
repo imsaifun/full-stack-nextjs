@@ -3,7 +3,7 @@ import {
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
 } from "../userTypes"
-import axios from "axios"
+import axios from "axios" 
 
 export const loadUser = (email, user) => async (dispatch) => {
   try {

@@ -1,11 +1,11 @@
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/Layout/LayoutAdmin";
 import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
 
 const Index = ({ orders }) => {
     console.log(orders);
     return (
-        <Layout pageClass="admin">
+        <Layout role="admin" pageClass="admin">
 
 
             <div>

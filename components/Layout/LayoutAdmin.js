@@ -36,6 +36,8 @@ const Layout = ({
             ? session?.user
             : ""
 
+            // console.log(isUser);
+
     useEffect(() => {
         session ? setIsUser(session.user) : setIsUser(user)
 
@@ -49,10 +51,6 @@ const Layout = ({
     // const router = useRouter();
     useEffect(() => {
         setHeight(window.screen.height);
-
-        // if (user) {
-        //   setisLoggedIn(true)
-        // }
         if (!user && role) {
             router.push("/user/login")
         }
@@ -117,7 +115,7 @@ const Layout = ({
                     <>
                         {children}
                     </>
-                ) : (
+                ) : ( 
                     <>
                         <div className="content-body" style={{ minHeight: height - 122 }}>
                             <div className="container">

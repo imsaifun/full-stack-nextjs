@@ -19,7 +19,7 @@ const OrderDetail = ({ total, createOrder, user }) => {
           <input
             placeholder="John Doe"
             type="text"
-            // value={user.name}
+            value={user.name}
           onChange={(e) => setCustomer(e.target.value)}
           />
         </div>

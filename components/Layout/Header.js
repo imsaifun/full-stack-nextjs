@@ -13,14 +13,12 @@ export default function Header({ isUser, logoutHandler }) {
 
 
 
-            <Link href="/" passHref>
+            {/* <Link href="/" passHref>
                 <h3 >
                     AuthApp
                 </h3>
-            </Link>
-            <Link href="/user/profile" passHref>
-                <a className="btn btn-primary">{isUser && isUser.name}</a>
-            </Link>
+            </Link> */}
+
 
 
 
@@ -59,6 +57,10 @@ export default function Header({ isUser, logoutHandler }) {
                                             </Link>
 
                                         </ul>
+
+                                        <Link href="/user/profile" passHref>
+                                            <a>{isUser && isUser.name}</a>
+                                        </Link>
 
                                         {isUser ? (
                                             <>

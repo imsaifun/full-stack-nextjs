@@ -1,14 +1,23 @@
 import Layout from "../../components/Layout/LayoutAdmin";
 import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
+import { useSession } from "next-auth/react";
+import { parseCookies } from "nookies";
 
-const Index = ({ user, orders, products }) => {
-    const myOrder = orders.filter(val => val.customer == user.name);
-    console.log(myOrder);
+const Index = ({ orders, }) => {
+    const cookies = parseCookies()
+    const { data: session } = useSession()
+    
+    const user = cookies?.user
+      ? JSON.parse(cookies.user)
+      : session?.user
+      ? session?.user
+      : ""
+      
+      const myOrder = orders.filter(val => val.customer == user.name);
+    
     return (
         <Layout role="admin" pageClass="admin">
-
-
             <div>
                 <h1>{user.name}</h1>
                 <div>
