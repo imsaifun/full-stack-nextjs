@@ -7,9 +7,9 @@ import { parseCookies } from "nookies"
 import * as React from "react"
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
-import store from "../../redux/store"
-import { loadUser } from "../../redux/action/userAction"
 import Layout from "../../components/Layout/LayoutAdmin"
+import { loadUser } from "../../redux/action/userAction"
+import store from "../../redux/store"
 
 
 
@@ -22,16 +22,16 @@ function Login() {
 
   const { data: session } = useSession()
 
-  useEffect(() => {
-    if (session) {
-      toast.success("Login Success")
-      router.push("/")
-    }
+  // useEffect(() => {
+  //   if (session) {
+  //     toast.success("Login Success")
+  //     router.push("/")
+  //   }
 
-    if (cookies?.user) {
-      router.push("/")
-    }
-  }, [router, session])
+  //   if (cookies?.user) {
+  //     router.push("/")
+  //   }
+  // }, [router, session])
 
   const SubmitHandler = async (e) => {
     e.preventDefault()

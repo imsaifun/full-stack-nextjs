@@ -1,6 +1,6 @@
 import { getSession } from "next-auth/react"
 import Wrapper from "../../components/auth/wrapper"
-import LayoutFront from "../../components/Layout/LayoutAdmin"
+import LayoutFront from "../../components/Layout/Layout"
 const Author = () => {
   return (
     <LayoutFront>

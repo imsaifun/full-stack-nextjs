@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import CartCounter from "../CartCounter";
 // import PageTree from "./RightSidebar";
-function Header({ role, signoutHandler }) {
+function Header({ logoutHandler, isUser }) {
     const [isToggled, setToggled] = useState(false);
     const toggleTrueFalse = () => setToggled(!isToggled);
     // const [openClass, setOpenClass] = useState('');
@@ -60,28 +60,54 @@ function Header({ role, signoutHandler }) {
                                                 <Link href="/products"><a className="nav-link">Products
                                                 </a></Link>
                                             </li>
-                                            <li className="nav-item">
-                                                <Link href="/admin"><a className="nav-link">Dashboard
-                                                </a></Link>
-                                            </li>
+
+
 
                                             <Link href="/cart" passHref>
                                                 <a className="mx-20"><CartCounter /></a>
                                             </Link>
 
+                                            {isUser ? (
+                                                <>
+                                                    <li className="nav-item">
+                                                        <Link href="/admin"><a className="nav-link">Admin
+                                                        </a></Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link href="/user/dashboard"><a className="nav-link">Dashboard
+                                                        </a></Link>
+                                                    </li>
+                                                    <div className="signin-btn">
+                                                        <a className="btn btn-primary" onClick={logoutHandler}>
+                                                            Logout
+                                                        </a>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Link href="/user/login" passHref>
+                                                        <a className="btn btn-primary">Login</a>
+                                                    </Link>
+                                                    <br />
+                                                    <Link href="/user/register" passHref>
+                                                        <a className="btn btn-primary">Register</a>
+                                                    </Link>
+                                                </>
+                                            )}
+
                                         </ul>
                                     </div>
 
-                                    <div className="signin-btn">
+                                    {/* <div className="signin-btn">
 
-                                        {role ?
+                                        {isUser ?
                                             (<a className="btn btn-primary" onClick={signoutHandler}>Sign out</a>)
                                             :
                                             (<Link href="/user/login"><a className="btn btn-primary">Signin</a></Link>)
                                         }
 
 
-                                    </div>
+                                    </div> */}
                                 </nav>
                             </div>
                         </div>

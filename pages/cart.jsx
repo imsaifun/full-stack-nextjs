@@ -6,7 +6,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Layout from "../components/Layout/Layout";
+import Layout from "../components/Layout/LayoutAdmin";
 import OrderDetail from "../components/OrderDetail";
 import dbConnect from "../lib/dbConnect";
 import getUser from "../lib/getUser";

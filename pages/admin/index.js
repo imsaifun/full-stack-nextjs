@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import LayoutAdmin from "../../components/Layout/LayoutAdmin";
+import Layout from "../../components/Layout/LayoutAdmin";
 import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
 import getProduct from "../../lib/getProduct";
@@ -44,7 +44,7 @@ const Index = ({ user, orders, products }) => {
     };
 
     return (
-        <LayoutAdmin pageClass="admin">
+        <Layout role="admin" pageClass="admin">
             <div className="container">
                 <div className="row">
                     <div className="col-xl-12">
@@ -144,7 +144,7 @@ const Index = ({ user, orders, products }) => {
 
                 </div>
             </div>
-        </LayoutAdmin>
+        </Layout>
 
     );
 };

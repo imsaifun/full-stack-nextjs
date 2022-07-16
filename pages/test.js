@@ -1,12 +1,12 @@
 import React from 'react';
-import LayoutAdmin from '../components/Layout/LayoutAdmin';
+import Layout from '../components/Layout/Layout';
 
 const Test = () => {
     return (
         <div>
-            <LayoutAdmin>
+            <Layout>
                 
-            </LayoutAdmin>
+            </Layout>
         </div>
     );
 };
