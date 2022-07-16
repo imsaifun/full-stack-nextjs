@@ -1,4 +1,4 @@
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/Layout/LayoutAdmin";
 import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
 
@@ -6,7 +6,7 @@ const Index = ({ user, orders, products }) => {
     const myOrder = orders.filter(val => val.customer == user.name);
     console.log(myOrder);
     return (
-        <Layout pageClass="admin">
+        <Layout role="admin" pageClass="admin">
 
 
             <div>
