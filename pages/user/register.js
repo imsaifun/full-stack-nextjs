@@ -1,179 +1,63 @@
-import * as React from "react"
-
-import axios from "axios"
-import { getSession, useSession } from "next-auth/react"
 import Link from "next/link"
-import { useState } from "react"
-import { toast } from "react-toastify"
-
-import { useRouter } from "next/router"
-import { parseCookies } from "nookies"
 import Layout from "../../components/Layout/LayoutAdmin"
 import SignupForm from "../../components/SignupForm"
 
-// const theme = createTheme()
-
 function Register() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [conPassword, setConPassword] = useState("")
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const router = useRouter()
-
-    const { data: session } = useSession()
-
-    const cookies = parseCookies
-
-    // useEffect(() => {
-    //   if (session) {
-    //     toast.success("Login Success")
-    //     router.push("/")
-    //   }
-
-    //   if (cookies?.user) {
-    //     router.push("/")
-    //   }
-    // }, [router])
-
-    // const SubmitHandler = async (e) => {
-    //     e.preventDefault()
-
-    //     try {
-    //         if (password !== conPassword) {
-    //             toast.error("passwords do not match!")
-    //             // console.log("passwords do not match")
-    //             return
-    //         }
-
-    //         const user = cookies?.user
-    //             ? JSON.parse(cookies.user)
-    //             : session?.user
-    //                 ? session?.user
-    //                 : ""
-
-    //         console.log(email, password, firstName, lastName)
-
-    //         const config = {
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //         }
-
-    //         const { data } = await axios.post(
-    //             `/api/user/register`,
-    //             { email, password, firstName, lastName },
-    //             config
-    //         )
-
-    //         toast.success(data?.message)
-    //     } catch (error) {
-    //         console.log(error.response)
-    //         toast.error(error.response.data.error)
-    //     }
-    // }
 
     return (
         <>
-        <Layout pageClass={"front"}>
-            <h1>
-                Sign up
-            </h1>
+            <Layout pageClass={"front"}>
+                <div className="authincation section-padding">
+                    <div className="container h-100">
+                        <div className="row justify-content-center h-100 align-items-center">
+                            <div className="col-xl-5 col-md-6">
+                                <div className="mini-logo text-center my-20">
+                                    <Link href="/">
+                                        <a>
+                                            <img src="/images/logo.png" alt="" />
+                                        </a>
+                                    </Link>
+                                    <h4 className="card-title mt-15">
+                                        Sign up to Rekruter
+                                    </h4>
+                                </div>
+                                <div className="auth-form card">
+                                    <div className="card-body">
 
-            <SignupForm/>
-            {/* <form
-                onSubmit={SubmitHandler}
-            >
+                                        <SignupForm />
 
-                <input
-
-                    name="firstName"
-                    required
-
-                    id="firstName"
-
-
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
-
-                <br />
-
-                <input
-                    required
-
-                    id="lastName"
-
-                    name="lastName"
-
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                />
-                <br />
-
-                <input
-                    required
-
-                    id="email"
-
-                    name="email"
-
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-
-                <br />
-                <input
-                    required
-
-                    name="password"
-
-                    type="password"
-                    id="password"
-
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <br />
-
-                <input
-                    
-                    required
-
-                    name="confirm password"
-
-                    type="password"
-                    id="confirm password"
-
-                    value={conPassword}
-                    onChange={(e) => setConPassword(e.target.value)}
-                />
-
-                <br />
-                <button
-                    type="submit"
-                >
-                    Sign Up
-                </button>
-                <br />
-
-                <Link href="/user/login" passHref>
-                    <a> Already have an account? Sign in</a>
-                </Link>
-
-            </form> */}
+                                        <div className="text-center">
+                                            <p className="mt-12 mb-0">
+                                                <Link href="/user/login">
+                                                    <a className="text-primary me-10">
+                                                        Sign in
+                                                    </a>
+                                                </Link>
+                                                to your account
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="privacy-link">
+                                    <Link href="#">
+                                        <a>
+                                            Have an issue with 2-factor
+                                            authentication?
+                                        </a>
+                                    </Link>
+                                    <br />
+                                    <Link href="#">
+                                        <a>Privacy Policy</a>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </Layout>
         </>
     )
 }
 
-// export async function getServerSideProps(context) {
-//     const session = await getSession(context)
 
-//     return {
-//         props: {
-//             session,
-//         },
-//     }
-// }
 export default Register
