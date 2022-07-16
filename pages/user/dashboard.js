@@ -1,8 +1,4 @@
-import { getSession, useSession } from "next-auth/react"
-import { useRouter } from "next/router"
-import { parseCookies } from "nookies"
 import * as React from "react"
-import { useEffect, useState } from "react"
 import Layout from "../../components/Layout/LayoutAdmin"
 
 // const theme = createTheme()
