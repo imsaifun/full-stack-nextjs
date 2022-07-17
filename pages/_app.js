@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "../public/css/style.css";
 import store from "../redux/store";
 import { useEffect, useState } from "react";
+import "swiper/css";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const [loading, setLoading] = useState(false);

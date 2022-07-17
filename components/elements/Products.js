@@ -4,9 +4,8 @@ import { useState } from "react";
 // import EditProduct from "../../components/EditProduct";
 
 const Products = ({ product }) => {
-    const myProduct = product.product
 
-    const [productList, setProductList] = useState(myProduct);
+    const [productList, setProductList] = useState(product);
     // const [productId, setProductId] = useState("");
     // const router = useRouter();
     console.log(productList);
@@ -22,9 +21,9 @@ const Products = ({ product }) => {
             console.log(error);
         }
     };
-    const handleId = async (id) => {
-        setProductId(id)
-    };
+    // const handleId = async (id) => {
+    //     setProductId(id)
+    // };
     return (
         <>
             {productList.map((item, i) => (

@@ -4,9 +4,10 @@ import Products from "../components/elements/Products";
 import Layout from "../components/Layout/LayoutAdmin";
 import dbConnect from "../lib/dbConnect";
 import getProduct from "../lib/getProduct";
+import Testimonial from '../components/elements/Testimonial';
 
 
-export default function HomePage( product ) {
+export default function HomePage( {product} ) {
 
     return (
         <Layout pageClass="front">
@@ -106,6 +107,82 @@ export default function HomePage( product ) {
                 </div>
             </div>
 
+            <div className="portfolio section-padding" data-scroll-index="2">
+                    <div className="container">
+                        <div className="row py-lg-5 justify-content-center">
+                            <div className="col-xl-7">
+                                <div className="section-title text-center">
+                                    <p>Why choose us</p>
+                                    <h2>Why we are the best</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row align-items-center justify-content-between">
+                            <div className="col-xl-7 col-lg-6">
+                                <div className="portfolio_list">
+                                    <div className="row">
+                                        <div className="col-xl-6">
+                                            <div className="d-flex">
+                                                <span className="port-icon"> <i className="la la-bar-chart"></i></span>
+                                                <div className="flex-grow-1">
+                                                    <h4>Fresh food</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-xl-6">
+                                            <div className="d-flex">
+                                                <span className="port-icon"> <i className="la la-calendar-check-o"></i></span>
+                                                <div className="flex-grow-1">
+                                                    <h4>Fast Delivery</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-xl-6">
+                                            <div className="d-flex">
+                                                <span className="port-icon"> <i className="la la-lock"></i></span>
+                                                <div className="flex-grow-1">
+                                                    <h4> Quality Maintain</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-xl-6">
+                                            <div className="d-flex">
+                                                <span className="port-icon"> <i className="la la-mobile"></i></span>
+                                                <div className="flex-grow-1">
+                                                    <h4> 24/7 Service</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-5 col-lg-6">
+                                <div className="portfolio_img">
+                                    <img src="/images/portfolio.png" alt="" className="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
+                <div className="testimonial section-padding">
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-xl-6">
+                                <div className="section-title">
+                                    <h2>What our customer says</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row justify-content-center">
+                            <div className="col-xl-10">
+                                <div className="testimonial-content">
+                                    <Testimonial />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
 
 
         </Layout>

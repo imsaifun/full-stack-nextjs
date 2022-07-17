@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Layout from "../../components/Layout/LayoutAdmin";
 import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
@@ -5,13 +6,13 @@ import getOrder from "../../lib/getOrder";
 const Index = ({ orders }) => {
     console.log(orders);
     return (
-        <Layout role="admin" pageClass="admin">
+        <>
+            <Layout role="admin" pageClass="admin">
 
 
-            <div>
-                <div>
-                    <h1>Orders</h1>
-                    <table>
+                <h1>Orders</h1>
+                <div className="table-responsive">
+                    <table className="table">
                         <tbody>
                             <tr>
                                 <th>Id</th>
@@ -26,7 +27,11 @@ const Index = ({ orders }) => {
                             <tbody key={order._id}>
                                 <tr>
                                     <td>{order._id}...</td>
-                                    <td>{order.customer}</td>
+                                    <td>
+                                        <Link href={`/orders/${order._id}`}>
+                                            <a>{order.customer}</a>
+                                        </Link>
+                                    </td>
                                     <td>${order.total}</td>
                                     <td>
                                         {order.method === 0 ? <span>cash</span> : <span>paid</span>}
@@ -37,8 +42,8 @@ const Index = ({ orders }) => {
                         ))}
                     </table>
                 </div>
-            </div>
-        </Layout>
+            </Layout>
+        </>
 
     );
 };

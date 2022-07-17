@@ -35,6 +35,16 @@ function Sidebar({ signoutHandler }) {
                                 </a>
                             </Link>
                         </li>
+                        <li className={router.pathname == "/orders" ? "active" : ""}>
+                            <Link href="/orders">
+                                <a>
+                                    <span>
+                                        <i className="ri-briefcase-line"></i>
+                                    </span>
+                                    <span className="nav-text">Orders</span>
+                                </a>
+                            </Link>
+                        </li>
                         <li className={router.pathname == "/admin/profile" ? "active" : ""}>
                             <Link href="/admin/profile">
                                 <a>

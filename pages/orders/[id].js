@@ -2,8 +2,8 @@ import Layout from "../../components/Layout/LayoutAdmin";
 import dbConnect from "../../lib/dbConnect";
 import getOrderById from "../../lib/getOrderById";
 
-export default function OrderDetails(order) {
-  console.log(order.order);
+export default function OrderDetails({order}) {
+  console.log(order);
 
 
   return (
@@ -11,11 +11,11 @@ export default function OrderDetails(order) {
       <h1>Order Details</h1>
 
       <p>
-        <strong>Name</strong>: {order.order.customer}
+        <strong>Name</strong>: {order.customer}
         <br />
-        <strong>Address</strong>: {order.order.address}
+        <strong>Address</strong>: {order.address}
         <br />
-        <strong>Price</strong>: {order.order.total}
+        <strong>Price</strong>: {order.total}
 
       </p>
 

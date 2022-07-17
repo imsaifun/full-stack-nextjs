@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/LayoutAdmin";
 import dbConnect from "../../lib/dbConnect";
 import getProduct from "../../lib/getProduct";
 
-export default function ProductSingle(product) {
+export default function ProductSingle({product}) {
 
 
     return (
