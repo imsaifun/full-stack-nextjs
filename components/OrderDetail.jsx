@@ -1,22 +1,12 @@
 import { useState } from "react";
-import { useSession } from "next-auth/react";
-import { parseCookies } from "nookies";
 
-const OrderDetail = ({ total, createOrder }) => {
-  const cookies = parseCookies()
-  const { data: session } = useSession()
 
-  const user = cookies?.user
-    ? JSON.parse(cookies.user)
-    : session?.user
-      ? session?.user
-      : ""
+const OrderDetail = ({ total, createOrder, user }) => {
 
-      
-  const [customer, setCustomer] = useState("");
+  const [customer, setCustomer] = useState(user.name);
   const [address, setAddress] = useState("");
 
-
+console.log(customer);
 
   const handleClick = () => {
     createOrder({ address, customer, total, method: 0 });
@@ -32,7 +22,8 @@ const OrderDetail = ({ total, createOrder }) => {
             placeholder="John Doe"
             type="text"
             value={user.name}
-            onChange={(e) => setCustomer(e.target.value)}
+            readonly
+            onChange={(e) => setCustomer(user.name)}
           />
         </div>
         <div>

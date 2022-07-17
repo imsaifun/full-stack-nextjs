@@ -12,7 +12,8 @@ import OrderDetail from "../components/OrderDetail";
 import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart, reset } from "../redux/cartSlice";
 // import getUser from "../lib/getUser";
 // import dbConnect from "../lib/dbConnect";
-
+import { useSession } from "next-auth/react";
+import { parseCookies } from "nookies";
 
 
 const Cart = () => {
@@ -29,9 +30,20 @@ const Cart = () => {
     // const profile = useSelector((state) => state.profile)
 
     // const user = profile.dbUser 
-    // console.log(user);
+    console.log(cart);
 
- 
+    const cookies = parseCookies()
+    const { data: session } = useSession()
+  
+    const user = cookies?.user
+      ? JSON.parse(cookies.user)
+      : session?.user
+        ? session?.user
+        : ""
+  
+        
+
+
 
     useEffect(() => {
         dispatch(getTotals());
@@ -136,17 +148,19 @@ const Cart = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-xl-9">
+                                <div className="table-responsive">
                                 <table className="table">
                                     <tr>
                                         <th>Product</th>
                                         <th>Name</th>
-                                        <th>Extras</th>
+                                       <th>Extras</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Total</th>
+                                        <th>Action</th>
                                     </tr>
+                                    <tbody>
                                     {cart.products.map((product) => (
-                                        <>
                                             <tr key={product._id}>
                                                 <td>
 
@@ -156,20 +170,21 @@ const Cart = () => {
                                                 <td>
                                                     <span>{product.title}</span>
                                                 </td>
+                                                
                                                 <td>
-                                                    <div>
+                                                   
                                                         {product.extras.map((extra) => (
                                                             <span key={extra._id}>{extra.text}, </span>
                                                         ))}
-                                                    </div>
+                                                    
                                                 </td>
                                                 <td>
                                                     <span>${product.price}</span>
                                                 </td>
                                                 <td>
-                                                    <button onClick={() => handleDecreaseCart(product)} > - </button>
+                                                    <a onClick={() => handleDecreaseCart(product)} > - </a>
                                                     <span>{product.quantity}</span>
-                                                    <button onClick={() => handleIncreaseCart(product)} > + </button>
+                                                    <a onClick={() => handleIncreaseCart(product)} > + </a>
                                                 </td>
                                                 <td>
                                                     <span>
@@ -177,21 +192,15 @@ const Cart = () => {
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <button className="btn btn-danger" onClick={() =>
-                                                        handleRemoveFromCart(
-                                                            product
-                                                        )
-                                                    }
-                                                    >
+                                                    <a className="btn btn-danger" onClick={() => handleRemoveFromCart(product)}>
                                                         Remove
-                                                    </button>
+                                                    </a>
                                                 </td>
                                             </tr>
-                                        </>
-
-
                                     ))}
+                                    </tbody>
                                 </table>
+                                </div>
                                 <button
                                     onClick={() => handleClearCart()} className="btn btn-danger mb-10">
                                     Clear Cart
@@ -239,13 +248,18 @@ const Cart = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className="row">
+                            <div className="col-12">
+                                {cash && <OrderDetail total={cart.total} createOrder={createOrder} user={user} />}
+                            </div>
+                        </div>
 
                     </div>
                 </div>
 
 
 
-            {cash && <OrderDetail total={cart.total} createOrder={createOrder}  />}
+
             </Layout>
         </>
     );

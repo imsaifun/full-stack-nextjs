@@ -8,19 +8,19 @@ const Products = ({ product }) => {
     const [productList, setProductList] = useState(product);
     // const [productId, setProductId] = useState("");
     // const router = useRouter();
-    console.log(productList);
+    // console.log(productList);
 
-    const handleDelete = async (id) => {
+    // const handleDelete = async (id) => {
 
-        // console.log(id);
+    //     // console.log(id);
 
-        try {
-            const res = await axios.delete(`/api/products/${id}`);
-            setProductList(productList.filter((pizza) => pizza._id !== id));
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    //     try {
+    //         const res = await axios.delete(`/api/products/${id}`);
+    //         setProductList(productList.filter((pizza) => pizza._id !== id));
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
     // const handleId = async (id) => {
     //     setProductId(id)
     // };
