@@ -55,13 +55,13 @@ function Header({ logoutHandler, isUser }) {
                                                 <Link href="/products"><a className="nav-link">Pizzza
                                                 </a></Link>
                                             </li>
-                                            
+
                                             <li className="nav-item">
                                                 <Link href="/about"><a className="nav-link">About
                                                 </a>
                                                 </Link>
                                             </li>
-                                            
+
                                             <li className="nav-item">
                                                 <Link href="/contact"><a className="nav-link">Contact
                                                 </a>
@@ -86,10 +86,10 @@ function Header({ logoutHandler, isUser }) {
 
                                     {isUser && (
                                         <>
-                                            <Link href="/cart" passHref>
-                                                <a className="mx-20"><CartCounter /></a>
-                                            </Link>
-                                            <div className="signin-btn">
+                                            <div className="signin-btn d-flex">
+                                                <Link href="/cart" passHref>
+                                                    <a className="mx-20"><CartCounter /></a>
+                                                </Link>
                                                 <a className="btn btn-primary" onClick={logoutHandler}>
                                                     Logout
                                                 </a>
@@ -107,19 +107,6 @@ function Header({ logoutHandler, isUser }) {
                                             </div>
                                         </>
                                     )}
-
-
-
-                                    {/* <div className="signin-btn">
-
-                                        {isUser ?
-                                            (<a className="btn btn-primary" onClick={signoutHandler}>Sign out</a>)
-                                            :
-                                            (<Link href="/user/login"><a className="btn btn-primary">Signin</a></Link>)
-                                        }
-
-
-                                    </div> */}
                                 </nav>
 
 

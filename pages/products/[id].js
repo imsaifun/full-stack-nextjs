@@ -8,17 +8,17 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addToCart } from "../../redux/cartSlice";
 
-export default function ProductDetails(product, user) {
-    const pizza = product.product
-    // console.log(pizza);
+export default function ProductDetails({product}) {
+    // const product = product.product
+    // console.log(product);
 
-    const [price, setPrice] = useState(pizza.prices[0].price);
+    const [price, setPrice] = useState(product.prices[0].price);
     const [size, setSize] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [extras, setExtras] = useState([]);
     const dispatch = useDispatch();
 
-    // console.log(pizza.prices[0]);
+    // console.log(product.prices[0]);
     // console.log(price);
 
     const changePrice = (number) => {
@@ -26,7 +26,7 @@ export default function ProductDetails(product, user) {
     };
 
     const handleSize = (sizeIndex) => {
-        const difference = pizza.prices[sizeIndex].price - pizza.prices[size].price;
+        const difference = product.prices[sizeIndex].price - product.prices[size].price;
         setSize(sizeIndex);
         changePrice(difference);
     };
@@ -44,7 +44,7 @@ export default function ProductDetails(product, user) {
     };
 
     const handleClick = () => {
-        dispatch(addToCart({ ...pizza, extras, price, quantity }));
+        dispatch(addToCart({ ...product, extras, price, quantity }));
     };
 
     return (
@@ -56,16 +56,16 @@ export default function ProductDetails(product, user) {
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-6">
-                            <img src={pizza.img} alt="" className="img-fluid" />
+                            <img src={product.img} alt="" className="img-fluid" />
                         </div>
                         <div className="col-xl-6">
                             <br />
-                            <strong>Name</strong>: {pizza.title}
+                            <strong>Name</strong>: {product.title}
                             <br />
-                            {pizza.rating}
+                            {product.rating}
                             <br />
-                            {/* <strong>Name</strong>: {pizza._id} */}
-                            {pizza.desc} 
+                            {/* <strong>Name</strong>: {product._id} */}
+                            {product.desc} 
 
                             <div onClick={() => handleSize(0)}>
                                 <img src="/images/size.png" width={20} alt="" />
@@ -84,7 +84,7 @@ export default function ProductDetails(product, user) {
                             <br />
                             <br />
                             <div>
-                                {pizza.extraOptions.map((option) => (
+                                {product.extraOptions.map((option) => (
                                     <div key={option._id}>
                                         <input
                                             type="checkbox"

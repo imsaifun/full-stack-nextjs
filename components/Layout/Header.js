@@ -52,40 +52,44 @@ export default function Header({ isUser, logoutHandler }) {
                                                 </a>
                                                 </Link>
                                             </li>
-                                            <Link href="/cart" passHref>
+                                            <li className="nav-item">
+                                                <Link href="/user/profile" passHref>
+                                                    <a>{isUser && isUser.name}</a>
+                                                </Link>
+                                            </li>
+                                            {/* <Link href="/cart" passHref>
                                                 <a className="mx-20"><CartCounter /></a>
-                                            </Link>
+                                            </Link> */}
+
 
                                         </ul>
 
-                                        <Link href="/user/profile" passHref>
-                                            <a>{isUser && isUser.name}</a>
-                                        </Link>
 
-                                        {isUser ? (
-                                            <>
-                                                <div className="signin-btn">
-                                                    <a className="btn btn-primary" onClick={logoutHandler}>
-                                                        Logout
-                                                    </a>
-                                                </div>
-                                            </>
-                                        ) : (
-                                            <>
+                                    </div>
+
+                                    {isUser && (
+                                        <>
+                                            <div className="signin-btn d-flex">
+                                                <Link href="/cart" passHref>
+                                                    <a className="mx-20"><CartCounter /></a>
+                                                </Link>
+                                                <a className="btn btn-primary" onClick={logoutHandler}>
+                                                    Logout
+                                                </a>
+                                            </div>
+                                        </>
+                                    )}
+
+                                    {!isUser && (
+                                        <>
+                                            <div className="signin-btn">
+
                                                 <Link href="/user/login" passHref>
                                                     <a className="btn btn-primary">Login</a>
                                                 </Link>
-                                                <br />
-                                                <Link href="/user/register" passHref>
-                                                    <a className="btn btn-primary">Register</a>
-                                                </Link>
-                                            </>
-                                        )}
-                                    </div>
-
-                                    {/* <div className="signin-btn">
-                    <a className="btn btn-primary" onClick={logoutHandler}>Sign out</a>
-                  </div> */}
+                                            </div>
+                                        </>
+                                    )}
                                 </nav>
                             </div>
                         </div>

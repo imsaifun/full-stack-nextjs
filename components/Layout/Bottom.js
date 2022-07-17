@@ -44,7 +44,7 @@ const Bottom = () => {
                         </div>
                         <div className="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6">
                             <div className="bottom-widget">
-                                <h4 className="widget-title">Company</h4>
+                                <h4 className="widget-title">Hot Menu</h4>
                                 <ul>
                                     <li>
                                         <Link href="/pricing"><a>Pricing</a></Link>
@@ -63,42 +63,22 @@ const Bottom = () => {
                         </div>
                         <div className="col-xl-4 col-lg-4 col-md-8 col-sm-8">
                             <div className="bottom-widget">
-                                <h4 className="widget-title">Employee</h4>
-                                <div className="row">
-                                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                                        <ul>
-                                            <li>
-                                                <Link href="/employee"><a>Employee</a></Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/employee/1"><a>Employee details</a></Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/404"><a>Error</a></Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/"><a>Activity</a></Link>
-                                            </li>
+                                <h4 className="widget-title">Opening Hours</h4>
+                                <ul>
+                                    <li>
+                                        <a>Monday : 09.00am-10.00pm</a>
+                                    </li>
+                                    <li>
+                                        <a>Monday : 09.00am-10.00pm</a>
+                                    </li>
+                                    <li>
+                                        <a>Monday : 09.00am-10.00pm</a>
+                                    </li>
+                                    <li>
+                                        <a>Monday : 09.00am-10.00pm</a>
+                                    </li>
 
-                                        </ul>
-                                    </div>
-                                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                                        <ul>
-                                            <li>
-                                                <Link href="/blog"><a>Blog</a></Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/blog/1"><a>Blog details</a></Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/signin"><a>Signin</a></Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/signup"><a>Signup</a></Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                </ul>
                             </div>
                         </div>
                     </div>
