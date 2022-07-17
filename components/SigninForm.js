@@ -70,7 +70,7 @@ function SigninForm() {
                                 <label className="form-label">Password</label>
                                 <Field
                                     name="password"
-                                    type="text"
+                                    type="password"
                                     className={
                                         "form-control" +
                                         (errors.password && touched.password

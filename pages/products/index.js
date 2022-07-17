@@ -1,7 +1,7 @@
 import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
-import EditProduct from "../../components/EditProduct";
+// import EditProduct from "../../components/EditProduct";
 import Layout from "../../components/Layout/LayoutAdmin";
 import dbConnect from "../../lib/dbConnect";
 import getProduct from "../../lib/getProduct";
@@ -13,7 +13,7 @@ export default function ProductSingle(product, user) {
     const [productList, setProductList] = useState(myProduct);
     const [productId, setProductId] = useState("");
     // const router = useRouter();
-    // console.log(productId);
+    console.log(productList);
 
     const handleDelete = async (id) => {
 
@@ -36,7 +36,7 @@ export default function ProductSingle(product, user) {
                 <div className="container">
                     <div className="row">
                         {productList.map((item, i) => (
-                            <div className="col-xl-4" key={i}>
+                            <div className="col-xl-3" key={i}>
                                 <div className="card">
                                     <div className="card-body">
                                         <Link href={`/products/${item._id}`}>
@@ -47,8 +47,10 @@ export default function ProductSingle(product, user) {
                                             </a>
                                         </Link>
                                         <h4 className="card-title">{item.title}</h4>
-                                        {item.desc}
+                                        {item.rating}
                                         <br />
+                                        {item.prices[0].price}
+                                        {/* <br />
                                         <button className="btn btn-danger mb-10"
                                             onClick={() => handleDelete(item._id)}
                                         >
@@ -58,13 +60,13 @@ export default function ProductSingle(product, user) {
                                             onClick={() => handleId(item._id)}
                                         >
                                             Edit
-                                        </button>
+                                        </button> */}
                                         <br />
                                     </div>
                                 </div>
 
 
-                                {productId === item._id && <EditProduct item={item} />}
+                                {/* {productId === item._id && <EditProduct item={item} />} */}
 
                             </div>
                         ))}

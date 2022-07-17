@@ -63,40 +63,45 @@ function Header({ logoutHandler, isUser }) {
 
 
 
-                                            <Link href="/cart" passHref>
-                                                <a className="mx-20"><CartCounter /></a>
-                                            </Link>
 
-                                            {isUser ? (
+
+                                            {isUser && (
                                                 <>
                                                     <li className="nav-item">
-                                                        <Link href="/admin"><a className="nav-link">Admin
+                                                        <Link href="/admin"><a className="nav-link">Dashboard
                                                         </a></Link>
                                                     </li>
-                                                    <li className="nav-item">
-                                                        <Link href="/user/dashboard"><a className="nav-link">Dashboard
-                                                        </a></Link>
-                                                    </li>
-                                                    <div className="signin-btn">
-                                                        <a className="btn btn-primary" onClick={logoutHandler}>
-                                                            Logout
-                                                        </a>
-                                                    </div>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <Link href="/user/login" passHref>
-                                                        <a className="btn btn-primary">Login</a>
-                                                    </Link>
-                                                    <br />
-                                                    <Link href="/user/register" passHref>
-                                                        <a className="btn btn-primary">Register</a>
-                                                    </Link>
                                                 </>
                                             )}
 
                                         </ul>
                                     </div>
+
+                                    {isUser && (
+                                        <>
+                                            <Link href="/cart" passHref>
+                                                <a className="mx-20"><CartCounter /></a>
+                                            </Link>
+                                            <div className="signin-btn">
+                                                <a className="btn btn-primary" onClick={logoutHandler}>
+                                                    Logout
+                                                </a>
+                                            </div>
+                                        </>
+                                    )}
+
+                                    {!isUser && (
+                                        <>
+                                            <div className="signin-btn">
+
+                                                <Link href="/user/login" passHref>
+                                                    <a className="btn btn-primary">Login</a>
+                                                </Link>
+                                            </div>
+                                        </>
+                                    )}
+
+
 
                                     {/* <div className="signin-btn">
 
@@ -109,6 +114,9 @@ function Header({ logoutHandler, isUser }) {
 
                                     </div> */}
                                 </nav>
+
+
+
                             </div>
                         </div>
                     </div>

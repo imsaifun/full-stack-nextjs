@@ -19,6 +19,10 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false
   },
+  subAdmin: {
+    type: Boolean,
+    default: false
+  },
   resetToken: { type: String },
   update: { type: String },
   validEmail: { type: String, default: "not" },

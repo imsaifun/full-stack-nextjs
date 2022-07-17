@@ -10,7 +10,7 @@ import { addToCart } from "../../redux/cartSlice";
 
 export default function ProductDetails(product, user) {
     const pizza = product.product
-    console.log(pizza);
+    // console.log(pizza);
 
     const [price, setPrice] = useState(pizza.prices[0].price);
     const [size, setSize] = useState(0);
@@ -62,8 +62,10 @@ export default function ProductDetails(product, user) {
                             <br />
                             <strong>Name</strong>: {pizza.title}
                             <br />
+                            {pizza.rating}
                             <br />
                             {/* <strong>Name</strong>: {pizza._id} */}
+                            {pizza.desc} 
 
                             <div onClick={() => handleSize(0)}>
                                 <img src="/images/size.png" width={20} alt="" />
