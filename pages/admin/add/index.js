@@ -10,6 +10,7 @@ export default function ProductForm(user) {
     const [file, setFile] = useState(null);
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState(null);
+    const [rating, setRating] = useState(null);
     const [prices, setPrices] = useState([
         { text: 'small', price: null },
         { text: 'medium', price: null },
@@ -56,6 +57,7 @@ export default function ProductForm(user) {
             await axios.post("/api/products", {
                 title,
                 desc,
+                rating,
                 prices,
                 extraOptions,
                 img: url,
@@ -117,6 +119,16 @@ export default function ProductForm(user) {
                         onChange={(e) => setDesc(e.target.value)}
                         required
                     />
+                </div>
+
+                <div className="mb-10">
+                    <input className="form-control"
+                        type="text"
+                        placeholder="rating"
+                        onChange={(e) => setRating(e.target.value)}
+                        required
+                    />
+
                 </div>
 
                 <div className="mb-10">
