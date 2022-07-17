@@ -47,7 +47,7 @@ const Index = ({ user, orders, products }) => {
         <Layout role="admin" pageClass="admin">
             <div className="container">
                 <div className="row">
-                    <div className="col-xl-12">
+                    <div className="col-xl-6">
                         <div className="card">
                             <div className="card-body">
                                 <div className="table-responsive">
@@ -55,7 +55,7 @@ const Index = ({ user, orders, products }) => {
                                         <tbody>
                                             <tr>
                                                 <th>Image</th>
-                                                <th>Id</th>
+                                                {/* <th>Id</th> */}
                                                 <th>Title</th>
                                                 <th>Price</th>
                                                 <th>Action</th>
@@ -72,7 +72,7 @@ const Index = ({ user, orders, products }) => {
                                                             alt=""
                                                         />
                                                     </td>
-                                                    <td>{product._id}...</td>
+                                                    {/* <td>{product._id}...</td> */}
                                                     <td>{product.title}</td>
                                                     <td>${product.prices[0].price}</td>
                                                     <td>
@@ -92,14 +92,14 @@ const Index = ({ user, orders, products }) => {
                         </div>
 
                     </div>
-                    <div className="col-xl-12">
+                    <div className="col-xl-6">
                         <div className="card">
                             <div className="card-body">
                                 <div className="table-responsive">
                                     <table className="table">
                                         <tbody>
                                             <tr>
-                                                <th>Id</th>
+                                                {/* <th>Id</th> */}
                                                 <th>Customer</th>
                                                 <th>Total</th>
                                                 <th>Payment</th>
@@ -110,7 +110,7 @@ const Index = ({ user, orders, products }) => {
                                         {orderList.map((order) => (
                                             <tbody key={order._id}>
                                                 <tr>
-                                                    <td>{order._id}...</td>
+                                                    {/* <td>{order._id}...</td> */}
                                                     <td>{order.customer}</td>
                                                     <td>${order.total}</td>
                                                     <td>

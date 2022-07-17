@@ -22,7 +22,7 @@ function Login() {
                                         </a>
                                     </Link>
                                     <h4 className="card-title mt-20">
-                                        Sign in to Rekruter
+                                        Sign in to Pitza
                                     </h4>
                                 </div>
                                 <div className="auth-form card">

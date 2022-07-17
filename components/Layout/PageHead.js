@@ -4,7 +4,7 @@ function PageHead({ headTitle }) {
         <>
             <Head>
                 <title>
-                    {headTitle ? headTitle : "Rekruter - Job Board Listing Directory Nextjs Redux Template"}
+                    {headTitle ? headTitle : "Online Pizza ordering and Delivery Application"}
                     
                 </title>
                 <link rel="icon" href="/images/favicon.png" />

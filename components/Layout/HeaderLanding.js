@@ -52,13 +52,20 @@ function Header({ logoutHandler, isUser }) {
                                                 </Link>
                                             </li>
                                             <li className="nav-item">
+                                                <Link href="/products"><a className="nav-link">Pizzza
+                                                </a></Link>
+                                            </li>
+                                            
+                                            <li className="nav-item">
                                                 <Link href="/about"><a className="nav-link">About
                                                 </a>
                                                 </Link>
                                             </li>
+                                            
                                             <li className="nav-item">
-                                                <Link href="/products"><a className="nav-link">Products
-                                                </a></Link>
+                                                <Link href="/contact"><a className="nav-link">Contact
+                                                </a>
+                                                </Link>
                                             </li>
 
 

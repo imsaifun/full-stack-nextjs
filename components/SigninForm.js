@@ -37,7 +37,7 @@ function SigninForm() {
                         toast.success(data.message)
                         cookie.set("token", data?.token)
                         cookie.set("user", JSON.stringify(data?.user))
-                        router.push("/admin")
+                        router.push("/")
                       } catch (error) {
                         toast.error(error.response.data.error)
                       } 

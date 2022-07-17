@@ -18,7 +18,7 @@ function Register() {
                                         </a>
                                     </Link>
                                     <h4 className="card-title mt-15">
-                                        Sign up to Rekruter
+                                        Sign up to Pitza
                                     </h4>
                                 </div>
                                 <div className="auth-form card">
