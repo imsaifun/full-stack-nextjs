@@ -26,9 +26,9 @@ const Cart = () => {
     const dispatch = useDispatch();
     const router = useRouter();
 
-    const profile = useSelector((state) => state.profile)
+    // const profile = useSelector((state) => state.profile)
 
-    const user = profile.dbUser 
+    // const user = profile.dbUser 
     // console.log(user);
 
  
@@ -245,7 +245,7 @@ const Cart = () => {
 
 
 
-            {cash && <OrderDetail total={cart.total} createOrder={createOrder} user={user} />}
+            {cash && <OrderDetail total={cart.total} createOrder={createOrder}  />}
             </Layout>
         </>
     );

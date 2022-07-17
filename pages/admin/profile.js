@@ -17,8 +17,8 @@ const Index = ({ orders, }) => {
       const myOrder = orders.filter(val => val.customer == user.name);
     
     return (
+            <>
         <Layout role="admin" pageClass="admin">
-            <div>
                 <h1>{user.name}</h1>
                 <div>
                     <h1>Orders</h1>
@@ -32,9 +32,9 @@ const Index = ({ orders, }) => {
                                 <th>Status</th>
                             </tr>
                         </tbody>
+                        <tbody>
                         {myOrder.map((order) => (
-                            <tbody key={order._id}>
-                                <tr>
+                                <tr key={order._id}>
                                     <td>{order._id}...</td>
                                     <td>{order.customer}</td>
                                     <td>${order.total}</td>
@@ -49,12 +49,12 @@ const Index = ({ orders, }) => {
                                         {order.status === 4 && "Completed"}
                                     </td>
                                 </tr>
-                            </tbody>
                         ))}
+                        </tbody>
                     </table>
                 </div>
-            </div>
         </Layout>
+            </>
 
     );
 };

@@ -67,18 +67,16 @@ export default function Header({ isUser, logoutHandler }) {
 
                                     </div>
 
-                                    {isUser && (
-                                        <>
-                                            <div className="signin-btn d-flex">
-                                                <Link href="/cart" passHref>
-                                                    <a className="mx-20"><CartCounter /></a>
-                                                </Link>
-                                                <a className="btn btn-primary" onClick={logoutHandler}>
-                                                    Logout
-                                                </a>
-                                            </div>
-                                        </>
-                                    )}
+                                    <div className="signin-btn d-flex">
+                                        <Link href="/cart" passHref>
+                                            <a className="mx-20"><CartCounter /></a>
+                                        </Link>
+                                        {isUser && (
+                                            <a className="btn btn-primary" onClick={logoutHandler}>
+                                                Logout
+                                            </a>
+                                        )}
+                                    </div>
 
                                     {!isUser && (
                                         <>
