@@ -20,7 +20,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 
   return (
     <>
-      {!loading ? (
+      {loading ?  (
+        "Loading"
+      ): (
         <SessionProvider session={session}>
           <Provider store={store}>
             {/* <Layout> */}
@@ -29,9 +31,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
             {/* </Layout> */}
           </Provider>
         </SessionProvider>
-      ) : (
-        "Loading"
-      )}
+      ) 
+      }
     </>
   )
 }
