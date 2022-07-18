@@ -4,24 +4,22 @@ import Layout from "../../components/Layout/LayoutAdmin";
 import dbConnect from "../../lib/dbConnect";
 import getOrder from "../../lib/getOrder";
 
-const Index = ({ orders, }) => {
-    const cookies = parseCookies()
-    const { data: session } = useSession()
-    
-    const user = cookies?.user
-      ? JSON.parse(cookies.user)
-      : session?.user
-      ? session?.user
-      : ""
+import { useSelector } from "react-redux"
 
-      console.log(user);
-      
-      const myOrder = orders.filter(val => val.customer == user.name);
-    
+
+
+const Index = ({ orders, }) => {
+
+
+    const profile = useSelector((state) => state.profile)
+    const { dbUser } = profile
+    const username = dbUser && dbUser.name
+    const myOrder = orders.filter(val => val.customer == username);
+
     return (
-            <>
-        <Layout role="admin" pageClass="admin">
-                <h1>{user.name}</h1>
+        <>
+            <Layout role="admin" pageClass="admin">
+                <h1>{username}</h1>
                 <div>
                     <h1>Orders</h1>
                     <table className="table">
@@ -35,7 +33,7 @@ const Index = ({ orders, }) => {
                             </tr>
                         </tbody>
                         <tbody>
-                        {myOrder.map((order) => (
+                            {myOrder.map((order) => (
                                 <tr key={order._id}>
                                     <td>{order._id}...</td>
                                     <td>{order.customer}</td>
@@ -51,12 +49,12 @@ const Index = ({ orders, }) => {
                                         {order.status === 4 && "Completed"}
                                     </td>
                                 </tr>
-                        ))}
+                            ))}
                         </tbody>
                     </table>
                 </div>
-        </Layout>
-            </>
+            </Layout>
+        </>
 
     );
 };

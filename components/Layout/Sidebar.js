@@ -1,10 +1,17 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux"
 
-function Sidebar({ signoutHandler }) {
+function Sidebar() {
     const router = useRouter();
+    const profile = useSelector((state) => state.profile)
+    const { dbUser } = profile
+
+    const admin = dbUser && dbUser.isAdmin
+    console.log(admin);
     return (
         <>
+            {/* {dbUser.name} */}
             <div className="sidebar">
                 <div className="brand-logo">
                     <Link href="/admin">
@@ -19,9 +26,9 @@ function Sidebar({ signoutHandler }) {
                             <Link href="/admin">
                                 <a>
                                     <span>
-                                        <i className="ri-layout-grid-fill"></i>
+                                        <i class="bi bi-speedometer"></i>
                                     </span>
-                                    <span className="nav-text">Admin</span>
+                                    <span className="nav-text">Dashboard</span>
                                 </a>
                             </Link>
                         </li>
@@ -29,27 +36,29 @@ function Sidebar({ signoutHandler }) {
                             <Link href="/admin/add">
                                 <a>
                                     <span>
-                                        <i className="ri-briefcase-line"></i>
+                                        <i class="bi bi-bag-plus-fill"></i>
                                     </span>
                                     <span className="nav-text">Add</span>
                                 </a>
                             </Link>
                         </li>
-                        <li className={router.pathname == "/orders" ? "active" : ""}>
+
+                        {admin && <li className={router.pathname == "/orders" ? "active" : ""}>
                             <Link href="/orders">
                                 <a>
                                     <span>
-                                        <i className="ri-briefcase-line"></i>
+                                        <i class="bi bi-receipt"></i>
                                     </span>
                                     <span className="nav-text">Orders</span>
                                 </a>
                             </Link>
-                        </li>
+                        </li>}
+
                         <li className={router.pathname == "/admin/profile" ? "active" : ""}>
                             <Link href="/admin/profile">
                                 <a>
                                     <span>
-                                        <i className="ri-heart-line"></i>
+                                        <i className="bi bi-person"></i>
                                     </span>
                                     <span className="nav-text">Profile</span>
                                 </a>
@@ -85,7 +94,7 @@ function Sidebar({ signoutHandler }) {
                                 </a>
                             </Link>
                         </li> */}
-                        <li
+                        {/* <li
                             className={
                                 router.pathname == "/signin"
                                     ? "active"
@@ -99,7 +108,7 @@ function Sidebar({ signoutHandler }) {
                                 </span>
                                 <span className="nav-text">Signout</span>
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
 

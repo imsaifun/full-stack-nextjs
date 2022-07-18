@@ -27,19 +27,21 @@ const Cart = () => {
     const dispatch = useDispatch();
     const router = useRouter();
 
-    // const profile = useSelector((state) => state.profile)
+    
+    const profile = useSelector((state) => state.profile)
+    const { dbUser } = profile
 
-    // const user = profile.dbUser 
-    console.log(cart);
+    const user = dbUser && dbUser
+    console.log(dbUser);
 
-    const cookies = parseCookies()
-    const { data: session } = useSession()
+    // const cookies = parseCookies()
+    // const { data: session } = useSession()
   
-    const user = cookies?.user
-      ? JSON.parse(cookies.user)
-      : session?.user
-        ? session?.user
-        : ""
+    // const user = cookies?.user
+    //   ? JSON.parse(cookies.user)
+    //   : session?.user
+    //     ? session?.user
+    //     : ""
   
         
 

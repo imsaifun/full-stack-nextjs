@@ -10,7 +10,7 @@ dbConnect()
 export default async (req, res) => {
   try {
     if (req.method === "POST") {
-      const { email, password, firstName, lastName } = req.body
+      const { email, password, name } = req.body
 
       // console.log(email, password, firstName, lastName)
 
@@ -24,7 +24,7 @@ export default async (req, res) => {
       const newUser = await new User({
         email: email,
         password: HashedPassword,
-        name: `${firstName} ${lastName}`,
+        name: name
       }).save()
 
       const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET, {
