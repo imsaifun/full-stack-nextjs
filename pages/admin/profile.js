@@ -13,6 +13,8 @@ const Index = ({ orders, }) => {
       : session?.user
       ? session?.user
       : ""
+
+      console.log(user);
       
       const myOrder = orders.filter(val => val.customer == user.name);
     

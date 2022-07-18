@@ -8,9 +8,9 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addToCart } from "../../redux/cartSlice";
 
-export default function ProductDetails({product}) {
+export default function ProductDetails({ product }) {
     // const product = product.product
-    // console.log(product);
+    console.log(product);
 
     const [price, setPrice] = useState(product.prices[0].price);
     const [size, setSize] = useState(0);
@@ -48,74 +48,119 @@ export default function ProductDetails({product}) {
     };
 
     return (
-        <Layout>
+        <Layout pageClass="front">
 
 
-
-            <div className="section-padding">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-xl-6">
-                            <img src={product.img} alt="" className="img-fluid" />
-                        </div>
-                        <div className="col-xl-6">
-                            <br />
-                            <strong>Name</strong>: {product.title}
-                            <br />
-                            {product.rating}
-                            <br />
-                            {/* <strong>Name</strong>: {product._id} */}
-                            {product.desc} 
-
-                            <div onClick={() => handleSize(0)}>
-                                <img src="/images/size.png" width={20} alt="" />
-                                <span>Small</span>
+            <div className="product-details">
+                <div className="section-padding">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-xl-6">
+                                <img src={product.img} alt="" className="img-fluid" />
                             </div>
-                            <br />
-                            <div onClick={() => handleSize(1)}>
-                                <img src="/images/size.png" width={20} alt="" />
-                                <span>Medium</span>
-                            </div>
-                            <br />
-                            <div onClick={() => handleSize(2)}>
-                                <img src="/images/size.png" width={20} alt="" />
-                                <span>Large</span>
-                            </div>
-                            <br />
-                            <br />
-                            <div>
-                                {product.extraOptions.map((option) => (
-                                    <div key={option._id}>
-                                        <input
-                                            type="checkbox"
-                                            id={option.text}
-                                            name={option.text}
-                                            onChange={(e) => handleChange(e, option)}
-                                        />
-                                        <label htmlFor="double">{option.text}</label>
+                            <div className="col-xl-6">
+                                <div className="product-details-content">
+                                    <h3>{product.title}</h3>
+                                    <span className="rating">
+                                        {product.rating == 5 && (
+                                            <>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </>)}
+                                        {product.rating == 4 && (
+                                            <>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star"></i>
+                                            </>)}
+                                        {product.rating == 3 && (
+                                            <>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                            </>)}
+                                        {product.rating == 2 && (
+                                            <>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                            </>)}
+                                        {product.rating == 1 && (
+                                            <>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                            </>)}
+                                        {!product.rating == null}
+                                    </span>
+                                    <p className="desc">
+                                        {product.desc}
+                                    </p>
+
+                                    <div className="product-sizes d-flex">
+                                        <div className="me-20 c-pointer" onClick={() => handleSize(0)}>
+                                            <img src="/images/size.png" width={40} alt="" />
+                                            <span className="h6 ms-10">Small</span>
+                                        </div>
+                                        <div className="me-20 c-pointer" onClick={() => handleSize(1)}>
+                                            <img src="/images/size.png" width={40} alt="" />
+                                            <span className="h6 ms-10">Medium</span>
+                                        </div>
+                                        <div className="me-20 c-pointer" onClick={() => handleSize(2)}>
+                                            <img src="/images/size.png" width={40} alt="" />
+                                            <span className="h6 ms-10">Large</span>
+                                        </div>
                                     </div>
-                                ))}
-                            </div>
 
-                            <br />
-                            <h2>${price}</h2>
 
-                            <br />
-                            <div>
-                                <input
-                                    className="form-control"
-                                    onChange={(e) => setQuantity(e.target.value)}
-                                    type="number"
-                                    defaultValue={1}
-                                />
+
+                                    {product.extraOptions.map((option) => (
+                                        <>
+                                            {option && <h5>Extra Option</h5>}
+                                            <div key={option._id}>
+                                                <input
+                                                    type="checkbox"
+                                                    id={option.text}
+                                                    name={option.text}
+                                                    onChange={(e) => handleChange(e, option)}
+                                                />
+                                                <label htmlFor="double">{option.text}</label>
+                                            </div>
+                                        </>
+                                    ))}
+
+                                    <h3 className="price">${price}</h3>
+                                </div>
+
+
+
                                 <br />
-                                <button className="btn btn-primary mt-20" onClick={handleClick}>Add to Cart</button>
+                                <div>
+                                    <input
+                                        className="form-control"
+                                        onChange={(e) => setQuantity(e.target.value)}
+                                        type="number"
+                                        defaultValue={1}
+                                    />
+                                    <br />
+                                    <button className="btn btn-primary mt-20" onClick={handleClick}>Add to Cart</button>
+                                </div>
                             </div>
                         </div>
+
+
                     </div>
-
-
-
                 </div>
             </div>
         </Layout>

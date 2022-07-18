@@ -5,10 +5,10 @@ import { useState } from "react";
 
 const Products = ({ product }) => {
 
-    const [productList, setProductList] = useState(product);
+    // const [productList, setProductList] = useState(product);
     // const [productId, setProductId] = useState("");
     // const router = useRouter();
-    // console.log(productList);
+    // console.log(product);
 
     // const handleDelete = async (id) => {
 
@@ -26,7 +26,7 @@ const Products = ({ product }) => {
     // };
     return (
         <>
-            {productList.map((item, i) => (
+            {product.map((item, i) => (
                 <div className="col-xl-3" key={i}>
                     <div className="card">
                         <div className="card-body">
@@ -37,10 +37,58 @@ const Products = ({ product }) => {
                                     {/* {item._id} */}
                                 </a>
                             </Link>
-                            <h4 className="card-title">{item.title}</h4>
-                            {item.rating}
+                            <div className="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 className="card-title">{item.title}</h4>
+                                    <span className="rating">
+                                        {item.rating == 5 && (
+                                            <>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </>)}
+                                        {item.rating == 4 && (
+                                            <>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star"></i>
+                                            </>)}
+                                        {item.rating == 3 && (
+                                            <>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                            </>)}
+                                        {item.rating == 2 && (
+                                            <>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                            </>)}
+                                        {item.rating == 1 && (
+                                            <>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                            </>)}
+                                        {!item.rating == null}
+                                    </span>
+                                </div>
+                                <h4>{item.prices[0].price}</h4>
+                            </div>
+
                             <br />
-                            {item.prices[0].price}
+
                             {/* <br />
                                         <button className="btn btn-danger mb-10"
                                             onClick={() => handleDelete(item._id)}
