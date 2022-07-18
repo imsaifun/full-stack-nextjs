@@ -89,23 +89,14 @@ function Header({ logoutHandler, isUser }) {
                                         <Link href="/cart" passHref>
                                             <a className="mx-20"><CartCounter /></a>
                                         </Link>
-                                        {isUser && (
+                                        {isUser ? (
                                             <a className="btn btn-primary" onClick={logoutHandler}>
                                                 Logout
                                             </a>
-                                        )}
+                                        ):(<Link href="/user/login" passHref>
+                                        <a className="btn btn-primary">Login</a>
+                                    </Link>)}
                                     </div>
-
-                                    {!isUser && (
-                                        <>
-                                            <div className="signin-btn">
-
-                                                <Link href="/user/login" passHref>
-                                                    <a className="btn btn-primary">Login</a>
-                                                </Link>
-                                            </div>
-                                        </>
-                                    )}
                                 </nav>
 
 
