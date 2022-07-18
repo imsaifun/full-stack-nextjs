@@ -1,10 +1,10 @@
 
 import Link from "next/link";
 import Products from "../components/elements/Products";
+import Testimonial from '../components/elements/Testimonial';
 import Layout from "../components/Layout/LayoutAdmin";
 import dbConnect from "../lib/dbConnect";
 import getProduct from "../lib/getProduct";
-import Testimonial from '../components/elements/Testimonial';
 
 
 export default function HomePage({ product }) {
@@ -58,41 +58,41 @@ export default function HomePage({ product }) {
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-6">
-                            <div class="single-banner bg-primary">
-                                <img class="bg-img" src="/images/offer/1.png" alt="img" />
-                                <div class="single-banner-details">
+                            <div className="single-banner bg-primary">
+                                <img className="bg-img" src="/images/offer/1.png" alt="img" />
+                                <div className="single-banner-details">
                                     <h2>Special Deliciaus </h2>
                                     <h5>Maxican Pizza Testes Better</h5>
                                     <Link href="/products">
-                                        <a class="btn btn-dark">ORDER NOW</a>
+                                        <a className="btn btn-dark">ORDER NOW</a>
                                     </Link>
                                 </div>
-                                <div class="offer-sticker">
+                                <div className="offer-sticker">
                                     <img src="/images/offer/offer.png" alt="img" />
                                 </div>
                             </div>
                         </div>
                         <div className="col-xl-6">
-                            <div class="single-banner bg-primary">
-                                <img class="bg-img" src="/images/offer/2.png" alt="img" />
-                                <div class="single-banner-details">
+                            <div className="single-banner bg-primary">
+                                <img className="bg-img" src="/images/offer/2.png" alt="img" />
+                                <div className="single-banner-details">
                                     <h3>Enjoy Our Delicious Item</h3>
                                     <Link href="/products">
-                                        <a class="btn btn-dark">ORDER NOW</a>
+                                        <a className="btn btn-dark">ORDER NOW</a>
                                     </Link>
                                 </div>
                             </div>
-                            <div class="single-banner">
-                                <div class="animated-img"><img src="/images/offer/03.png" alt="img" /></div>
-                                <div class="animated-img animated-img-2"><img src="/images/offer/03.png" alt="img" /></div>
-                                <div class="overlay-gradient"></div>
-                                <div class="single-banner-details">
-                                    <h3 class="text-heading">The Fastest In Delivery <span>Food</span></h3>
+                            <div className="single-banner">
+                                <div className="animated-img"><img src="/images/offer/03.png" alt="img" /></div>
+                                <div className="animated-img animated-img-2"><img src="/images/offer/03.png" alt="img" /></div>
+                                <div className="overlay-gradient"></div>
+                                <div className="single-banner-details">
+                                    <h3 className="text-heading">The Fastest In Delivery <span>Food</span></h3>
                                     <Link href="/products">
-                                        <a class="btn btn-primary">ORDER NOW</a>
+                                        <a className="btn btn-primary">ORDER NOW</a>
                                     </Link>
                                 </div>
-                                <img class="bg-img-2" src="/images/offer/3.png" alt="img" />
+                                <img className="bg-img-2" src="/images/offer/3.png" alt="img" />
                             </div>
                         </div>
                     </div>
@@ -184,15 +184,15 @@ export default function HomePage({ product }) {
                 </div>
             </div>
 
-            <div class="interested-join section-padding">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="interested-join-content text-center">
+            <div className="interested-join section-padding">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xl-12">
+                            <div className="interested-join-content text-center">
                                 <h2>You have any questions?</h2>
                                 <p>Hit us up and well get in touch with you.</p>
                                 <Link href="/contact">
-                                    <a class="btn btn-primary">Contact Now</a>
+                                    <a className="btn btn-primary">Contact Now</a>
                                 </Link>
                             </div>
                         </div>

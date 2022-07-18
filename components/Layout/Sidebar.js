@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 
 function Sidebar() {
     const router = useRouter();
@@ -8,7 +8,7 @@ function Sidebar() {
     const { dbUser } = profile
 
     const admin = dbUser && dbUser.isAdmin
-    console.log(admin);
+    // console.log(admin);
     return (
         <>
             {/* {dbUser.name} */}
@@ -22,21 +22,31 @@ function Sidebar() {
                 </div>
                 <div className="menu">
                     <ul>
-                        <li className={router.pathname == "/admin" ? "active" : ""}>
+                        {admin && <li className={router.pathname == "/admin" ? "active" : ""}>
                             <Link href="/admin">
                                 <a>
                                     <span>
-                                        <i class="bi bi-speedometer"></i>
+                                        <i className="bi bi-speedometer"></i>
                                     </span>
                                     <span className="nav-text">Dashboard</span>
                                 </a>
                             </Link>
-                        </li>
+                        </li>}
+                        {!admin && <li className={router.pathname == "/user" ? "active" : ""}>
+                            <Link href="/user">
+                                <a>
+                                    <span>
+                                        <i className="bi bi-speedometer"></i>
+                                    </span>
+                                    <span className="nav-text">Dashboard</span>
+                                </a>
+                            </Link>
+                        </li>}
                         {admin && <li className={router.pathname == "/admin/add" ? "active" : ""}>
                             <Link href="/admin/add">
                                 <a>
                                     <span>
-                                        <i class="bi bi-bag-plus-fill"></i>
+                                        <i className="bi bi-bag-plus-fill"></i>
                                     </span>
                                     <span className="nav-text">Add</span>
                                 </a>
@@ -47,14 +57,14 @@ function Sidebar() {
                             <Link href="/orders">
                                 <a>
                                     <span>
-                                        <i class="bi bi-receipt"></i>
+                                        <i className="bi bi-receipt"></i>
                                     </span>
                                     <span className="nav-text">Orders</span>
                                 </a>
                             </Link>
                         </li>}
 
-                        <li className={router.pathname == "/admin/profile" ? "active" : ""}>
+                        {admin && <li className={router.pathname == "/admin/profile" ? "active" : ""}>
                             <Link href="/admin/profile">
                                 <a>
                                     <span>
@@ -63,7 +73,17 @@ function Sidebar() {
                                     <span className="nav-text">Profile</span>
                                 </a>
                             </Link>
-                        </li>
+                        </li>}
+                        {!admin && <li className={router.pathname == "/user/profile" ? "active" : ""}>
+                            <Link href="/user/profile">
+                                <a>
+                                    <span>
+                                        <i className="bi bi-person"></i>
+                                    </span>
+                                    <span className="nav-text">Profile</span>
+                                </a>
+                            </Link>
+                        </li>}
                         {/* <li
                             className={
                                 router.pathname == "/wallet" ? "active" : ""

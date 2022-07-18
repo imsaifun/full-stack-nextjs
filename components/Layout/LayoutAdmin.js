@@ -52,7 +52,7 @@ const Layout = ({
     useEffect(() => {
         setHeight(window.screen.height);
         if (!user && role) {
-            router.push("/user/login")
+            router.push("/login")
         }
     }, []);
 
@@ -68,7 +68,7 @@ const Layout = ({
         // setisLoggedIn(false)
         setIsUser("")
         // router.reload(window.location.pathname)
-        router.push("/user/login")
+        router.push("/login")
     }
     return (
         <>
@@ -134,8 +134,9 @@ const Layout = ({
                 )}
 
                 {!role ? (<><Bottom /></>) : (null)}
+                {!role ? (<><Footer /></>) : (null)}
 
-                <Footer />
+                
             </div>
 
 

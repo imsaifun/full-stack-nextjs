@@ -64,43 +64,43 @@ export default function ProductDetails({ product }) {
                                     <span className="rating">
                                         {product.rating == 5 && (
                                             <>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
                                             </>)}
                                         {product.rating == 4 && (
                                             <>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star"></i>
                                             </>)}
                                         {product.rating == 3 && (
                                             <>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
                                             </>)}
                                         {product.rating == 2 && (
                                             <>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
                                             </>)}
                                         {product.rating == 1 && (
                                             <>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
                                             </>)}
                                         {!product.rating == null}
                                     </span>

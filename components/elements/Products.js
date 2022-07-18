@@ -1,6 +1,4 @@
-import axios from "axios";
 import Link from "next/link";
-import { useState } from "react";
 // import EditProduct from "../../components/EditProduct";
 
 const Products = ({ product }) => {
@@ -43,43 +41,43 @@ const Products = ({ product }) => {
                                     <span className="rating">
                                         {item.rating == 5 && (
                                             <>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
                                             </>)}
                                         {item.rating == 4 && (
                                             <>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star"></i>
                                             </>)}
                                         {item.rating == 3 && (
                                             <>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
                                             </>)}
                                         {item.rating == 2 && (
                                             <>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
                                             </>)}
                                         {item.rating == 1 && (
                                             <>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
+                                                <i className="bi bi-star-fill"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
+                                                <i className="bi bi-star"></i>
                                             </>)}
                                         {!item.rating == null}
                                     </span>

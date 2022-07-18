@@ -1,24 +1,17 @@
 import Link from "next/link";
 import { useState } from "react";
 import CartCounter from "../CartCounter";
+import { useSelector } from "react-redux"
 // import PageTree from "./RightSidebar";
 function Header({ logoutHandler, isUser }) {
     const [isToggled, setToggled] = useState(false);
     const toggleTrueFalse = () => setToggled(!isToggled);
-    // const [openClass, setOpenClass] = useState('');
 
-    // const handleOpen = () => {
-    //     setOpenClass("open")
-    //     // document.querySelector("body").classList.add("overflow-hidden");
-    // }
+    const profile = useSelector((state) => state.profile)
+    const { dbUser } = profile
 
+    const admin = dbUser && dbUser.isAdmin
 
-    // const handleRemove = () => {
-    //     if (openClass === "open") {
-    //         setOpenClass("")
-    //     }
-    //     // document.querySelector("body").classList.remove("overflow-hidden");
-    // }
     return (
         <>
             <div className="header landing">
@@ -71,10 +64,18 @@ function Header({ logoutHandler, isUser }) {
 
 
 
-                                            {isUser && (
+                                            {isUser && admin && (
                                                 <>
                                                     <li className="nav-item">
                                                         <Link href="/admin"><a className="nav-link">Dashboard
+                                                        </a></Link>
+                                                    </li>
+                                                </>
+                                            )}
+                                            {isUser && !admin && (
+                                                <>
+                                                    <li className="nav-item">
+                                                        <Link href="/user"><a className="nav-link">Dashboard
                                                         </a></Link>
                                                     </li>
                                                 </>
@@ -92,9 +93,9 @@ function Header({ logoutHandler, isUser }) {
                                             <a className="btn btn-primary" onClick={logoutHandler}>
                                                 Logout
                                             </a>
-                                        ):(<Link href="/login" passHref>
-                                        <a className="btn btn-primary">Login</a>
-                                    </Link>)}
+                                        ) : (<Link href="/login" passHref>
+                                            <a className="btn btn-primary">Login</a>
+                                        </Link>)}
                                     </div>
                                 </nav>
 

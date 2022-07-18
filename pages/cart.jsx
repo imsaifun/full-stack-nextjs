@@ -11,9 +11,6 @@ import OrderDetail from "../components/OrderDetail";
 
 import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart, reset } from "../redux/cartSlice";
 // import getUser from "../lib/getUser";
-// import dbConnect from "../lib/dbConnect";
-import { useSession } from "next-auth/react";
-import { parseCookies } from "nookies";
 
 
 const Cart = () => {
