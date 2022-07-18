@@ -1,7 +1,7 @@
 
-import Link from "next/link"
-import CartCounter from "../CartCounter";
+import Link from "next/link";
 import { useState } from "react";
+import CartCounter from "../CartCounter";
 export default function Header({ isUser, logoutHandler }) {
 
     const [isToggled, setToggled] = useState(false);
@@ -53,7 +53,7 @@ export default function Header({ isUser, logoutHandler }) {
                                                 </Link>
                                             </li>
                                             <li className="nav-item">
-                                                <Link href="/user/profile" passHref>
+                                                <Link href="/profile" passHref>
                                                     <a>{isUser && isUser.name}</a>
                                                 </Link>
                                             </li>
@@ -75,7 +75,7 @@ export default function Header({ isUser, logoutHandler }) {
                                             <a className="btn btn-primary" onClick={logoutHandler}>
                                                 Logout
                                             </a>
-                                        ) : (<Link href="/user/login" passHref>
+                                        ) : (<Link href="/login" passHref>
                                             <a className="btn btn-primary">Login</a>
                                         </Link>)}
                                     </div>

@@ -1,4 +1,3 @@
-import { resolveHref } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 import { useState } from "react";
 import CartCounter from "../CartCounter";
@@ -93,7 +92,7 @@ function Header({ logoutHandler, isUser }) {
                                             <a className="btn btn-primary" onClick={logoutHandler}>
                                                 Logout
                                             </a>
-                                        ):(<Link href="/user/login" passHref>
+                                        ):(<Link href="/login" passHref>
                                         <a className="btn btn-primary">Login</a>
                                     </Link>)}
                                     </div>

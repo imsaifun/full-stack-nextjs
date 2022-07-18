@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useSelector } from "react-redux"
-import Layout from "../../components/Layout/LayoutAdmin"
+import Layout from "../components/Layout/LayoutAdmin"
 
 const Profile = () => {
   const profile = useSelector((state) => state.profile)

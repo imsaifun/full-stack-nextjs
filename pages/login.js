@@ -1,6 +1,6 @@
 import Link from "next/link"
-import Layout from "../../components/Layout/LayoutAdmin"
-import SigninForm from "../../components/SigninForm"
+import Layout from "../components/Layout/LayoutAdmin"
+import SigninForm from "../components/SigninForm"
 
 
 
@@ -32,7 +32,7 @@ function Login() {
 
                                         <p className="mt-15 mb-0">
                                             Don't have an account?
-                                            <Link href="/user/register">
+                                            <Link href="/register">
                                                 <a className="text-primary">Sign up</a>
                                             </Link>
                                         </p>

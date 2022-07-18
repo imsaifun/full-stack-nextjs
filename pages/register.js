@@ -1,6 +1,6 @@
 import Link from "next/link"
-import Layout from "../../components/Layout/LayoutAdmin"
-import SignupForm from "../../components/SignupForm"
+import Layout from "../components/Layout/LayoutAdmin"
+import SignupForm from "../components/SignupForm"
 
 function Register() {
 
@@ -28,7 +28,7 @@ function Register() {
 
                                         <div className="text-center">
                                             <p className="mt-12 mb-0">
-                                                <Link href="/user/login">
+                                                <Link href="/login">
                                                     <a className="text-primary me-10">
                                                         Sign in
                                                     </a>

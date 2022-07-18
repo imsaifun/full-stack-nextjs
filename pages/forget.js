@@ -56,12 +56,12 @@ export default function SignIn() {
                 Submit
               </button>
               <br />
-                  <Link href="/user/login" passHref>
+                  <Link href="/login" passHref>
                     Have an account ? Login
                   </Link>
                   <br />
                   
-                  <Link href="/user/register" passHref>
+                  <Link href="/register" passHref>
                     Dont have an account? Sign Up
                   </Link>
           </form>
