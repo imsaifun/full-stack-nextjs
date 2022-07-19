@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 
 import { useState } from "react";
 import { addToCart } from "../../redux/cartSlice";
+import Link from "next/link";
 
 export default function ProductDetails({ product }) {
     // const product = product.product
@@ -17,7 +18,8 @@ export default function ProductDetails({ product }) {
     const [quantity, setQuantity] = useState(1);
     const [extras, setExtras] = useState([]);
     const dispatch = useDispatch();
-
+    
+    // const [open, setOpen] = useState(false);
     // console.log(product.prices[0]);
     // console.log(price);
 
@@ -44,6 +46,7 @@ export default function ProductDetails({ product }) {
     };
 
     const handleClick = () => {
+        setOpen(true)
         dispatch(addToCart({ ...product, extras, price, quantity }));
     };
 
@@ -155,6 +158,10 @@ export default function ProductDetails({ product }) {
                                     />
                                     <br />
                                     <button className="btn btn-primary mt-20" onClick={handleClick}>Add to Cart</button>
+                                    <br />
+                                    {/* {open && <Link href="/cart">
+                                    <a className="btn btn-info mt-20">Checkut</a>                                    
+                                    </Link>} */}
                                 </div>
                             </div>
                         </div>

@@ -1,10 +1,11 @@
 import Link from "next/link";
-// import EditProduct from "../../components/EditProduct";
+import { useState } from "react";
+import EditProduct from "../../components/EditProduct";
 
 const Products = ({ product }) => {
 
     // const [productList, setProductList] = useState(product);
-    // const [productId, setProductId] = useState("");
+    const [productId, setProductId] = useState("");
     // const router = useRouter();
     // console.log(product);
 
@@ -19,9 +20,9 @@ const Products = ({ product }) => {
     //         console.log(error);
     //     }
     // };
-    // const handleId = async (id) => {
-    //     setProductId(id)
-    // };
+    const handleId = async (id) => {
+        setProductId(id)
+    };
     return (
         <>
             {product.map((item, i) => (
@@ -85,25 +86,25 @@ const Products = ({ product }) => {
                                 <h4>{item.prices[0].price}</h4>
                             </div>
 
-                            <br />
-
                             {/* <br />
+
+                            <br />
                                         <button className="btn btn-danger mb-10"
                                             onClick={() => handleDelete(item._id)}
                                         >
                                             Delete
-                                        </button>
+                                        </button> */}
                                         <button className="btn btn-danger mb-10"
                                             onClick={() => handleId(item._id)}
                                         >
                                             Edit
-                                        </button> */}
-                            <br />
+                                        </button>
+                            {/* <br /> */}
                         </div>
                     </div>
 
 
-                    {/* {productId === item._id && <EditProduct item={item} />} */}
+                    {productId === item._id && <EditProduct item={item} />}
 
                 </div>
             ))}

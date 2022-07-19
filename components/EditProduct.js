@@ -1,45 +1,69 @@
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
-export default function EditProduct(item) {
-  const abc = item.item
-  console.log(abc);
-
-  const [updateTitle, setUpdateTitle] = useState({
-    title: abc.title,
+export default function EditProduct({ item }) {
+  const router = useRouter();
+  const [updateData, setUpdataData] = useState({
+    title: item.title,
+    desc: item.desc,
+    rating: item.rating
   });
 
-  const inputHandler = (e) => {
-    setUpdateTitle({
-      ...updateTitle,
-      title: e.target.value
-    });
+  const { title, desc, rating } = updateData;
+
+  const onInputChange = (e) => {
+    // e.preventDefault();
+    setUpdataData({ ...updateData, [e.target.name]: e.target.value });
   };
 
   const handleEdit = async (id) => {
     // e.preventDefault();
     try {
-      await axios.put(`/api/products/${id}`, updateTitle);
-
+      await axios.put(`/api/products/${id}`, updateData);
+      toast.success("Update success")
+      // router.push(`/products/${id}`)
     } catch (error) {
       console.log(error);
     }
   };
 
+
   return (
     <>
 
-      <form>
+      <form onSubmit={event => {
+        event.preventDefault();
+      }}>
         <input
-          onChange={inputHandler}
-          // value={abc.title}
+          onChange={(e) => onInputChange(e)}
+          value={title}
           name="title"
           type="text"
-          placeholder="title"
+          required
+          // placeholder="title"
+          className="form-control"
         />
-        {/* <button onClick={handleEdit}>Submit</button> */}
+        <textarea
+          className="form-control"
+          name="desc"
+          type="text"
+          // placeholder="Desc"
+          value={desc}
+          onChange={(e) => onInputChange(e)}
+        // required
+        />
+        <input className="form-control"
+          type="text"
+          name="rating"
+          // placeholder="rating"
+          value={rating}
+          onChange={(e) => onInputChange(e)}
+        // required
+        />
         <button
-          onClick={() => handleEdit(abc._id)}
+          onClick={() => handleEdit(item._id)}
         >Submit</button>
       </form>
 
