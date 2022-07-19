@@ -42,8 +42,8 @@ function Sidebar() {
                                 </a>
                             </Link>
                         </li>}
-                        {admin && <li className={router.pathname == "/admin/add" ? "active" : ""}>
-                            <Link href="/admin/add">
+                        {admin && <li className={router.pathname == "/admin/products/add" ? "active" : ""}>
+                            <Link href="/admin/products/add">
                                 <a>
                                     <span>
                                         <i className="bi bi-bag-plus-fill"></i>

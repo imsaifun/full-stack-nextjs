@@ -23,7 +23,7 @@ export default function EditProduct({ item }) {
     try {
       await axios.put(`/api/products/${id}`, updateData);
       toast.success("Update success")
-      // router.push(`/products/${id}`)
+      router.replace(`/admin/products/`)
     } catch (error) {
       console.log(error);
     }

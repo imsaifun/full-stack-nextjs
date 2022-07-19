@@ -47,52 +47,7 @@ const Index = ({ user, orders, products }) => {
         <Layout role="admin" pageClass="admin">
             <div className="container">
                 <div className="row">
-                    <div className="col-xl-6">
-                        <div className="card">
-                            <div className="card-body">
-                                <div className="table-responsive">
-                                    <table className="table">
-                                        <tbody>
-                                            <tr>
-                                                <th>Image</th>
-                                                {/* <th>Id</th> */}
-                                                <th>Title</th>
-                                                <th>Price</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tbody>
-                                        <tbody>
-                                            {pizzaList.map((product) => (
-                                                <tr key={product._id}>
-                                                    <td>
-                                                        <img
-                                                            src={product.img}
-                                                            width={50}
-                                                            height={50}
-                                                            alt=""
-                                                        />
-                                                    </td>
-                                                    {/* <td>{product._id}...</td> */}
-                                                    <td>{product.title}</td>
-                                                    <td>${product.prices[0].price}</td>
-                                                    <td>
-                                                        <button className="btn btn-info me-20">Edit</button>
-                                                        <button className="btn btn-secondary"
-                                                            onClick={() => handleDelete(product._id)}
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className="col-xl-6">
+                    <div className="col-xl-12">
                         <div className="card">
                             <div className="card-body">
                                 <div className="table-responsive">
