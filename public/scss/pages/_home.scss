@@ -1,3 +1,57 @@
+.intro {
+	position: relative;
+	z-index: 2;
+	&::after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0%;
+		left: 0%;
+		background: url("/images/intro/bg-img.png");
+		background-size: cover;
+		background-position: center;
+		z-index: -1;
+	}
+
+    .intro-content {
+        h6{
+            background: $white;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+		h2 {
+			font-size: 3.5rem;
+			font-weight: 700;
+			line-height: 1.3;
+			margin-bottom: 30px;
+            color: $white;
+		}
+		p {
+			font-size: 1.125rem;
+			// color: $text-muted;
+             color: $white;
+		}
+		.intro-btn {
+			margin-bottom: 50px;
+			a {
+				margin-right: 20px;
+				min-width: 150px;
+				font-weight: 600;
+				font-size: 16px;
+				padding: 15px 30px;
+                margin-top: 30px;
+                color: $dark;
+                background: $white;
+                border-radius: 100px;
+                display: inline-block;
+			}
+		}
+	}
+}
+
 .single-banner {
 	// background: $primary;
 	background-size: 100% 100%;
@@ -157,9 +211,9 @@
 	box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, 0.05);
 	border-radius: 5px;
 	position: relative;
-  .custom-nav{
-    z-index: 999;
-  }
+	.custom-nav {
+		z-index: 999;
+	}
 
 	.custom_prev {
 		position: absolute;

@@ -22,7 +22,7 @@ function Header({ logoutHandler, isUser }) {
                                 <nav className="navbar navbar-expand-lg navbar-light">
                                     <div className="brand-logo">
                                         <Link href="/"><a>
-                                            <img src="/images/logo.png" alt="" className="logo-primary" />
+                                            <img src="/images/logow.png" alt="" className="logo-primary" />
                                         </a></Link>
                                     </div>
                                     {/* <div className="search">

@@ -12,11 +12,11 @@ export default function HomePage({ product }) {
     return (
         <Layout pageClass="front">
 
-            <div className="intro section-padding bg-light" id="intro">
+            <div className="intro section-padding bg-primary" id="intro">
                 <div className="container">
                     <div className="row align-items-center justify-content-between">
                         <div className="col-xl-5 col-md-6 py-md-30">
-                            <div className="demo-content my-30">
+                            <div className="intro-content my-30">
                                 <h6>Free Home Delivery 24 Hours</h6>
                                 <h2>
                                     The Fastest Delivery to your Favourite Food
@@ -28,9 +28,9 @@ export default function HomePage({ product }) {
 
                                 <div className="intro-btn mt-5">
                                     <Link href="/products">
-                                        <a className="btn btn-primary">
+                                        <a>
                                             Order Now
-                                            <i className="bi bi-arrow-right"></i>
+                                            <i className="ms-20 bi bi-cart-fill"></i>
                                         </a>
                                     </Link>
                                     {/* <Link href="/upload">
