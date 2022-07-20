@@ -18,7 +18,7 @@ const Cart = () => {
     // This values are the props in the UI
     const cart = useSelector((state) => state.cart);
     const [cash, setCash] = useState(false);
-    const [open, setOpen] = useState(false);
+   
     const amount = cart.total;
     const currency = "USD";
     const style = { "layout": "vertical" };

@@ -30,7 +30,7 @@ export default function ProductSingle({ product }) {
     };
 
     return (
-        <Layout pageClass={"front"} role="admin">
+        <Layout pageClass={"admin"} role="admin">
             <div className="section-padding">
                 <div className="container">
                     <div className="row">
@@ -97,12 +97,12 @@ export default function ProductSingle({ product }) {
 
                                         
                                         
-                                        <button className="btn btn-danger mb-10"
+                                        <button className="btn btn-danger mb-10 me-30"
                                             onClick={() => handleDelete(item._id)}
                                         >
                                             Delete
                                         </button>
-                                        <button className="btn btn-danger mb-10"
+                                        <button className="btn btn-warning mb-10"
                                             onClick={() => handleId(item._id)}
                                         >
                                             Edit
@@ -112,7 +112,7 @@ export default function ProductSingle({ product }) {
                                 </div>
 
 
-                                {productId === item._id && <EditProduct item={item} />}
+                                {productId === item._id && <EditProduct item={item} productId={productId}/>}
 
                             </div>
                         ))}

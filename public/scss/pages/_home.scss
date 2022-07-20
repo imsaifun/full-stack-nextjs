@@ -323,7 +323,7 @@
 	}
 }
 
-.order-modal {
+.order-modal, .edit-modal {
 	position: fixed;
 	left: 0;
 	right: 0;
@@ -348,7 +348,7 @@
 		background-position: center;
 		z-index: -1;
 	}
-	.order-modal-content {
+	.order-modal-content,.edit-modal-content {
 		padding: 30px;
 		background: #fff;
 		max-width: 500px;

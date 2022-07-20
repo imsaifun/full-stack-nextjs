@@ -63062,7 +63062,7 @@ button:hover, button:focus, button:active,
   padding: 5px 0px;
 }
 
-.order-modal {
+.order-modal, .edit-modal {
   position: fixed;
   left: 0;
   right: 0;
@@ -63075,7 +63075,7 @@ button:hover, button:focus, button:active,
   align-items: center;
   z-index: 999;
 }
-.order-modal::after {
+.order-modal::after, .edit-modal::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -63088,7 +63088,7 @@ button:hover, button:focus, button:active,
   background-position: center;
   z-index: -1;
 }
-.order-modal .order-modal-content {
+.order-modal .order-modal-content, .order-modal .edit-modal-content, .edit-modal .order-modal-content, .edit-modal .edit-modal-content {
   padding: 30px;
   background: #fff;
   max-width: 500px;
