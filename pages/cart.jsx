@@ -30,7 +30,7 @@ const Cart = () => {
     const { dbUser } = profile
 
     const user = dbUser && dbUser
-    console.log(cart);
+    console.log(user);
 
     // const cookies = parseCookies()
     // const { data: session } = useSession()
@@ -61,6 +61,9 @@ const Cart = () => {
     const handleIncreaseCart = (product) => {
         dispatch(addToCart(product));
     }
+    const handleCash = () => {
+        setCash(false)
+    }
 
     const handleClearCart = () => {
         dispatch(clearCart());
@@ -75,6 +78,7 @@ const Cart = () => {
                 dispatch(reset());
                 router.push(`/orders/${res.data.data._id}`);
             }
+            
         } catch (err) {
             console.log(err);
         }
@@ -155,59 +159,62 @@ const Cart = () => {
                         {cart.quantity &&
                             <div className="row">
                                 <div className="col-xl-9">
-
-                                    <div className="table-responsive">
-                                        <table className="table">
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>Name</th>
-                                                <th>Extras</th>
-                                                <th>Price</th>
-                                                <th>Quantity</th>
-                                                <th>Total</th>
-                                                <th>Action</th>
-                                            </tr>
-                                            <tbody>
-                                                {cart.products.map((product) => (
-                                                    <tr key={product._id}>
-                                                        <td>
-
-                                                            <img src={product.img} alt="" width={100} />
-
-                                                        </td>
-                                                        <td>
-                                                            <span>{product.title}</span>
-                                                        </td>
-
-                                                        <td>
-
-                                                            {product.extras.map((extra) => (
-                                                                <span key={extra._id}>{extra.text}, </span>
-                                                            ))}
-
-                                                        </td>
-                                                        <td>
-                                                            <span>${product.price}</span>
-                                                        </td>
-                                                        <td>
-                                                            <a onClick={() => handleDecreaseCart(product)} > - </a>
-                                                            <span>{product.quantity}</span>
-                                                            <a onClick={() => handleIncreaseCart(product)} > + </a>
-                                                        </td>
-                                                        <td>
-                                                            <span>
-                                                                ${product.price * product.quantity}
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <a className="btn btn-danger" onClick={() => handleRemoveFromCart(product)}>
-                                                                Remove
-                                                            </a>
-                                                        </td>
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <div className="table-responsive">
+                                                <table className="table">
+                                                    <tr>
+                                                        <th>Product</th>
+                                                        <th>Name</th>
+                                                        <th>Extras</th>
+                                                        <th>Price</th>
+                                                        <th>Quantity</th>
+                                                        <th>Total</th>
+                                                        <th>Action</th>
                                                     </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
+                                                    <tbody>
+                                                        {cart.products.map((product) => (
+                                                            <tr key={product._id}>
+                                                                <td>
+
+                                                                    <img src={product.img} alt="" width={100} />
+
+                                                                </td>
+                                                                <td>
+                                                                    <span>{product.title}</span>
+                                                                </td>
+
+                                                                <td>
+
+                                                                    {product.extras.map((extra) => (
+                                                                        <span key={extra._id}>{extra.text}, </span>
+                                                                    ))}
+
+                                                                </td>
+                                                                <td>
+                                                                    <span>${product.price}</span>
+                                                                </td>
+                                                                <td>
+                                                                    <a onClick={() => handleDecreaseCart(product)} > - </a>
+                                                                    <span>{product.quantity}</span>
+                                                                    <a onClick={() => handleIncreaseCart(product)} > + </a>
+                                                                </td>
+                                                                <td>
+                                                                    <span>
+                                                                        ${product.price * product.quantity}
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <a className="btn btn-danger" onClick={() => handleRemoveFromCart(product)}>
+                                                                        Remove
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                     <button
                                         onClick={() => handleClearCart()} className="btn btn-danger mb-10">
@@ -215,23 +222,25 @@ const Cart = () => {
                                     </button>
                                 </div>
                                 <div className="col-xl-3">
-                                    <h4 className="card-title">CART TOTAL</h4>
                                     <div className="card">
-                                        <div className="card-body">
-                                            <div>
-                                                <strong>Subtotal:</strong>${cart.total}
-                                            </div>
-                                            <div>
-                                                <strong>Discount:</strong>$0.00
-                                            </div>
-                                            <div>
-                                                <strong>Total:</strong>${cart.total}
-                                            </div>
-                                            {open ? (
+                                        <h4 className="card-title">CART TOTAL</h4>
+                                        <div className="card-body cart-total">
+                                            <ul>
+                                                <li>
+                                                    <strong>Subtotal:</strong>${cart.total}
+                                                </li>
+                                                <li>
+                                                    <strong>Discount:</strong>$0.00
+                                                </li>
+                                                <li>
+                                                    <strong>Total:</strong>${cart.total}
+                                                </li>
+                                            </ul>
+                                            {user ? (
                                                 <div>
                                                     <button
                                                         onClick={() => setCash(true)}
-                                                        className="btn btn-primary mb-10"
+                                                        className="btn btn-primary mt-20 mb-10 w-100"
                                                     >
                                                         CASH ON DELIVERY
                                                     </button>
@@ -248,9 +257,11 @@ const Cart = () => {
                                                     </PayPalScriptProvider>
                                                 </div>
                                             ) : (
-                                                <button onClick={() => setOpen(true)} className="btn btn-primary mb-10">
-                                                    CHECKOUT NOW!
-                                                </button>
+                                                <Link href="/login">
+                                                    <a className="btn btn-success w-100 mt-20">
+                                                        Login
+                                                    </a>
+                                                </Link>
                                             )}
                                         </div>
                                     </div>
@@ -270,15 +281,11 @@ const Cart = () => {
                                 </div>
                             </div>
                         </>}
-                        <div className="row">
-                            <div className="col-12">
-                                {cash && <OrderDetail total={cart.total} createOrder={createOrder} user={user} />}
-                            </div>
-                        </div>
 
                     </div>
                 </div>
 
+                                {cash && user && <OrderDetail total={cart.total} createOrder={createOrder} user={user} handleCash={handleCash} />}
 
 
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-const OrderDetail = ({ total, createOrder, user }) => {
+const OrderDetail = ({ total, createOrder, user, handleCash }) => {
 
     const [customer, setCustomer] = useState("");
     const [address, setAddress] = useState("");
@@ -13,42 +13,48 @@ const OrderDetail = ({ total, createOrder, user }) => {
     };
 
     return (
-        <div>
-            <div>
-                <h1>You will pay $12 after delivery.</h1>
-                <div>
-                    <label>Name Surname</label>
-                    <input
-                        placeholder="John Doe"
-                        type="text"
-                        value={user.name}
-                        readonly
-                        onChange={(e) => setCustomer(user.name)}
-                    />
-                </div>
-                <div>
-                    <label>Phone Number</label>
-                    <input
-                        type="text"
-                        placeholder="+1 234 567 89"
+        <>
+            <div className="order-modal">
+                <div className="order-modal-content">
 
-                    />
-                </div>
-                <div>
-                    <label>Address</label>
-                    <textarea
-                        rows={5}
-                        placeholder="Elton St. 505 NY"
-                        type="text"
+                    <h4 className="card-title mb-20">You will pay ${total} after delivery.</h4>
+                    <div className="mb-20">
+                        <label className="form-label">Name</label>
+                        <input
+                            className="form-control"
+                            placeholder="John Doe"
+                            type="text"
+                            value={user.name}
+                            readonly
+                            onChange={(e) => setCustomer(user.name)}
+                        />
+                    </div>
+                    <div className="mb-20">
+                        <label className="form-label">Phone Number</label>
+                        <input
+                            className="form-control"
+                            type="text"
+                            placeholder="+1 234 567 89"
+                        />
+                    </div>
+                    <div className="mb-20">
+                        <label className="form-label">Address</label>
+                        <textarea
+                            className="form-control"
+                            rows={5}
+                            placeholder="Elton St. 505 NY"
+                            type="text"
 
-                        onChange={(e) => setAddress(e.target.value)}
-                    />
+                            onChange={(e) => setAddress(e.target.value)}
+                        />
+                    </div>
+                    <button className="btn btn-primary" onClick={handleClick}>
+                        Order Now
+                    </button>
+                    <a className="text-danger ms-30" onClick={handleCash}>Cancel</a>
                 </div>
-                <button onClick={handleClick}>
-                    Order
-                </button>
             </div>
-        </div>
+        </>
     );
 };
 
