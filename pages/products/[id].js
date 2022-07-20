@@ -46,7 +46,7 @@ export default function ProductDetails({ product }) {
     };
 
     const handleClick = () => {
-        setOpen(true)
+        // setOpen(true)
         dispatch(addToCart({ ...product, extras, price, quantity }));
     };
 
