@@ -5,7 +5,12 @@ export default function About() {
 
 
   return (
-    <Layout pageClass="front">
+    <Layout   pageClass={"front"}
+    headTitle={"Contact"}
+    pageTitle={"Contact"}
+    pageTitleSub={"Welcome Contact Page"}
+    parent={"Home"}
+    child={"Contact"}>
 
 
       <div className="about-one section-padding">

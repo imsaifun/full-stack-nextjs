@@ -109,7 +109,7 @@ export default function HomePage({ product }) {
                 </div>
             </div>
 
-            <div className="why-choose section-padding" data-scroll-index="2">
+            <div className="why-choose section-padding">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-xl-7">
@@ -120,54 +120,52 @@ export default function HomePage({ product }) {
                         </div>
                     </div>
                     <div className="row align-items-center justify-content-between">
-                        <div className="col-xl-7 col-lg-6">
-                            <div className="why-choose_list">
+                        <div className="col-xl-5">
                                 <div className="row">
                                     <div className="col-xl-6">
-                                        <div className="d-flex">
-                                            <span className="port-icon"> <i className="la la-bar-chart"></i></span>
+                                        <div className="why-choose-content">
+                                             <i class="bi bi-flower1"></i>
                                             <div className="flex-grow-1">
                                                 <h4>Fresh food</h4>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-xl-6">
-                                        <div className="d-flex">
-                                            <span className="port-icon"> <i className="la la-calendar-check-o"></i></span>
+                                        <div className="why-choose-content">
+                                             <i class="bi bi-truck"></i>
                                             <div className="flex-grow-1">
                                                 <h4>Fast Delivery</h4>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-xl-6">
-                                        <div className="d-flex">
-                                            <span className="port-icon"> <i className="la la-lock"></i></span>
+                                        <div className="why-choose-content">
+                                             <i class="bi bi-hand-thumbs-up-fill"></i>
                                             <div className="flex-grow-1">
                                                 <h4> Quality Maintain</h4>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-xl-6">
-                                        <div className="d-flex">
-                                            <span className="port-icon"> <i className="la la-mobile"></i></span>
+                                        <div className="why-choose-content">
+                                             <i class="bi bi-headset"></i>
                                             <div className="flex-grow-1">
                                                 <h4> 24/7 Service</h4>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
-                        <div className="col-xl-5 col-lg-6">
+                        <div className="col-xl-6">
                             <div className="why-choose_img">
-                                <img src="/images/portfolio.png" alt="" className="img-fluid" />
+                                <img src="/images/pizza.jpg" alt="" className="img-fluid" />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="testimonial section-padding">
+            <div className="testimonial section-padding bg-light">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-xl-6">
@@ -177,7 +175,7 @@ export default function HomePage({ product }) {
                         </div>
                     </div>
                     <div className="row justify-content-center">
-                        <div className="col-xl-10">
+                        <div className="col-xl-8">
                             <div className="testimonial-content">
                                 <Testimonial />
                             </div>

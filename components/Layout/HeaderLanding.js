@@ -44,7 +44,7 @@ function Header({ logoutHandler, isUser }) {
                                                 </Link>
                                             </li>
                                             <li className="nav-item">
-                                                <Link href="/products"><a className="nav-link">Pizzza
+                                                <Link href="/products"><a className="nav-link">Pizza
                                                 </a></Link>
                                             </li>
 

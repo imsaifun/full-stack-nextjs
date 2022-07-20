@@ -4,7 +4,13 @@ export default function About() {
 
 
     return (
-        <Layout pageClass="front">
+        <Layout 
+        pageClass={"front"}
+        headTitle={"Contact"}
+        pageTitle={"Contact"}
+        pageTitleSub={"Welcome Contact Page"}
+        parent={"Home"}
+        child={"Contact"}>
 
 
             <div className="features section-padding bg-light" data-scroll-index="2">

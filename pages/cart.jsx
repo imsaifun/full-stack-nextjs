@@ -140,7 +140,12 @@ const Cart = () => {
 
     return (
         <>
-            <Layout pageClass="front">
+            <Layout   pageClass={"front"}
+        headTitle={"Contact"}
+        pageTitle={"Contact"}
+        pageTitleSub={"Welcome Contact Page"}
+        parent={"Home"}
+        child={"Contact"}>
 
 
                 <div className="section-padding">

@@ -1,5 +1,6 @@
 import PageHead from "./PageHead";
 import PageTitle from "./PageTitle";
+import PageTitleLanding from "./PageTitleLanding";
 import Sidebar from "./Sidebar";
 import cookie from "js-cookie";
 import { signOut, useSession } from "next-auth/react";
@@ -36,7 +37,7 @@ const Layout = ({
             ? session?.user
             : ""
 
-            // console.log(isUser);
+    // console.log(isUser);
 
     useEffect(() => {
         session ? setIsUser(session.user) : setIsUser(user)
@@ -86,7 +87,7 @@ const Layout = ({
             <div id="main-wrapper" className={pageClass}>
 
                 {!role ? (
-                    <HeaderLanding isUser={isUser}  role={role} logoutHandler={logoutHandler} />
+                    <HeaderLanding isUser={isUser} role={role} logoutHandler={logoutHandler} />
                 ) : (
                     <>
                         <Header isUser={isUser} role={role} logoutHandler={logoutHandler} />
@@ -115,7 +116,7 @@ const Layout = ({
                     <>
                         {children}
                     </>
-                ) : ( 
+                ) : (
                     <>
                         <div className="content-body" style={{ minHeight: height - 122 }}>
                             <div className="container">
@@ -136,7 +137,7 @@ const Layout = ({
                 {!role ? (<><Bottom /></>) : (null)}
                 {!role ? (<><Footer /></>) : (null)}
 
-                
+
             </div>
 
 
