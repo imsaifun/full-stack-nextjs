@@ -37,7 +37,7 @@ export default function ProductSingle({ product }) {
                         {product.map((item, i) => (
                             <div className="col-xl-3" key={i}>
                                 <div className="card">
-                                    <div className="card-body">
+                                    <div className="card-body  single-product">
                                         <Link href={`/products/${item._id}`}>
                                             <a>
                                                 <img src={item.img} alt="" className="img-fluid card-img-top" />
@@ -45,7 +45,7 @@ export default function ProductSingle({ product }) {
                                                 {/* {item._id} */}
                                             </a>
                                         </Link>
-                                        <div className="d-flex justify-content-between align-items-center">
+                                        <div className="d-flex justify-content-between align-items-center mb-20">
                                             <div>
                                                 <h4 className="card-title">{item.title}</h4>
                                                 <span className="rating">
@@ -92,27 +92,30 @@ export default function ProductSingle({ product }) {
                                                     {!item.rating == null}
                                                 </span>
                                             </div>
-                                            <h4>{item.prices[0].price}</h4>
+                                            <h3 class="text-primary mb-0">{item.prices[0].price}</h3>
                                         </div>
 
                                         
+
+                                        <div className="d-flex justify-content-between align-items-center">
                                         
-                                        <button className="btn btn-danger mb-10 me-30"
-                                            onClick={() => handleDelete(item._id)}
-                                        >
-                                            Delete
-                                        </button>
-                                        <button className="btn btn-warning mb-10"
+                                       
+                                        <button className="btn btn-warning"
                                             onClick={() => handleId(item._id)}
                                         >
                                             Edit
                                         </button>
-                                        {/* <br /> */}
+                                        <button className="btn btn-danger mb-10"
+                                            onClick={() => handleDelete(item._id)}
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
                                     </div>
                                 </div>
 
 
-                                {productId === item._id && <EditProduct item={item} productId={productId}/>}
+                                {productId === item._id && <EditProduct item={item}/>}
 
                             </div>
                         ))}

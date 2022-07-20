@@ -3,9 +3,8 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
-export default function EditProduct({ item,productId }) {
-    const router = useRouter();  
-    // console.log(open);
+export default function EditProduct({ item }) {
+    const router = useRouter();
     const [updateData, setUpdataData] = useState({
         title: item.title,
         desc: item.desc,
@@ -25,6 +24,7 @@ export default function EditProduct({ item,productId }) {
             await axios.put(`/api/products/${id}`, updateData);
             toast.success("Update success")
             router.replace(`/admin/products/`)
+           
         } catch (error) {
             console.log(error);
         }
@@ -35,7 +35,7 @@ export default function EditProduct({ item,productId }) {
 
     return (
         <>
-             <div className="edit-modal">
+            <div className="edit-modal">
                 <div className="edit-modal-content">
 
 
@@ -87,6 +87,8 @@ export default function EditProduct({ item,productId }) {
                     </form>
 
                 </div></div>
+
+
 
 
             {/* <button onClick={signoutHandler}>Sign out</button> */}
