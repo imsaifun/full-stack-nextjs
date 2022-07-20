@@ -47,6 +47,23 @@ export default function HomePage({ product }) {
                     </div>
                 </div>
             </div>
+            
+
+            <div className="section-padding">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-xl-7">
+                            <div className="section-title text-center">
+                                <span>Tasty how The new</span>
+                                <h2>Our Popular Dishes</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <Products product={product} />
+                    </div>
+                </div>
+            </div>
 
             <div className="offer-banner section-padding">
                 <div className="container">
@@ -89,22 +106,6 @@ export default function HomePage({ product }) {
                                 <img className="bg-img-2" src="/images/offer/3.png" alt="img" />
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="section-padding">
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-xl-7">
-                            <div className="section-title text-center">
-                                <span>Tasty how The new</span>
-                                <h2>Our Popular Dishes</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <Products product={product} />
                     </div>
                 </div>
             </div>
@@ -184,11 +185,11 @@ export default function HomePage({ product }) {
                 </div>
             </div>
 
-            <div className="interested-join section-padding">
+            <div className="cta section-padding">
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-12">
-                            <div className="interested-join-content text-center">
+                            <div className="cta-content text-center">
                                 <h2>You have any questions?</h2>
                                 <p>Hit us up and well get in touch with you.</p>
                                 <Link href="/contact">
