@@ -18,7 +18,7 @@ export default function ProductDetails({ product }) {
     const [quantity, setQuantity] = useState(1);
     const [extras, setExtras] = useState([]);
     const dispatch = useDispatch();
-    
+
     // const [open, setOpen] = useState(false);
     // console.log(product.prices[0]);
     // console.log(price);
@@ -57,7 +57,7 @@ export default function ProductDetails({ product }) {
             <div className="product-details">
                 <div className="section-padding">
                     <div className="container">
-                        <div className="row">
+                        <div className="row align-items-center">
                             <div className="col-xl-6">
                                 <img src={product.img} alt="" className="img-fluid" />
                             </div>
@@ -127,41 +127,41 @@ export default function ProductDetails({ product }) {
                                     </div>
 
 
+                                    <div className="extra-option">
+                                        {product.extraOptions.map((option) => (
+                                            <>
+                                                {option && <h5>Extra Option</h5>}
+                                                <div class="form-check" key={option._id}>
+                                                    <input
+                                                        className="form-check-input"
+                                                        type="checkbox"
+                                                        id={option.text}
+                                                        name={option.text}
+                                                        onChange={(e) => handleChange(e, option)}
+                                                    />
+                                                    <label htmlFor={option.text}>{option.text}</label>
+                                                </div>
+                                            </>
+                                        ))}
 
-                                    {product.extraOptions.map((option) => (
-                                        <>
-                                            {option && <h5>Extra Option</h5>}
-                                            <div key={option._id}>
-                                                <input
-                                                    type="checkbox"
-                                                    id={option.text}
-                                                    name={option.text}
-                                                    onChange={(e) => handleChange(e, option)}
-                                                />
-                                                <label htmlFor="double">{option.text}</label>
-                                            </div>
-                                        </>
-                                    ))}
-
-                                    <h3 className="price">${price}</h3>
-                                </div>
+                                    </div>
 
 
 
-                                <br />
-                                <div>
-                                    <input
-                                        className="form-control"
-                                        onChange={(e) => setQuantity(e.target.value)}
-                                        type="number"
-                                        defaultValue={1}
-                                    />
-                                    <br />
-                                    <button className="btn btn-primary mt-20" onClick={handleClick}>Add to Cart</button>
-                                    <br />
-                                    {/* {open && <Link href="/cart">
-                                    <a className="btn btn-info mt-20">Checkut</a>                                    
-                                    </Link>} */}
+                                    <h3 className="price mb-20">${price}</h3>
+
+
+                                    <div className="cart-input">
+                                        <input
+                                            className="form-control"
+                                            onChange={(e) => setQuantity(e.target.value)}
+                                            type="number"
+                                            defaultValue={1}
+                                        />
+
+                                        <button className="btn btn-primary mt-30" onClick={handleClick}>Add to Cart</button>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>

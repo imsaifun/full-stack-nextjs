@@ -22,8 +22,7 @@ export default function HomePage({ product }) {
                                     The Fastest Delivery to your Favourite Food
                                 </h2>
                                 <p>
-                                    Rekruter is the complete UX & UI job board listing directory. Here included jobs, jobs details,
-                                    company, company details and more pages.
+                                Pizza is a family owned and operated business. We endeavour to bring to Dhaka the type of pizza you get on any street corner in your city.
                                 </p>
 
                                 <div className="intro-btn mt-5">
@@ -33,11 +32,6 @@ export default function HomePage({ product }) {
                                             <i className="ms-20 bi bi-cart-fill"></i>
                                         </a>
                                     </Link>
-                                    {/* <Link href="/upload">
-                                            <a className="btn btn-outline-primary">
-                                                Create
-                                            </a>
-                                        </Link> */}
                                 </div>
                             </div>
                         </div>
@@ -101,25 +95,33 @@ export default function HomePage({ product }) {
 
             <div className="section-padding">
                 <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-xl-7">
+                            <div className="section-title text-center">
+                                <span>Tasty how The new</span>
+                                <h2>Our Popular Dishes</h2>
+                            </div>
+                        </div>
+                    </div>
                     <div className="row">
                         <Products product={product} />
                     </div>
                 </div>
             </div>
 
-            <div className="portfolio section-padding" data-scroll-index="2">
+            <div className="why-choose section-padding" data-scroll-index="2">
                 <div className="container">
-                    <div className="row py-lg-5 justify-content-center">
+                    <div className="row justify-content-center">
                         <div className="col-xl-7">
                             <div className="section-title text-center">
-                                <p>Why choose us</p>
+                                <span>Why choose us</span>
                                 <h2>Why we are the best</h2>
                             </div>
                         </div>
                     </div>
                     <div className="row align-items-center justify-content-between">
                         <div className="col-xl-7 col-lg-6">
-                            <div className="portfolio_list">
+                            <div className="why-choose_list">
                                 <div className="row">
                                     <div className="col-xl-6">
                                         <div className="d-flex">
@@ -157,7 +159,7 @@ export default function HomePage({ product }) {
                             </div>
                         </div>
                         <div className="col-xl-5 col-lg-6">
-                            <div className="portfolio_img">
+                            <div className="why-choose_img">
                                 <img src="/images/portfolio.png" alt="" className="img-fluid" />
                             </div>
                         </div>

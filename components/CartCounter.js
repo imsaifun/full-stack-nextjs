@@ -13,7 +13,7 @@ export default function CartCounter() {
 	}, [cart, dispatch]);
   return (
     <>
-          <div>{cart.quantity}</div>
+          <div className="cart-quantity">{cart.quantity}</div>
     </>
   );
 }
