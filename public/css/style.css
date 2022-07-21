@@ -62159,6 +62159,7 @@ hr {
   right: 0;
   z-index: 3;
   background: #CE2829;
+  border-bottom: 1px solid #c20608;
 }
 .header.bg-primary {
   border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
@@ -62167,7 +62168,6 @@ hr {
   .header {
     left: 0;
     padding: 10px 0px;
-    background: #fff;
   }
 }
 .header .brand-logo {
@@ -62191,7 +62191,7 @@ hr {
   }
 }
 .header.landing {
-  padding: 20px 0px;
+  padding: 25px 0px;
   left: 0px;
   border-bottom: 1px solid #c20608;
 }
@@ -62228,10 +62228,9 @@ hr {
 
 @media only screen and (max-width: 991px) {
   .navigation .navbar-collapse {
-    background: #fff;
     z-index: 999;
     margin-top: 20px;
-    border: 1px solid #efecf3;
+    border: 1px solid #c20608;
     border-radius: 8px;
   }
 }
@@ -62249,7 +62248,7 @@ hr {
 }
 @media only screen and (max-width: 991px) {
   .navigation .navbar ul > li {
-    border-bottom: 1px solid #efecf3;
+    border-bottom: 1px solid #c20608;
     margin: 0 15px;
     padding: 7px 15px;
     width: 100%;
@@ -62290,7 +62289,7 @@ hr {
 @media only screen and (max-width: 991px) {
   .navbar-toggler {
     position: absolute;
-    right: 130px;
+    right: 160px;
     top: 0;
   }
 }

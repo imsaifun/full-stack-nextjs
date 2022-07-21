@@ -7,6 +7,7 @@
 	z-index: 3;
 	// transition: all 0.3s ease-in;
 	background: $primary;
+	border-bottom: 1px solid #c20608;
 	// box-shadow: $box-shadow;
 
 	&.bg-primary {
@@ -21,7 +22,7 @@
 	@include respond("sm") {
 		left: 0;
 		padding: 10px 0px;
-		background: $white;
+		// background: $white;
 	}
 
 	.brand-logo {
@@ -47,7 +48,7 @@
 	}
 
 	&.landing {
-		padding: 20px 0px;
+		padding: 25px 0px;
 		left: 0px;
 		border-bottom: 1px solid #c20608;
 		// position: relative;
@@ -96,10 +97,10 @@
 .navigation {
 	.navbar-collapse {
 		@include respond("md") {
-			background: $white;
+			// background: $white;
 			z-index: 999;
 			margin-top: 20px;
-			border: 1px solid $border-color;
+			border: 1px solid #c20608;
 			border-radius: $radius;
 		}
 	}
@@ -123,7 +124,7 @@
 				// margin-left: 15px;
 
 				@include respond("md") {
-					border-bottom: 1px solid $border-color;
+					border-bottom: 1px solid #c20608;
 					margin: 0 15px;
 					padding: 7px 15px;
 					// background: $primary;
@@ -171,7 +172,7 @@
 .navbar-toggler {
 	@include respond("md") {
 		position: absolute;
-		right: 130px;
+		right: 160px;
 		top: 0;
 	}
 }
