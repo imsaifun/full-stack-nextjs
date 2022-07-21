@@ -29,25 +29,35 @@ const Profile = () => {
   return (
     <>
       <Layout role="admin" pageClass="admin">
+        <div className="row">
+          <div className="col-xl-12">
+            <h4 className="card-title mb-30">Profile</h4>
+            <div className="card">
+              <div className="card-body">
+                {dbUser && (
+                  <>
+                    <h6>
+                      Name:  <span className="text-muted">{dbUser.name}</span>
+                    </h6>
+                    <h6>
+                      Email: <span className="text-muted">{dbUser.email}</span>
+                    </h6>
+                    {/* <h3>
+                      {dbUser.validEmail}
+                      {dbUser.validEmail === "not" && (
+                        <button className="btn btn-warning" onClick={emailReset}>Send Token</button>
+                      )}
+                    </h3> */}
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <h1>Profile </h1>
 
-      {dbUser && (
-        <>
-          <h3>
-            {dbUser.name}
-          </h3>
-          <h3>
-            {dbUser.email}
-          </h3>
-          <h3>
-            {dbUser.validEmail}{" "}
-            {dbUser.validEmail === "not" && (
-              <button onClick={emailReset}>Send Token</button>
-              )}
-          </h3>
-        </>
-      )}
+
+
       </Layout>
     </>
   )

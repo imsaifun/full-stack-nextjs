@@ -100,11 +100,11 @@ export default function ProductSingle({ product }) {
                                         <div className="d-flex justify-content-between align-items-center">
                                         
                                        
-                                        <button className="btn btn-warning"
+                                        {/* <button className="btn btn-warning"
                                             onClick={() => handleId(item._id)}
                                         >
                                             Edit
-                                        </button>
+                                        </button> */}
                                         <button className="btn btn-danger mb-10"
                                             onClick={() => handleDelete(item._id)}
                                         >

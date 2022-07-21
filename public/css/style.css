@@ -62744,7 +62744,7 @@ button:hover, button:focus, button:active,
 
 .table th {
   color: #1f1b2d;
-  border-bottom: 1px solid #efecf3 !important;
+  border-bottom: 1px solid #efecf3;
 }
 
 .table-responsive-sm {
@@ -63469,6 +63469,50 @@ button:hover, button:focus, button:active,
 }
 .tab-steps--list li:first-child:after {
   content: none;
+}
+
+.stat-widget {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  position: relative;
+  box-shadow: #dbe3f4;
+  border: 1px solid #efecf3;
+}
+.stat-widget .widget-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  font-size: 20px;
+  color: #fff;
+}
+.stat-widget .widget-icon i {
+  line-height: 0px;
+}
+.stat-widget .widget-content p {
+  color: #666276;
+  opacity: 0.85;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+.stat-widget .widget-content h3, .stat-widget .widget-content .h3 {
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+.stat-widget .widget-arrow {
+  position: absolute;
+  right: 26px;
+  font-weight: 500;
+}
+.stat-widget .widget-arrow i {
+  position: relative;
+  top: -3px;
+  margin-left: 5px;
 }
 
 .demo_img {

@@ -17,7 +17,7 @@ const Index = ({ orders }) => {
 
                         <div className="table-responsive">
                             <table className="table">
-                                <tbody>
+                                <thead>
                                     <tr>
                                         {/* <th>Id</th> */}
                                         <th>Customer</th>
@@ -25,10 +25,10 @@ const Index = ({ orders }) => {
                                         <th>Payment</th>
                                         <th>Status</th>
                                     </tr>
-                                </tbody>
+                                </thead>
+                                <tbody>
                                 {orders.map((order) => (
-                                    <tbody key={order._id}>
-                                        <tr>
+                                        <tr key={order._id}>
                                             {/* <td>{order._id}...</td> */}
                                             <td>
                                                 <Link href={`/orders/${order._id}`}>
@@ -47,8 +47,8 @@ const Index = ({ orders }) => {
                                                 {order.status === 4 && "Completed"}
                                             </td>
                                         </tr>
-                                    </tbody>
                                 ))}
+                                </tbody>
                             </table>
                         </div>
                     </div>

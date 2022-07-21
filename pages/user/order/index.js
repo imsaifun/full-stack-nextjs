@@ -16,41 +16,47 @@ const Index = ({ orders, }) => {
     return (
         <>
             <Layout role="admin" pageClass="admin">
-                <h1>{username}</h1>
                 <div className="row">
                     <div className="col-xl-12">
-                        <table className="table">
-                            <tbody>
-                                <tr>
-                                    <th>Customer</th>
-                                    <th>Total</th>
-                                    <th>Payment</th>
-                                    <th>Status</th>
-                                </tr>
-                            </tbody>
-                            <tbody>
-                                {myOrder.map((order) => (
-                                    <tr key={order._id}>
-                                            <td>
-                                        <Link href={`/user/order/${order._id}`}>
-                                                <a>{order.customer}</a>
-                                        </Link>
-                                                </td>
-                                        <td>${order.total}</td>
-                                        <td>
-                                            {order.method === 0 ? <span>cash</span> : <span>paid</span>}
-                                        </td>
-                                        <td>
-                                            {order.status === 0 && "Ordered"}
-                                            {order.status === 1 && "Preparing"}
-                                            {order.status === 2 && "On the way"}
-                                            {order.status === 3 && "Delivered"}
-                                            {order.status === 4 && "Completed"}
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                        <h4 className="card-title mb-30">All Orders</h4>
+                        <div className="card">
+                            <div className="card-body">
+                                <div className="table-responsive">
+                                    <table className="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Customer</th>
+                                                <th>Total</th>
+                                                <th>Payment</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {myOrder.map((order) => (
+                                                <tr key={order._id}>
+                                                    <td>
+                                                        <Link href={`/user/order/${order._id}`}>
+                                                            <a>{order.customer}</a>
+                                                        </Link>
+                                                    </td>
+                                                    <td>${order.total}</td>
+                                                    <td>
+                                                        {order.method === 0 ? <span>cash</span> : <span>paid</span>}
+                                                    </td>
+                                                    <td>
+                                                        {order.status === 0 && "Ordered"}
+                                                        {order.status === 1 && "Preparing"}
+                                                        {order.status === 2 && "On the way"}
+                                                        {order.status === 3 && "Delivered"}
+                                                        {order.status === 4 && "Completed"}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Layout>

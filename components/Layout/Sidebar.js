@@ -74,7 +74,7 @@ function Sidebar() {
                             </Link>
                         </li>}
 
-                        {admin && <li className={router.pathname == "/admin/profile" ? "active" : ""}>
+                        {/* {admin && <li className={router.pathname == "/admin/profile" ? "active" : ""}>
                             <Link href="/admin/profile">
                                 <a>
                                     <span>
@@ -83,7 +83,7 @@ function Sidebar() {
                                     <span className="nav-text">Profile</span>
                                 </a>
                             </Link>
-                        </li>}
+                        </li>} */}
                         {!admin && <li className={router.pathname == "/user/order" ? "active" : ""}>
                             <Link href="/user/order">
                                 <a>
