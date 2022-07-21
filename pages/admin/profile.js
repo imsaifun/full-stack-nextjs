@@ -18,8 +18,9 @@ const Index = ({ orders, }) => {
         <>
             <Layout role="admin" pageClass="admin">
                 <h1>{username}</h1>
-                <div>
-                    <h1>Orders</h1>
+                <h4 className="mb-30 card-title">Orders</h4>
+                <div className="card">
+                    <div className="card-body">
                     <table className="table">
                         <tbody>
                             <tr>
@@ -50,6 +51,7 @@ const Index = ({ orders, }) => {
                             ))}
                         </tbody>
                     </table>
+                </div>
                 </div>
             </Layout>
         </>

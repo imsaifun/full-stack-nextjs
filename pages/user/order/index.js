@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { useSelector } from "react-redux";
-import Layout from "../../components/Layout/LayoutAdmin";
-import dbConnect from "../../lib/dbConnect";
-import getOrder from "../../lib/getOrder";
+import Layout from "../../../components/Layout/LayoutAdmin";
+import dbConnect from "../../../lib/dbConnect";
+import getOrder from "../../../lib/getOrder";
 
 const Index = ({ orders, }) => {
 
@@ -21,7 +22,6 @@ const Index = ({ orders, }) => {
                         <table className="table">
                             <tbody>
                                 <tr>
-                                    <th>Id</th>
                                     <th>Customer</th>
                                     <th>Total</th>
                                     <th>Payment</th>
@@ -31,8 +31,11 @@ const Index = ({ orders, }) => {
                             <tbody>
                                 {myOrder.map((order) => (
                                     <tr key={order._id}>
-                                        <td>{order._id}...</td>
-                                        <td>{order.customer}</td>
+                                            <td>
+                                        <Link href={`/user/order/${order._id}`}>
+                                                <a>{order.customer}</a>
+                                        </Link>
+                                                </td>
                                         <td>${order.total}</td>
                                         <td>
                                             {order.method === 0 ? <span>cash</span> : <span>paid</span>}

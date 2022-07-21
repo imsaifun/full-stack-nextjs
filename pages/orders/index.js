@@ -10,37 +10,48 @@ const Index = ({ orders }) => {
             <Layout role="admin" pageClass="admin">
 
 
-                <h1>Orders</h1>
-                <div className="table-responsive">
-                    <table className="table">
-                        <tbody>
-                            <tr>
-                                <th>Id</th>
-                                <th>Customer</th>
-                                <th>Total</th>
-                                <th>Payment</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </tbody>
-                        {orders.map((order) => (
-                            <tbody key={order._id}>
-                                <tr>
-                                    <td>{order._id}...</td>
-                                    <td>
-                                        <Link href={`/orders/${order._id}`}>
-                                            <a>{order.customer}</a>
-                                        </Link>
-                                    </td>
-                                    <td>${order.total}</td>
-                                    <td>
-                                        {order.method === 0 ? <span>cash</span> : <span>paid</span>}
-                                    </td>
-                                    {/* <td>{status[order.status]}</td> */}
-                                </tr>
-                            </tbody>
-                        ))}
-                    </table>
+                <h4 className="mb-30 card-title">Orders</h4>
+                <div className="card">
+                    <div className="card-body">
+
+
+                        <div className="table-responsive">
+                            <table className="table">
+                                <tbody>
+                                    <tr>
+                                        {/* <th>Id</th> */}
+                                        <th>Customer</th>
+                                        <th>Total</th>
+                                        <th>Payment</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </tbody>
+                                {orders.map((order) => (
+                                    <tbody key={order._id}>
+                                        <tr>
+                                            {/* <td>{order._id}...</td> */}
+                                            <td>
+                                                <Link href={`/orders/${order._id}`}>
+                                                    <a>{order.customer}</a>
+                                                </Link>
+                                            </td>
+                                            <td>${order.total}</td>
+                                            <td>
+                                                {order.method === 0 ? <span>cash</span> : <span>paid</span>}
+                                            </td>
+                                            <td>
+                                                {order.status === 0 && "Ordered"}
+                                                {order.status === 1 && "Preparing"}
+                                                {order.status === 2 && "On the way"}
+                                                {order.status === 3 && "Delivered"}
+                                                {order.status === 4 && "Completed"}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                ))}
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </Layout>
         </>
