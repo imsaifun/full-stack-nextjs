@@ -1,0 +1,49 @@
+// stylelint-disable-next-line scss/dollar-variable-default
+$primary: #CE2829;
+$secondary: #f5f4f8 !default;
+$success: #07c98b !default;
+$info: #3c76f2 !default;
+$warning: #fdbc31 !default;
+$danger: #f23c49 !default;
+$light: #f5f8fa !default;
+$dark: #1f1b2d;
+$purple: #5848bb;
+
+
+// Body
+$body-bg: #fff;
+$body-color: #666276;
+
+// Typography
+$font-family-base: "Noto Sans", sans-serif;
+$headings-font-weight: 700;
+$font-size-base: 1rem !default;
+$font-weight-base: 400 !default;
+$line-height-base: 1.6;
+$headings-line-height: 1.6;
+$h1-font-size: 2.25rem;
+$h2-font-size: 1.875rem;
+$h3-font-size: 1.5rem;
+$h4-font-size: 1.125rem;
+$h5-font-size: 1rem;
+$h6-font-size: 1rem;
+
+$text-muted: #9691a4;
+
+$heading-primary-size: 1.8rem;
+$sub-heading-size: 1.6rem !default;
+$grid-gutter-width: 30px;
+$dropdown-lik-color: $body-color;
+$border-color: #efecf3;
+$headings-color: $dark !default;
+$table-striped-bg: $body-bg;
+$border-radius: 8px !default;
+$input-btn-focus-width: 0rem !default;
+
+// custom
+$radius: $border-radius;
+$box-shadow: 0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);
+$box-shadow-sm: 0 0.125rem 0.125rem rgba(31, 27, 45, 0.08);
+$box-shadow-lg: 0 0.75rem 0.375rem rgba(31, 27, 45, 0.2);
+$sidebar-width: 240px;
+$filter-width: 275px;
