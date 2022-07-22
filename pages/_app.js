@@ -7,6 +7,7 @@ import "../public/css/style.css";
 import store from "../redux/store";
 import { useEffect, useState } from "react";
 import "swiper/css";
+import Preloader from "../components/elements/Preloader";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
           </Provider>
         </SessionProvider>
       ) : (
-        "Loading"
+        <Preloader/>
       )
       }
     </>
