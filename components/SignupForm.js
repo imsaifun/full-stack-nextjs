@@ -28,7 +28,7 @@ function SignupForm() {
                 initialValues={initialValues}
                 validationSchema={SignupFormSchema}
                 onSubmit={ async (fields) => {
-                    console.log(fields);
+                    // console.log(fields);
                     try {
                         // if (password !== conPassword) {
                         //     toast.error("passwords do not match!")
@@ -40,7 +40,7 @@ function SignupForm() {
                             fields
                             
                         )
-                        router.push("/user/login")
+                        router.push("/login")
                         toast.success(data?.message)
                     } catch (error) {
                         console.log(error.response)

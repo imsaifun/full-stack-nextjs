@@ -8,11 +8,12 @@ import User from "../../../models/userModel"
 dbConnect()
 
 export default async (req, res) => {
+  // console.log("click");
   try {
     if (req.method === "POST") {
       const { email, password, name } = req.body
 
-      // console.log(email, password, firstName, lastName)
+      console.log(email, password, name)
 
       const user = await User.findOne({ email: email })
 
@@ -37,7 +38,7 @@ export default async (req, res) => {
       await newUser.save()
 
       const { origin } = absoluteUrl(req)
-      const link = `${origin}/user/email/${token}`
+      const link = `${origin}/email/${token}`
 
       const message = `<div>Click on the link below to verify your email, if the link is not working then please paste into the browser.</div></br>
     <div>link:${link}</div>`
