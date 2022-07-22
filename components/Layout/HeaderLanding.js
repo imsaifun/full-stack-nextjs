@@ -8,6 +8,7 @@ function Header({ logoutHandler, isUser }) {
     const toggleTrueFalse = () => setToggled(!isToggled);
 
     const profile = useSelector((state) => state.profile)
+    console.log(profile);
     const { dbUser } = profile
 
     const admin = dbUser && dbUser.isAdmin
