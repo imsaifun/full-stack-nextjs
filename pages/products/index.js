@@ -8,11 +8,11 @@ export default function ProductSingle({product}) {
 
     return (
         <Layout   pageClass={"front"}
-        headTitle={"Contact"}
-        pageTitle={"Contact"}
-        pageTitleSub={"Welcome Contact Page"}
+        headTitle={"Product"}
+        pageTitle={"Product"}
+        pageTitleSub={"Welcome Product Page"}
         parent={"Home"}
-        child={"Contact"}>
+        child={"Product"}>
             <div className="section-padding">
                 <div className="container">
                     <div className="row">

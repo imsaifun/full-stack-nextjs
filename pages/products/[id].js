@@ -52,11 +52,11 @@ export default function ProductDetails({ product }) {
 
     return (
         <Layout   pageClass={"front"}
-        headTitle={"Contact"}
-        pageTitle={"Contact"}
-        pageTitleSub={"Welcome Contact Page"}
-        parent={"Home"}
-        child={"Contact"}>
+        headTitle={product.title}
+        pageTitle={product.title}
+        pageTitleSub={"Welcome Product Page"}
+        parent={"Product"}
+        child={"Details"}>
 
 
             <div className="product-details">
