@@ -52,6 +52,11 @@ export default function Header({ isUser, logoutHandler }) {
                                                 </a>
                                                 </Link>
                                             </li>
+                                            <li className="nav-item dropdown">
+                                                <Link href="/products"><a className="nav-link">Pizza
+                                                </a>
+                                                </Link>
+                                            </li>
                                             <li className="nav-item">
                                                 <Link href="/profile" passHref>
                                                     <a>{isUser && isUser.name}</a>
